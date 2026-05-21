@@ -1017,9 +1017,24 @@ if (typeof L === 'undefined') {
   <!-- Add Tab -->
   <div id="etab-add" class="etab-panel active">
 
+    <!-- Telegram Bot 整合（bot 後端有 user_id 白名單，公開連結安全） -->
+    <div style="background:linear-gradient(135deg,#2AABEE,#229ED9);border-radius:16px;padding:16px 18px;margin-bottom:14px;box-shadow:0 4px 14px rgba(34,158,217,0.25);">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <div style="font-size:26px;">📲</div>
+        <div>
+          <div style="font-size:14px;font-weight:800;color:white;">用 Telegram Bot 拍照記帳</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.85);">@Jessie_Mac_Assistant_Bot · 自動 OCR 寫進 Notion 旅行 DB</div>
+        </div>
+      </div>
+      <a href="https://t.me/Jessie_Mac_Assistant_Bot" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;background:white;color:#229ED9;border-radius:10px;padding:11px;font-size:14px;font-weight:800;text-decoration:none;font-family:'Noto Sans TC',sans-serif;">
+        ✈️ 開啟 Bot 拍收據
+      </a>
+      <div style="font-size:10px;color:rgba(255,255,255,0.8);margin-top:8px;text-align:center;">拍照給 Bot → 自動 OCR 辨識金額 → 寫進 Notion 旅行 DB<br><em>caption 範例：「收據 Jessie 住宿」</em></div>
+    </div>
+
     <div class="exp-form">
       <div class="exp-form-head">
-        <div class="efh">✏️ 新增花費</div>
+        <div class="efh">✏️ 新增花費（網頁手動版）</div>
       </div>
       <div class="exp-form-body">
         <div class="form-row">
