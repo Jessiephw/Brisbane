@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>🇦🇺 布里斯本探險記 🦘🐨</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sun:#F5A623; --sun-l:#FFF8E7;
+  --ocean:#1565A8; --ocean-l:#E8F2FF;
+  --sand:#F6F1E9; --sand-d:#EDE6D8;
+  --coral:#E8634A; --coral-l:#FFF0EC;
+  --green:#2E7D52; --green-l:#E8F5EE;
+  --dark:#1A2B3C; --text:#2C3E50; --muted:#8A9BAC;
+  --border:rgba(26,43,60,0.09);
+  --white:#FFFFFF;
+  --sh:0 2px 14px rgba(26,43,60,0.08);
+  --sh-md:0 6px 28px rgba(26,43,60,0.13);
+  --r:18px; --r-s:10px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--sand);color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+/* HERO */
+.hero{background:linear-gradient(145deg,#0D3B6E 0%,#1565A8 45%,#1A7A5E 100%);color:white;padding:36px 20px 68px;position:relative;overflow:hidden;}
+.hbg span{position:absolute;border-radius:50%;background:rgba(255,255,255,0.04);}
+.hbg span:nth-child(1){width:280px;height:280px;top:-70px;right:-50px;}
+.hbg span:nth-child(2){width:180px;height:180px;bottom:30px;left:-40px;}
+.hwave{position:absolute;bottom:-1px;left:0;right:0;height:50px;background:var(--sand);clip-path:ellipse(58% 100% at 50% 100%);}
+.hpill{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.14);border:1px solid rgba(255,255,255,0.22);border-radius:30px;padding:5px 14px;font-size:12px;font-weight:500;margin-bottom:14px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(26px,8vw,44px);font-weight:900;line-height:1.12;margin-bottom:6px;}
+.hero h1 em{font-style:italic;color:#87CEEB;}
+.hdesc{font-size:12px;opacity:.75;margin-bottom:18px;line-height:1.6;}
+.hstats{display:flex;gap:12px;flex-wrap:wrap;}
+.hstat{background:rgba(255,255,255,0.12);border-radius:12px;padding:8px 12px;text-align:center;}
+.hstat .n{font-size:18px;font-weight:700;line-height:1;}
+.hstat .l{font-size:10px;opacity:.7;margin-top:2px;}
+
+/* NAV */
+.snav{position:sticky;top:0;z-index:200;background:var(--sand);border-bottom:1px solid var(--border);padding:0 10px;overflow-x:auto;scrollbar-width:none;display:flex;gap:2px;}
+.snav::-webkit-scrollbar{display:none;}
+.nb{flex-shrink:0;border:none;background:none;cursor:pointer;padding:11px 12px 9px;font-family:'Noto Sans TC',sans-serif;font-size:12px;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;}
+.nb.active{color:var(--ocean);border-bottom-color:var(--ocean);font-weight:700;}
+.nb:hover:not(.active){color:var(--text);}
+
+/* PANELS */
+.panel{display:none;padding:14px 14px 100px;animation:fadeUp .28s ease;}
+.panel.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+/* SECTION TITLE */
+.stitle{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--dark);margin:8px 0 10px;display:flex;align-items:center;gap:8px;}
+.stitle .dot{width:7px;height:7px;border-radius:50%;background:var(--coral);flex-shrink:0;}
+
+/* CARD */
+.card{background:var(--white);border-radius:var(--r);box-shadow:var(--sh);margin-bottom:12px;overflow:hidden;}
+.card-h{padding:14px 16px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.cicon{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
+.sun-bg{background:var(--sun-l);} .ocean-bg{background:var(--ocean-l);} .coral-bg{background:var(--coral-l);} .green-bg{background:var(--green-l);}
+.ctitle{font-size:14px;font-weight:700;color:var(--dark);}
+.csub{font-size:11px;color:var(--muted);margin-top:2px;}
+.cbody{padding:12px 16px;}
+
+/* ALERTS */
+.al{border-radius:var(--r-s);padding:11px 13px;margin-bottom:10px;font-size:12px;line-height:1.6;display:flex;gap:9px;}
+.ali{font-size:17px;flex-shrink:0;margin-top:1px;}
+.alc .alt{font-weight:700;margin-bottom:2px;}
+.warn{background:#FFF8E1;border-left:3px solid var(--sun);}
+.info{background:var(--ocean-l);border-left:3px solid var(--ocean);}
+.danger{background:#FDECEA;border-left:3px solid var(--coral);}
+.success{background:var(--green-l);border-left:3px solid var(--green);}
+
+/* DAY BLOCKS */
+.day-block{margin-bottom:14px;}
+.day-h{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:var(--r-s) var(--r-s) 0 0;color:white;cursor:pointer;user-select:none;}
+.dnum{width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;flex-shrink:0;}
+.dinfo{flex:1;}
+.ddate{font-size:10px;opacity:.8;}
+.dtitle{font-size:13px;font-weight:700;}
+.dtog{font-size:16px;transition:transform .25s;}
+.dtog.open{transform:rotate(180deg);}
+
+.day-c{background:var(--white);border-radius:0 0 var(--r-s) var(--r-s);border:1px solid var(--border);border-top:none;overflow:hidden;max-height:0;transition:max-height .4s ease;}
+.day-c.open{max-height:4000px;}
+
+/* TIMELINE */
+.tl{padding:12px 14px;}
+.tli{display:flex;gap:10px;margin-bottom:14px;position:relative;}
+.tli:not(:last-child)::before{content:'';position:absolute;left:17px;top:36px;bottom:-6px;width:2px;background:linear-gradient(to bottom,var(--ocean-l),transparent);}
+.tltime{flex-shrink:0;text-align:right;width:48px;font-size:10px;font-weight:700;color:var(--ocean);padding-top:9px;line-height:1.3;}
+.tldot{flex-shrink:0;width:34px;height:34px;border-radius:9px;background:var(--ocean-l);display:flex;align-items:center;justify-content:center;font-size:15px;margin-top:2px;position:relative;z-index:1;}
+.tlbody{flex:1;}
+.tlname{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:3px;}
+.tldesc{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:5px;}
+
+/* ADDRESS ROW */
+.addr-row{display:flex;align-items:flex-start;gap:6px;margin-bottom:5px;}
+.addr-icon{font-size:12px;flex-shrink:0;margin-top:1px;}
+.addr-text{font-size:11px;color:#555;line-height:1.5;flex:1;}
+.map-btn{display:inline-flex;align-items:center;gap:4px;background:var(--ocean);color:white;border:none;border-radius:7px;padding:4px 10px;font-size:10px;font-weight:700;cursor:pointer;text-decoration:none;margin-top:4px;font-family:'Noto Sans TC',sans-serif;}
+.map-btn:hover{background:#0D47A1;}
+.map-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;}
+.nav-btn-g{display:inline-flex;align-items:center;gap:4px;background:#1A73E8;color:white;border-radius:7px;padding:4px 10px;font-size:10px;font-weight:700;cursor:pointer;text-decoration:none;font-family:'Noto Sans TC',sans-serif;}
+.nav-btn-a{display:inline-flex;align-items:center;gap:4px;background:#000;color:white;border-radius:7px;padding:4px 10px;font-size:10px;font-weight:700;cursor:pointer;text-decoration:none;font-family:'Noto Sans TC',sans-serif;}
+
+/* TAGS */
+.tltags{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;}
+.tt{font-size:10px;padding:2px 7px;border-radius:20px;font-weight:600;}
+.tt.food{background:#FFF3E0;color:#E65100;}
+.tt.kid{background:var(--green-l);color:var(--green);}
+.tt.sight{background:var(--ocean-l);color:var(--ocean);}
+.tt.drive{background:#F3E5F5;color:#7B1FA2;}
+.tt.rest{background:#F5F5F5;color:#555;}
+
+/* DIVIDER */
+.tl-div{border:none;border-top:1px dashed var(--border);margin:10px 0;}
+
+/* ═══ EXPENSE TRACKER ═══ */
+.exp-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.exp-sum-card{background:var(--white);border-radius:14px;padding:14px;box-shadow:var(--sh);text-align:center;}
+.exp-sum-card .esnum{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--dark);}
+.exp-sum-card .eslbl{font-size:11px;color:var(--muted);margin-top:3px;}
+.exp-sum-card.total-card{grid-column:1/-1;background:linear-gradient(135deg,var(--ocean),#1A7A5E);color:white;}
+.exp-sum-card.total-card .esnum{color:white;font-size:30px;}
+.exp-sum-card.total-card .eslbl{color:rgba(255,255,255,.75);}
+
+/* Budget bar */
+.bud-track{background:var(--white);border-radius:14px;padding:14px;box-shadow:var(--sh);margin-bottom:12px;}
+.bud-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;}
+.bud-label .bl{font-weight:700;color:var(--dark);}
+.bud-label .br{color:var(--muted);}
+.bud-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin-bottom:4px;}
+.bud-fill{height:100%;border-radius:4px;transition:width .6s ease;background:linear-gradient(90deg,var(--green),var(--ocean));}
+.bud-fill.warn{background:linear-gradient(90deg,var(--sun),var(--coral));}
+.bud-note{font-size:10px;color:var(--muted);}
+
+/* Add expense */
+.exp-form{background:var(--white);border-radius:14px;box-shadow:var(--sh);overflow:hidden;margin-bottom:12px;}
+.exp-form-head{background:linear-gradient(135deg,#1A2B3C,#2C3E50);color:white;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;}
+.exp-form-head .efh{font-size:14px;font-weight:700;}
+.exp-form-body{padding:14px;}
+.form-row{margin-bottom:10px;}
+.form-row label{display:block;font-size:11px;font-weight:700;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.4px;}
+.form-row input,.form-row select{width:100%;border:1.5px solid var(--border);border-radius:9px;padding:9px 12px;font-size:13px;font-family:'Noto Sans TC',sans-serif;background:var(--sand);color:var(--text);outline:none;transition:border .2s;}
+.form-row input:focus,.form-row select:focus{border-color:var(--ocean);background:white;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.add-btn{width:100%;background:linear-gradient(135deg,var(--ocean),#1A7A5E);color:white;border:none;border-radius:11px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Noto Sans TC',sans-serif;transition:opacity .2s;}
+.add-btn:hover{opacity:.9;}
+.add-btn:active{transform:scale(.98);}
+
+/* Expense list */
+.exp-list{margin-bottom:12px;}
+.exp-day-group{margin-bottom:10px;}
+.exp-day-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;padding:6px 0 6px 2px;border-bottom:1px solid var(--border);margin-bottom:4px;}
+.exp-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--white);border-radius:11px;margin-bottom:6px;box-shadow:var(--sh);}
+.exp-cat-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.exp-info{flex:1;}
+.exp-name{font-size:13px;font-weight:600;color:var(--dark);}
+.exp-meta{font-size:10px;color:var(--muted);margin-top:2px;}
+.exp-amt{font-size:14px;font-weight:700;color:var(--dark);flex-shrink:0;}
+.exp-del{background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:4px;flex-shrink:0;}
+.exp-del:hover{color:var(--coral);}
+.no-expense{text-align:center;padding:28px 16px;color:var(--muted);font-size:13px;}
+.no-expense .nei{font-size:36px;margin-bottom:8px;}
+
+/* Category colors */
+.cat-food{background:#FFF3E0;} .cat-hotel{background:var(--ocean-l);} .cat-transport{background:#F3E5F5;}
+.cat-ticket{background:var(--green-l);} .cat-shopping{background:var(--sun-l);} .cat-other{background:#F5F5F5;}
+
+/* Category breakdown */
+.cat-breakdown{background:var(--white);border-radius:14px;padding:14px;box-shadow:var(--sh);margin-bottom:12px;}
+.cat-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);}
+.cat-row:last-child{border-bottom:none;}
+.cat-row-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.cat-row-name{font-size:12px;font-weight:600;color:var(--dark);flex:1;}
+.cat-row-amt{font-size:13px;font-weight:700;color:var(--text);}
+.cat-row-pct{font-size:10px;color:var(--muted);text-align:right;}
+
+/* HOTEL */
+.hcard{border-radius:var(--r-s);border:1px solid var(--border);margin-bottom:10px;overflow:hidden;}
+.htop{background:linear-gradient(135deg,var(--ocean-l),#E8F5EE);padding:13px;display:flex;gap:11px;align-items:flex-start;}
+.hemoji{font-size:30px;}
+.hname{font-size:14px;font-weight:700;color:var(--dark);}
+.harea{font-size:11px;color:var(--muted);margin-top:2px;}
+.hnights{margin-left:auto;flex-shrink:0;background:var(--ocean);color:white;border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;}
+.hbottom{padding:11px 13px;background:var(--white);}
+.hpros{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:7px;}
+.pro{font-size:10px;padding:3px 8px;border-radius:20px;background:var(--green-l);color:var(--green);font-weight:600;}
+.hnote{font-size:11px;color:var(--muted);line-height:1.6;}
+
+/* FOOD */
+.fi{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.fi:last-child{border-bottom:none;}
+.femoji{font-size:26px;flex-shrink:0;width:38px;text-align:center;}
+.fname{font-size:13px;font-weight:700;color:var(--dark);}
+.ftype{font-size:10px;color:var(--muted);margin:2px 0 3px;}
+.fdesc{font-size:11px;color:var(--text);line-height:1.6;}
+.fbadge{display:inline-block;font-size:10px;padding:2px 7px;border-radius:20px;font-weight:700;margin-top:4px;}
+.fb-local{background:#E8F5EE;color:#2E7D52;}
+.fb-tw{background:#FFF3D6;color:#E65100;}
+.fb-both{background:var(--ocean-l);color:var(--ocean);}
+
+/* RULES */
+.ri{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.ri:last-child{border-bottom:none; padding-bottom:0;}
+.ricon{font-size:22px;flex-shrink:0;width:34px;text-align:center;}
+.rtitle{font-size:12px;font-weight:700;color:var(--dark);margin-bottom:2px;}
+.rdesc{font-size:11px;color:var(--text);line-height:1.6;}
+
+/* CHECK */
+.ci{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer;}
+.ci:last-child{border-bottom:none;}
+.cbox{width:21px;height:21px;border-radius:6px;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:1px;}
+.ci.checked .cbox{background:var(--green);border-color:var(--green);color:white;}
+.ci.checked .cbox::after{content:'✓';font-size:12px;font-weight:700;}
+.ci.checked .cn{text-decoration:line-through;color:var(--muted);}
+.cn{font-size:12px;font-weight:500;color:var(--dark);}
+.cs{font-size:10px;color:var(--muted);margin-top:2px;}
+
+/* WEATHER */
+.wrow{display:flex;gap:7px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;margin-bottom:10px;}
+.wrow::-webkit-scrollbar{display:none;}
+.wd{flex-shrink:0;background:var(--white);border-radius:12px;padding:10px 8px;text-align:center;min-width:64px;box-shadow:var(--sh);}
+.wdate{font-size:9px;color:var(--muted);margin-bottom:3px;}
+.wicon{font-size:22px;margin:3px 0;}
+.wtemp{font-size:12px;font-weight:700;color:var(--dark);}
+.wdesc{font-size:9px;color:var(--muted);margin-top:1px;}
+
+/* BUDGET TABLE */
+.br{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);}
+.br:last-child{border-bottom:none;}
+.brc{font-size:12px;color:var(--text);display:flex;align-items:center;gap:7px;}
+.bra{font-size:13px;font-weight:700;color:var(--dark);}
+.br.tot .brc{font-weight:700;font-size:13px;color:var(--dark);}
+.br.tot .bra{color:var(--ocean);font-size:15px;}
+
+/* EMERGENCY */
+.ei{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);align-items:center;}
+.ei:last-child{border-bottom:none;}
+.enum{font-size:15px;font-weight:900;color:var(--coral);flex-shrink:0;width:56px;}
+.edesc{font-size:12px;color:var(--text);}
+.ename{font-weight:700;margin-bottom:2px;}
+
+/* FLOAT */
+/* Inline map embed */
+.map-embed{border-radius:var(--r-s);overflow:hidden;margin-top:8px;border:1px solid var(--border);}
+.map-embed iframe{width:100%;height:200px;border:none;display:block;}
+
+/* Day color schemes */
+.d1{background:linear-gradient(135deg,#0D3B6E,#1565A8);}
+.d2{background:linear-gradient(135deg,#1565A8,#0D47A1);}
+.d3{background:linear-gradient(135deg,#2E7D52,#1B5E20);}
+.d4{background:linear-gradient(135deg,#BF360C,#E65100);}
+.d5{background:linear-gradient(135deg,#006994,#004E7A);}
+.d6{background:linear-gradient(135deg,#00838F,#006064);}
+.d7{background:linear-gradient(135deg,#558B2F,#33691E);}
+.d8{background:linear-gradient(135deg,#AD1457,#880E4F);}
+.d9{background:linear-gradient(135deg,#4527A0,#311B92);}
+
+/* Tabs for expense */
+.etabs{display:flex;gap:6px;margin-bottom:14px;}
+.etab{flex:1;border:none;background:var(--white);border-radius:var(--r-s);padding:10px 6px;font-family:'Noto Sans TC',sans-serif;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;box-shadow:var(--sh);transition:all .2s;}
+.etab.active{background:var(--ocean);color:white;}
+.etab-panel{display:none;}
+.etab-panel.active{display:block;}
+
+/* Responsive tweak */
+@media(max-width:360px){.exp-summary{grid-template-columns:1fr;}.exp-sum-card.total-card{grid-column:1/1;}}
+
+/* === Desktop responsive container === */
+@media (min-width: 768px) {
+  body { max-width: 600px; margin: 0 auto; box-shadow: 0 0 40px rgba(0,0,0,0.08); background: var(--sand); }
+}
+@media (min-width: 1024px) {
+  body { max-width: 720px; }
+}
+.custom-pin { background: transparent; border: none; }
+.leaflet-popup-content { font-family: 'Noto Sans TC', sans-serif; font-size: 12px; }
+.leaflet-container { font-family: 'Noto Sans TC', sans-serif; }
+
+</style>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// Fallback: if unpkg failed to load Leaflet, try cdnjs
+if (typeof L === 'undefined') {
+  document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"><\/script>');
+}
+</script>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hbg"><span></span><span></span></div>
+  <div class="hpill">🦘 澳洲昆士蘭 · 家庭自駕遊</div>
+  <h1>🇦🇺 布里斯本<br><em>探險記 🦘🐨</em></h1>
+  <p class="hdesc">2026年7月25日 — 8月1日 · 中華航空</p>
+  <div class="hstats">
+    <div class="hstat"><div class="n">8</div><div class="l">天</div></div>
+    <div class="hstat"><div class="n">1</div><div class="l">住宿點</div></div>
+    <div class="hstat"><div class="n">12+</div><div class="l">景點</div></div>
+    <div class="hstat"><div class="n">🚆</div><div class="l">不租車</div></div>
+  </div>
+  <div class="hwave"></div>
+</header>
+
+<nav class="snav">
+  <button class="nb active" onclick="showPanel('overview')">📋 總覽</button>
+  <button class="nb" onclick="showPanel('itinerary')">🗓 行程</button>
+  <button class="nb" onclick="showPanel('hotels')">🏨 住宿</button>
+  <button class="nb" onclick="showPanel('map')">🗺 路線圖</button>
+  <button class="nb" onclick="showPanel('food')">🍽 美食</button>
+  <button class="nb" onclick="showPanel('expense')">💳 花費</button>
+  <button class="nb" onclick="showPanel('carlaw')">🚌 交通</button>
+  <button class="nb" onclick="showPanel('packing')">🎒 打包</button>
+  <button class="nb" onclick="showPanel('budget')">💰 預算</button>
+  <button class="nb" onclick="showPanel('rainday')">🌧 雨天備案</button>
+  <button class="nb" onclick="showPanel('emergency')">🆘 緊急</button>
+</nav>
+
+<main>
+
+<!-- ═══ 總覽 ═══ -->
+<div id="panel-overview" class="panel active">
+  <div class="al info"><span class="ali">☀️</span><div class="alc"><div class="alt">7-8月是澳洲冬季</div>Brisbane冬天溫暖舒適（白天18-22°C），幾乎無雨，是帶小孩旅遊的黃金時節！早晚偏涼備薄外套。</div></div>
+
+  <div class="al danger"><span class="ali">⚠️</span><div class="alc"><div class="alt">航班時間確認 — 去程與回程均跨日！</div>
+    <strong>去程 CI053</strong>｜桃園出發：<strong>7/24（五）23:55</strong> → Brisbane 抵達：<strong>7/25（六）10:35</strong><br>
+    飛行時間：約 8 小時 55 分｜時差：Brisbane 比台灣快 +2 小時<br>
+    ➡ <em>出發日是 7/24，抵達日才是 7/25，記得 7/24 晚上就要到機場！</em><br><br>
+    <strong>回程 CI054</strong>｜Brisbane出發：<strong>7/31（五）22:50</strong> → 桃園抵達：<strong>8/1（六）05:40</strong><br>
+    飛行時間：約 8 小時 50 分 ｜ 週五班次空位風險較低<br>
+    ➡ <em>7/31 深夜出發，8/1（六）清晨05:40 抵台，可安排接機</em>
+  </div></div>
+
+  <p class="stitle"><span class="dot"></span>行程快覽</p>
+  <div class="card">
+    <div class="cbody">
+      <div class="tl" style="padding:0;">
+        <div class="tli"><div class="tltime">D1<br>7/25</div><div class="tldot">✈️</div><div class="tlbody"><div class="tlname">抵達 Brisbane</div><div class="tldesc">CI053 10:35 → Airtrain → South Bank 入住</div></div></div>
+        <div class="tli"><div class="tltime">D2<br>7/26</div><div class="tldot">🌳</div><div class="tlbody"><div class="tlname">South Bank 慢遊（全免費）</div><div class="tldesc">Streets Beach + Queensland Museum</div></div></div>
+        <div class="tli"><div class="tltime">D3<br>7/27</div><div class="tldot">🐨</div><div class="tlbody"><div class="tlname">Lone Pine 抱無尾熊</div><div class="tldesc">公車 430 直達，必去！</div></div></div>
+        <div class="tli"><div class="tltime">D4<br>7/28</div><div class="tldot">🎨</div><div class="tlbody"><div class="tlname">GOMA + Story Bridge</div><div class="tldesc">CityCat 渡輪 + 河畔 + 夜景</div></div></div>
+        <div class="tli"><div class="tltime">D5<br>7/29</div><div class="tldot">🍜</div><div class="tlbody"><div class="tlname">Sunnybank + Mt Coot-tha</div><div class="tldesc">亞洲美食 + 全景觀景台</div></div></div>
+        <div class="tli"><div class="tltime">D6<br>7/30</div><div class="tldot">⛴️</div><div class="tlbody"><div class="tlname">CityCat 渡輪日 + 夜市</div><div class="tldesc">New Farm Park + Eat Street</div></div></div>
+        <div class="tli"><div class="tltime">D7<br>7/31</div><div class="tldot">🛍️</div><div class="tlbody"><div class="tlname">採購 + 22:50 返台</div><div class="tldesc">Queen Street Mall → Airtrain → 機場</div></div></div>
+        <div class="tli" style="margin-bottom:0;"><div class="tltime">D8<br>8/1</div><div class="tldot">🛬</div><div class="tlbody"><div class="tlname">桃園 05:40 落地</div><div class="tldesc">平安返台</div></div></div>
+      </div></div></div>
+
+  <p class="stitle"><span class="dot"></span>天氣預報（7月下旬-8月初）</p>
+  <div class="wrow">
+    <div class="wd"><div class="wdate">7/25</div><div class="wicon">🌤️</div><div class="wtemp">21°C</div><div class="wdesc">晴</div></div>
+    <div class="wd"><div class="wdate">7/26</div><div class="wicon">☀️</div><div class="wtemp">22°C</div><div class="wdesc">晴</div></div>
+    <div class="wd"><div class="wdate">7/27</div><div class="wicon">☀️</div><div class="wtemp">23°C</div><div class="wdesc">晴</div></div>
+    <div class="wd"><div class="wdate">7/28</div><div class="wicon">🌤️</div><div class="wtemp">21°C</div><div class="wdesc">微雲</div></div>
+    <div class="wd"><div class="wdate">7/29</div><div class="wicon">☀️</div><div class="wtemp">22°C</div><div class="wdesc">晴</div></div>
+    <div class="wd"><div class="wdate">7/30</div><div class="wicon">☀️</div><div class="wtemp">24°C</div><div class="wdesc">晴</div></div>
+    <div class="wd"><div class="wdate">7/31</div><div class="wicon">🌤️</div><div class="wtemp">20°C</div><div class="wdesc">微涼</div></div>
+    <div class="wd"><div class="wdate">8/1</div><div class="wicon">☀️</div><div class="wtemp">22°C</div><div class="wdesc">晴</div></div>
+  </div>
+
+  <p class="stitle"><span class="dot"></span>行前重要提醒</p>
+  <div class="card"><div class="cbody">
+    <div class="ri"><div class="ricon">🛂</div><div><div class="rtitle">申請澳洲簽證 eVisitor (651)</div><div class="rdesc">台灣護照可申請免費電子簽，官網申請1-3天核發，出發前2個月辦理。</div></div></div>
+    <div class="ri"><div class="ricon">💳</div><div><div class="rtitle">GoCard 可選不強制（每趟 $0.50）</div><div class="rdesc">2024 起 Queensland 公車/火車/渡輪一律 $0.50/趟，押金 $10 可退；也可直接刷信用卡感應上車免買卡。5 歲以下幼兒免費。詳見「交通」頁籤。</div></div></div>
+    <div class="ri"><div class="ricon">🐨</div><div><div class="rtitle">提前訂 Lone Pine 門票</div><div class="rdesc">官網購票省 5-10%，可避免現場排隊。抱無尾熊建議一入園就先預約時段。</div></div></div>
+    <div class="ri"><div class="ricon">💊</div><div><div class="rtitle">幼兒藥物備妥</div><div class="rdesc">退燒藥、止瀉藥、防蚊液（兒童DEET）、防曬乳SPF50+，台灣版比澳洲方便。</div></div></div>
+    <div class="ri"><div class="ricon">📱</div><div><div class="rtitle">SIM卡 + 離線地圖</div><div class="rdesc">Optus/Telstra預付SIM。下載 Google Maps 離線地圖（Brisbane 市區），並下載 Translink App 查公車/渡輪時刻。</div></div></div>
+  </div></div>
+
+  <p class="stitle"><span class="dot"></span>3 歲幼兒年齡規則速查</p>
+  <div class="card"><div class="cbody" style="padding:10px 12px;">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px;line-height:1.6;">各景點/交通對「兒童免費 / 兒童票」的年齡定義都不同，3 歲幼兒對應規則如下：</div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <thead>
+        <tr style="background:var(--sand-d);">
+          <th style="padding:7px 8px;text-align:left;font-weight:700;color:var(--dark);border-bottom:1px solid var(--border);">服務</th>
+          <th style="padding:7px 8px;text-align:left;font-weight:700;color:var(--dark);border-bottom:1px solid var(--border);">3 歲幼兒</th>
+          <th style="padding:7px 8px;text-align:left;font-weight:700;color:var(--dark);border-bottom:1px solid var(--border);">規則</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding:7px 8px;border-bottom:1px solid var(--border);">✈️ Airtrain</td><td style="padding:7px 8px;border-bottom:1px solid var(--border);color:var(--green);font-weight:700;">免費</td><td style="padding:7px 8px;border-bottom:1px solid var(--border);color:var(--muted);">14 歲以下與大人同行免費</td></tr>
+        <tr><td style="padding:7px 8px;border-bottom:1px solid var(--border);">🚌 公車/火車/渡輪</td><td style="padding:7px 8px;border-bottom:1px solid var(--border);color:var(--green);font-weight:700;">免費</td><td style="padding:7px 8px;border-bottom:1px solid var(--border);color:var(--muted);">5 歲以下免費；大人每趟 $0.50</td></tr>
+        <tr><td style="padding:7px 8px;border-bottom:1px solid var(--border);">🐨 Lone Pine</td><td style="padding:7px 8px;border-bottom:1px solid var(--border);color:var(--coral);font-weight:700;">$35</td><td style="padding:7px 8px;border-bottom:1px solid var(--border);color:var(--muted);">0-2 歲免費；3-13 歲兒童票</td></tr>
+        <tr><td style="padding:7px 8px;border-bottom:1px solid var(--border);">🐨 抱無尾熊</td><td style="padding:7px 8px;border-bottom:1px solid var(--border);color:#999;font-weight:700;">不能</td><td style="padding:7px 8px;border-bottom:1px solid var(--border);color:var(--muted);">限 15 歲以上；可拍照 + 撫摸</td></tr>
+        <tr><td style="padding:7px 8px;border-bottom:1px solid var(--border);">🔬 Sciencentre</td><td style="padding:7px 8px;border-bottom:1px solid var(--border);color:var(--coral);font-weight:700;">$14</td><td style="padding:7px 8px;border-bottom:1px solid var(--border);color:var(--muted);">3-15 歲兒童票</td></tr>
+        <tr><td style="padding:7px 8px;border-bottom:1px solid var(--border);">🍢 Eat Street</td><td style="padding:7px 8px;border-bottom:1px solid var(--border);color:var(--green);font-weight:700;">免費</td><td style="padding:7px 8px;border-bottom:1px solid var(--border);color:var(--muted);">5 歲以下免費</td></tr>
+        <tr><td style="padding:7px 8px;">🚕 Uber/計程車</td><td style="padding:7px 8px;color:#E58B00;font-weight:700;">要座椅</td><td style="padding:7px 8px;color:var(--muted);">澳洲法律要求兒童安全座椅</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+</div>
+
+<!-- ═══ 行程 ═══ -->
+<div id="panel-itinerary" class="panel">
+  <div class="al info"><span class="ali">📍</span><div class="alc"><div class="alt">純市區行程 · 不租車</div>主要交通：步行 + GoCard 大眾運輸 + CityCat 渡輪 + Uber。所有景點均附地圖連結。</div></div>
+
+  <!-- Day 1 -->
+  <div class="day-block">
+    <div class="day-h d1" onclick="toggleDay(this)">
+      <div class="dnum">1</div>
+      <div class="dinfo"><div class="ddate">7月25日（六）</div><div class="dtitle">✈️ 抵達 Brisbane + 入住</div></div>
+      <div class="dtog">▼</div>
+    </div>
+    <div class="day-c">
+      <div class="tl">
+        <div class="tli">
+          <div class="tltime">7/24<br>夜</div>
+          <div class="tldot">✈️</div>
+          <div class="tlbody">
+            <div class="tlname">桃園機場 CI053 起飛（⚠️ 7月24日晚間）</div>
+            <div class="tldesc">CI053 <strong>23:55 出發</strong>，提前3小時報到。注意是<strong>7/24 晚上</strong>不是7/25！</div>
+            <div class="tltags"><span class="tt drive">準備幼兒登機包</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">10:35</div>
+          <div class="tldot">🛬</div>
+          <div class="tlbody">
+            <div class="tlname">Brisbane Airport 抵達</div>
+            <div class="tldesc">入境 + 領行李，前往 Airtrain 站（國際航廈樓上）。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Brisbane Airport (BNE), Airport Dr</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Brisbane+Airport+BNE" target="_blank">🗺 Google Maps</a></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">12:30</div>
+          <div class="tldot">🚆</div>
+          <div class="tlbody">
+            <div class="tlname">Airtrain → South Brisbane 站</div>
+            <div class="tldesc">機場直達火車，<strong>約 22 分鐘</strong>（高峰可能 25 分）。每 30 分一班，成人 <strong>AUD $23.30</strong>（線上預訂 15% off），<strong>14 歲以下與大人同行免費</strong>。</div>
+            <div class="tltags"><span class="tt drive">~22 分</span><span class="tt drive">AUD $23.30</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">13:30</div>
+          <div class="tldot">🏨</div>
+          <div class="tlbody">
+            <div class="tlname">入住 66 Manning St（Modern 1BR Retreat）</div>
+            <div class="tldesc">South Bank 站步行 5 分鐘可達。寄放行李（標準 check-in 15:00 後）。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">66 Manning St, South Brisbane QLD 4101</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=66+Manning+St+South+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt rest">9.5/10 評分</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">14:00</div>
+          <div class="tldot">🛒</div>
+          <div class="tlbody">
+            <div class="tlname">Coles 超市採購（步行 3 分）</div>
+            <div class="tldesc">採購飲水、幼兒食品、明早早餐食材。公寓有廚房可自煮，省時省錢。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Coles, South Brisbane</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Coles+South+Brisbane" target="_blank">🗺 Google Maps</a></div>
+          </div>
+        </div>
+        <div class="tli" style="margin-bottom:0;">
+          <div class="tltime">18:00</div>
+          <div class="tldot">🍽️</div>
+          <div class="tlbody">
+            <div class="tlname">South Bank 河畔輕鬆晚餐 + 早睡調時差</div>
+            <div class="tldesc">步行 8 分到 South Bank 河畔餐廳區，看夜景吃晚餐。第一晚不要排太多。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">South Bank Parklands</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=South+Bank+Parklands+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt rest">輕鬆日</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="day-block">
+    <div class="day-h d2" onclick="toggleDay(this)">
+      <div class="dnum">2</div>
+      <div class="dinfo"><div class="ddate">7月26日（日）</div><div class="dtitle">🌳 South Bank 慢遊（全免費）</div></div>
+      <div class="dtog">▼</div>
+    </div>
+    <div class="day-c">
+      <div class="tl">
+        <div class="tli">
+          <div class="tltime">09:30</div>
+          <div class="tldot">🏖️</div>
+          <div class="tlbody">
+            <div class="tlname">Streets Beach 玩水玩沙</div>
+            <div class="tldesc">城市裡的免費人工沙灘！步行 10 分鐘可達，3歲幼兒整個上午都不夠玩。記得帶換洗衣物。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Streets Beach, South Bank Parklands</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Streets+Beach+South+Bank+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt kid">幼兒必去</span><span class="tt sight">免費</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">12:00</div>
+          <div class="tldot">🍽️</div>
+          <div class="tlbody">
+            <div class="tlname">South Bank Lifestyle Markets 週日午餐</div>
+            <div class="tldesc">每週日 9am-4pm 限定！各種美食攤位，是 South Bank 週日特色。</div>
+            <div class="tltags"><span class="tt food">週日限定</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">14:00</div>
+          <div class="tldot">🔬</div>
+          <div class="tlbody">
+            <div class="tlname">Queensland Museum + Sciencentre</div>
+            <div class="tldesc">免費入場！恐龍化石、自然科學。幼兒互動區 Sciencentre 成人 $18 · 幼兒 $14。每天 9:30-17:00。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Queensland Museum, Grey St & Melbourne St</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Queensland+Museum+South+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt kid">互動體驗</span><span class="tt sight">免費</span></div>
+          </div>
+        </div>
+        <div class="tli" style="margin-bottom:0;">
+          <div class="tltime">17:00</div>
+          <div class="tldot">🌹</div>
+          <div class="tlbody">
+            <div class="tlname">The Arbour 玫瑰拱廊散步 + 河畔晚餐</div>
+            <div class="tldesc">South Bank 標誌性紫色玫瑰拱廊，傍晚拍照超美。Little Stanley Street 親子餐廳晚餐。</div>
+            <div class="tltags"><span class="tt sight">免費打卡</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="day-block">
+    <div class="day-h d3" onclick="toggleDay(this)">
+      <div class="dnum">3</div>
+      <div class="dinfo"><div class="ddate">7月27日（一）</div><div class="dtitle">🐨 Lone Pine 抱無尾熊日</div></div>
+      <div class="dtog">▼</div>
+    </div>
+    <div class="day-c">
+      <div class="tl">
+        <div class="tli">
+          <div class="tltime">09:30</div>
+          <div class="tldot">🚌</div>
+          <div class="tlbody">
+            <div class="tlname">Cultural Centre 公車站搭 430</div>
+            <div class="tldesc">飯店步行 8 分到 Cultural Centre 公車站，搭 <strong>430 線直達 Lone Pine</strong>，約 45 分鐘。每趟 <strong>AUD $0.50</strong>（GoCard / 信用卡感應 / 現金皆可），<strong>5 歲以下幼兒免費</strong>。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Cultural Centre Station, South Brisbane</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Cultural+Centre+Station+South+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt drive">公車 430</span><span class="tt drive">~45分</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">10:30</div>
+          <div class="tldot">🐨</div>
+          <div class="tlbody">
+            <div class="tlname">Lone Pine Koala Sanctuary 入園！</div>
+            <div class="tldesc">⭐ 全球第一家無尾熊保護區（1927 年成立）。<br><strong>抵達後先預約 Koala 體驗時段</strong>！<br>• 11:00 鸚鵡餵食秀<br>• 11:30 Koala Photo / Meet &amp; Greet（全家可一起拍照、撫摸）<br>• <strong>Koala Holding（真的抱）</strong>：限 15 歲 +、每次 30 秒，需另付費 + 提前預約 — <em>3 歲幼兒不能抱，大人想抱可付費體驗，小孩在旁邊一起拍照</em><br>• 12:30 牧羊犬秀<br>• 13:30 鴨嘴獸表演<br>• 14:00 餵袋鼠（可走進去！）<br><strong>票價（2026/5 查官網）：</strong>成人 $49 · 兒童 3-13 歲 $35 · 0-2 歲免費 · 家庭票 2 大 2 小 $135<br><em>3 歲幼兒要買 child ticket $35。線上預訂享優惠。</em></div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Lone Pine Koala Sanctuary, 708 Jesmond Rd, Fig Tree Pocket</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Lone+Pine+Koala+Sanctuary+Brisbane" target="_blank">🗺 Google Maps</a><a class="nav-btn-a" href="maps://?q=Lone+Pine+Koala+Sanctuary" target="_blank">🍎 Apple Maps</a></div>
+            <div class="tltags"><span class="tt kid">抱無尾熊</span><span class="tt sight">必去</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">15:30</div>
+          <div class="tldot">🚌</div>
+          <div class="tlbody">
+            <div class="tlname">搭 430 回 South Bank</div>
+            <div class="tldesc">公車站就在 Lone Pine 入口外，回程 45 分鐘。</div>
+            <div class="tltags"><span class="tt drive">公車 430</span></div>
+          </div>
+        </div>
+        <div class="tli" style="margin-bottom:0;">
+          <div class="tltime">17:00</div>
+          <div class="tldot">🏨</div>
+          <div class="tlbody">
+            <div class="tlname">回飯店休息 + 泳池放鬆</div>
+            <div class="tldesc">公寓泳池讓幼兒玩水放鬆，晚餐就近 South Bank 簡單吃。</div>
+            <div class="tltags"><span class="tt rest">放鬆</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 4 -->
+  <div class="day-block">
+    <div class="day-h d4" onclick="toggleDay(this)">
+      <div class="dnum">4</div>
+      <div class="dinfo"><div class="ddate">7月28日（二）</div><div class="dtitle">🎨 GOMA + Story Bridge + 夜景</div></div>
+      <div class="dtog">▼</div>
+    </div>
+    <div class="day-c">
+      <div class="tl">
+        <div class="tli">
+          <div class="tltime">10:00</div>
+          <div class="tldot">🎨</div>
+          <div class="tlbody">
+            <div class="tlname">GOMA 兒童藝術中心</div>
+            <div class="tldesc">免費入場！步行 8 分可達。專為兒童設計的互動藝術區，3歲幼兒可以親手碰觸創作。雨天備案首選。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">GOMA, Stanley Pl, South Brisbane</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=GOMA+Gallery+of+Modern+Art+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt kid">兒童藝術</span><span class="tt sight">免費</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">12:30</div>
+          <div class="tldot">⛴️</div>
+          <div class="tlbody">
+            <div class="tlname">CityCat 渡輪 → Howard Smith Wharves</div>
+            <div class="tldesc">South Bank 上船，沿 Brisbane River 跑，3歲幼兒坐船會超興奮！單程約 15 分鐘。</div>
+            <div class="tltags"><span class="tt kid">幼兒最愛</span><span class="tt drive">CityCat</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">13:00</div>
+          <div class="tldot">🍻</div>
+          <div class="tlbody">
+            <div class="tlname">Howard Smith Wharves 河畔午餐</div>
+            <div class="tldesc">Story Bridge 下的文青餐廳區，工業風建築，河景超美。當地人推薦。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Howard Smith Wharves, 5 Boundary St, Brisbane City</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Howard+Smith+Wharves+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt food">景觀餐廳</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">15:00</div>
+          <div class="tldot">🌉</div>
+          <div class="tlbody">
+            <div class="tlname">Story Bridge 步道 + Brisbane Sign 打卡</div>
+            <div class="tldesc">Brisbane 地標橋樑步道散步，嬰兒車可推。Brisbane Sign 在 Kangaroo Point，順路打卡。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Story Bridge, Kangaroo Point</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Story+Bridge+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt sight">免費打卡</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">17:00</div>
+          <div class="tldot">🌙</div>
+          <div class="tlbody">
+            <div class="tlname">Kangaroo Point Cliffs 夕陽夜景</div>
+            <div class="tldesc">Brisbane 最美夜景觀景台，俯瞰河流與城市燈光。大草坪幼兒可玩耍。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Kangaroo Point Cliffs, River Tce</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Kangaroo+Point+Cliffs+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt sight">免費夜景</span><span class="tt kid">草坪</span></div>
+          </div>
+        </div>
+        <div class="tli" style="margin-bottom:0;">
+          <div class="tltime">19:00</div>
+          <div class="tldot">⛴️</div>
+          <div class="tlbody">
+            <div class="tlname">CityCat 夜景回 South Bank</div>
+            <div class="tldesc">夜晚的 Brisbane River 燈光最美，回飯店剛好。</div>
+            <div class="tltags"><span class="tt rest">夜景渡輪</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 5 -->
+  <div class="day-block">
+    <div class="day-h d5" onclick="toggleDay(this)">
+      <div class="dnum">5</div>
+      <div class="dinfo"><div class="ddate">7月29日（三）</div><div class="dtitle">🍜 Sunnybank 美食 + Mt Coot-tha 觀景</div></div>
+      <div class="dtog">▼</div>
+    </div>
+    <div class="day-c">
+      <div class="tl">
+        <div class="tli">
+          <div class="tltime">10:00</div>
+          <div class="tldot">🚕</div>
+          <div class="tlbody">
+            <div class="tlname">Uber → Sunnybank Plaza</div>
+            <div class="tldesc">公車轉車不便，直接 Uber 約 20 分鐘，AUD $25 左右。</div>
+            <div class="tltags"><span class="tt drive">Uber ~20分</span><span class="tt drive">~$25</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">10:30</div>
+          <div class="tldot">🍜</div>
+          <div class="tlbody">
+            <div class="tlname">Sunnybank Plaza 亞洲美食</div>
+            <div class="tldesc">Brisbane 台灣人聚集地！越南河粉、台灣牛肉麵、中式料理、港式飲茶都有。3歲幼兒口味接受度高，是補充亞洲飯食的好機會。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Sunnybank Plaza, 358 Mains Rd, Sunnybank</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Sunnybank+Plaza+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt food">亞洲美食</span><span class="tt tw">台灣人推薦</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">12:30</div>
+          <div class="tldot">🛒</div>
+          <div class="tlbody">
+            <div class="tlname">Plaza 內購物（亞洲超市買零食）</div>
+            <div class="tldesc">亞洲超市買幼兒喜歡的零食、麵、調味料，補貨回飯店冰箱。</div>
+            <div class="tltags"><span class="tt food">補貨</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">14:00</div>
+          <div class="tldot">🚕</div>
+          <div class="tlbody">
+            <div class="tlname">Uber → Mt Coot-tha 觀景台</div>
+            <div class="tldesc">從 Sunnybank Uber 約 25 分鐘，AUD $35 左右。</div>
+            <div class="tltags"><span class="tt drive">Uber ~25分</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">14:30</div>
+          <div class="tldot">⛰️</div>
+          <div class="tlbody">
+            <div class="tlname">Mt Coot-tha Lookout 全景觀景台</div>
+            <div class="tldesc">免費！俯瞰整個 Brisbane 市區，視野超棒。有咖啡廳和洗手間。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Mt Coot-tha Lookout, 1012 Sir Samuel Griffith Dr</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Mt+Coot-tha+Lookout+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt sight">免費</span><span class="tt sight">全景</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">15:30</div>
+          <div class="tldot">🌿</div>
+          <div class="tlbody">
+            <div class="tlname">Brisbane Botanic Gardens 植物園</div>
+            <div class="tldesc">就在 Mt Coot-tha 山腳，免費入園，幼兒推車可進入。澳洲特有植物 + 大草坪。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Brisbane Botanic Gardens Mt Coot-tha</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Brisbane+Botanic+Gardens+Mt+Coot-tha" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt kid">推車可進</span><span class="tt sight">免費</span></div>
+          </div>
+        </div>
+        <div class="tli" style="margin-bottom:0;">
+          <div class="tltime">17:30</div>
+          <div class="tldot">🚕</div>
+          <div class="tlbody">
+            <div class="tlname">Uber 回飯店 + 晚餐</div>
+            <div class="tldesc">Uber 約 20 分，AUD $30 左右。飯店附近吃晚餐。</div>
+            <div class="tltags"><span class="tt drive">Uber 回程</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 6 -->
+  <div class="day-block">
+    <div class="day-h d6" onclick="toggleDay(this)">
+      <div class="dnum">6</div>
+      <div class="dinfo"><div class="ddate">7月30日（四）</div><div class="dtitle">⛴️ CityCat 渡輪日 + Eat Street 夜市</div></div>
+      <div class="dtog">▼</div>
+    </div>
+    <div class="day-c">
+      <div class="tl">
+        <div class="tli">
+          <div class="tltime">10:00</div>
+          <div class="tldot">⛴️</div>
+          <div class="tlbody">
+            <div class="tlname">South Bank CityCat 上船</div>
+            <div class="tldesc">CityCat 渡輪是 Brisbane 的「景點+交通」二合一。沿 Brisbane River 跑，3歲幼兒坐船超興奮！</div>
+            <div class="tltags"><span class="tt kid">幼兒最愛</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">10:30</div>
+          <div class="tldot">🌳</div>
+          <div class="tlbody">
+            <div class="tlname">New Farm Park 散步</div>
+            <div class="tldesc">Brisbane 最受歡迎的家庭公園！大草坪、幼兒遊樂區、玫瑰花園、河畔步道。可推車。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">New Farm Park, Brunswick St</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=New+Farm+Park+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt kid">親子公園</span><span class="tt sight">免費</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">12:30</div>
+          <div class="tldot">🍽️</div>
+          <div class="tlbody">
+            <div class="tlname">New Farm 文青區午餐</div>
+            <div class="tldesc">Brunswick St 一帶有很多文青咖啡廳和餐廳。</div>
+            <div class="tltags"><span class="tt food">文青午餐</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">14:00</div>
+          <div class="tldot">⛴️</div>
+          <div class="tlbody">
+            <div class="tlname">CityCat 回 South Bank + 飯店午睡</div>
+            <div class="tldesc">回程渡輪約 25 分鐘。幼兒午睡蓄電準備晚上夜市。</div>
+            <div class="tltags"><span class="tt rest">幼兒午睡</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">17:30</div>
+          <div class="tldot">🚕</div>
+          <div class="tlbody">
+            <div class="tlname">Uber → Eat Street Northshore 夜市</div>
+            <div class="tldesc">Uber 約 20 分，AUD $30。</div>
+            <div class="tltags"><span class="tt drive">Uber ~20分</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">18:00</div>
+          <div class="tldot">🌮</div>
+          <div class="tlbody">
+            <div class="tlname">Eat Street Northshore 夜市</div>
+            <div class="tldesc">⭐ 貨櫃改造的文青夜市！180+ 攤位，全球美食、街頭表演、燈光裝飾。週四 16-21h 開放（不擠）。<br>入園費 AUD $4/人，5歲以下免費。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Eat Street Northshore, 221D MacArthur Ave</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Eat+Street+Northshore+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt food">夜市</span><span class="tt sight">IG 必拍</span></div>
+          </div>
+        </div>
+        <div class="tli" style="margin-bottom:0;">
+          <div class="tltime">20:30</div>
+          <div class="tldot">🚕</div>
+          <div class="tlbody">
+            <div class="tlname">Uber 回飯店</div>
+            <div class="tldesc">夜市結束 Uber 回飯店約 20 分，AUD $30。</div>
+            <div class="tltags"><span class="tt drive">Uber 回程</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 7 -->
+  <div class="day-block">
+    <div class="day-h d7" onclick="toggleDay(this)">
+      <div class="dnum">7</div>
+      <div class="dinfo"><div class="ddate">7月31日（五）— 回程日</div><div class="dtitle">🛍️ 最後採購 + 22:50 CI054 返台</div></div>
+      <div class="dtog">▼</div>
+    </div>
+    <div class="day-c">
+      <div class="tl">
+        <div class="tli">
+          <div class="tltime">08:00</div>
+          <div class="tldot">☕</div>
+          <div class="tlbody">
+            <div class="tlname">早餐 + 收行李</div>
+            <div class="tldesc">飯店早餐後收行李，準備退房。</div>
+            <div class="tltags"><span class="tt rest">早晨慢遊</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">09:00</div>
+          <div class="tldot">🌳</div>
+          <div class="tlbody">
+            <div class="tlname">最後 South Bank 散步 + Streets Beach</div>
+            <div class="tldesc">趁早晨人少最後玩一次。</div>
+            <div class="tltags"><span class="tt kid">最後玩沙</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">10:00</div>
+          <div class="tldot">🧳</div>
+          <div class="tlbody">
+            <div class="tlname">⏰ 退房（標準 10:00）→ 寄放行李</div>
+            <div class="tldesc">⚠️ 退房時間 10:00。飯店通常可免費寄放行李，繼續活動不用拖行李。</div>
+            <div class="tltags"><span class="tt rest">寄放行李</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">10:30</div>
+          <div class="tldot">🛍️</div>
+          <div class="tlbody">
+            <div class="tlname">Queen Street Mall 採購</div>
+            <div class="tldesc">過橋走 10 分到 CBD Queen Street Mall，買 Tim Tam、紀念品、伴手禮。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Queen Street Mall, Brisbane City</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Queen+Street+Mall+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt food">採購</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">13:00</div>
+          <div class="tldot">🍽️</div>
+          <div class="tlbody">
+            <div class="tlname">飯店附近最後午餐</div>
+            <div class="tldesc">這趟旅行最後一頓正餐。</div>
+            <div class="tltags"><span class="tt food">最後午餐</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">14:30</div>
+          <div class="tldot">🧳</div>
+          <div class="tlbody">
+            <div class="tlname">領行李 → South Brisbane 站</div>
+            <div class="tldesc">步行 5 分到 South Brisbane 站。</div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">15:00</div>
+          <div class="tldot">🚆</div>
+          <div class="tlbody">
+            <div class="tlname">Airtrain → Brisbane Airport</div>
+            <div class="tldesc">South Brisbane → BNE 機場約 22-25 分鐘。成人 $23.30，14 歲以下與大人同行免費。</div>
+            <div class="tltags"><span class="tt drive">22-25 分</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">16:00</div>
+          <div class="tldot">✈️</div>
+          <div class="tlbody">
+            <div class="tlname">抵達機場（提前 6 小時）</div>
+            <div class="tldesc">時間充裕，可以好好吃飯休息。</div>
+          </div>
+        </div>
+        <div class="tli" style="margin-bottom:0;">
+          <div class="tltime">22:50</div>
+          <div class="tldot">✈️</div>
+          <div class="tlbody">
+            <div class="tlname">CI054 起飛 → 8/1 桃園 05:40 落地</div>
+            <div class="tldesc">建議 19:50 前報到。8/1（六）05:40 抵達桃園 T2，平安返台！</div>
+            <div class="tltags"><span class="tt rest">返台</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 8 arrival -->
+  <div class="day-block">
+    <div class="day-h d9" onclick="toggleDay(this)">
+      <div class="dnum">✈</div>
+      <div class="dinfo"><div class="ddate">8月1日（六）清晨</div><div class="dtitle">🏠 桃園 05:40 落地 · 平安返台</div></div>
+      <div class="dtog">▼</div>
+    </div>
+    <div class="day-c">
+      <div class="tl">
+        <div class="tli" style="margin-bottom:0;">
+          <div class="tltime">05:40</div>
+          <div class="tldot">🛬</div>
+          <div class="tlbody">
+            <div class="tlname">CI054 桃園落地</div>
+            <div class="tldesc">已於昨晚（7/31）搭機，<strong>8/1（六）05:40</strong> 抵達桃園第二航廈。出關、領行李後返家。歡迎接機！</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- ═══ 住宿 ═══ -->
+<div id="panel-hotels" class="panel">
+  <div class="al info"><span class="ali">🏨</span><div class="alc"><div class="alt">已訂房 · 6 晚同一住宿 ✅</div>9.5 評分的公寓型住宿，有廚房+泳池+健身房+免費停車，位置完美。</div></div>
+
+  <div class="hcard">
+    <div class="htop"><div class="hemoji">🏠</div><div><div class="hname">Modern 1BR Retreat</div><div class="harea">66 Manning St, South Brisbane</div><div style="font-size:11px;color:#555;margin-top:3px;">7/25–7/31（6 晚）· ⭐ 9.5/10</div></div><div class="hnights">6晚</div></div>
+    <div class="hbottom">
+      <div class="hpros"><span class="pro">公寓型廚房</span><span class="pro">游泳池</span><span class="pro">健身房</span><span class="pro">免費停車</span><span class="pro">South Bank 步行</span></div>
+      <div class="hnote">
+        <strong>步行距離：</strong><br>
+        🛒 Coles 超市 3 分 · 🚆 South Bank 火車站 5 分<br>
+        🔬 Queensland Museum 6 分 · 🎨 GOMA 8 分<br>
+        🌳 South Bank Parklands 8 分 · 🏖️ Streets Beach 10 分<br>
+        🚌 Cultural Centre 公車站（往 Lone Pine）8 分
+      </div>
+      <div style="margin-top:10px;">
+        <a class="nav-btn-g" href="https://maps.google.com/?q=66+Manning+St+South+Brisbane" target="_blank">🗺 住宿位置 Google Maps</a>
+      </div>
+    </div>
+  </div>
+
+  <p class="stitle"><span class="dot"></span>退房注意</p>
+  <div class="card"><div class="cbody">
+    <div class="ri" style="border:none;padding-bottom:0;">
+      <div class="ricon">⏰</div>
+      <div>
+        <div class="rtitle">標準退房時間 10:00 AM</div>
+        <div class="rdesc">退房後可請住宿免費寄放行李，繼續玩 South Bank 或 CBD，不用拖行李去機場。下午 14:30 領行李 → Airtrain → 機場剛好。</div>
+      </div>
+    </div>
+  </div></div>
+</div>
+<!-- ═══ 美食 ═══ -->
+<div id="panel-food" class="panel">
+  <p class="stitle"><span class="dot"></span>當地人推薦必吃</p>
+  <div class="card"><div class="cbody" style="padding-top:8px;">
+    <div class="fi"><div class="femoji">🥑</div><div><div class="fname">Smashed Avo Toast 酪梨吐司</div><div class="ftype">早餐 · 全Brisbane咖啡廳</div><div class="fdesc">澳洲國民早餐，碾碎酪梨配水波蛋，再淋橄欖油。幼兒接受度高。</div><span class="fbadge fb-local">當地日常</span></div></div>
+    <div class="fi"><div class="femoji">🪸</div><div><div class="fname">Moreton Bay Bug 莫頓灣龍蝦</div><div class="ftype">海鮮 · Brisbane 河畔餐廳</div><div class="fdesc">昆士蘭特有扁龍蝦，甜味濃郁，在當地比台灣便宜很多。</div><span class="fbadge fb-local">昆士蘭特產</span></div></div>
+    <div class="fi"><div class="femoji">🥧</div><div><div class="fname">Meat Pie 澳洲肉派</div><div class="ftype">輕食 · 烘焙坊、加油站</div><div class="fdesc">澳洲靈魂食物，隨處可買，小孩通常喜歡，開車時方便帶走。</div><span class="fbadge fb-local">國民美食</span></div></div>
+    <div class="fi"><div class="femoji">🍦</div><div><div class="fname">Golden Gaytime 雪糕</div><div class="ftype">零食 · 超市冷凍</div><div class="fdesc">澳洲經典雪糕棒，外層焦糖+花生碎，3歲幼兒的最愛。Tim Tam餅乾也必買。</div><span class="fbadge fb-local">超市必買</span></div></div>
+    <div class="fi" style="border:none; padding-bottom:0;"><div class="femoji">🫘</div><div><div class="fname">Flat White 澳式咖啡</div><div class="ftype">飲品 · 所有咖啡廳</div><div class="fdesc">澳洲咖啡世界頂尖，任意一家獨立咖啡廳都值得一試，約$4-6 AUD。</div><span class="fbadge fb-local">大人必喝</span></div></div>
+  </div></div>
+
+  <p class="stitle"><span class="dot"></span>台灣人推薦（口味熟悉）</p>
+  <div class="card"><div class="cbody" style="padding-top:8px;">
+    <div class="fi"><div class="femoji">🍜</div><div><div class="fname">Sunnybank 亞洲美食天堂</div><div class="ftype">亞洲料理 · Brisbane南區</div><div class="fdesc">台灣人聚集地，有越南河粉、中式料理、台灣牛肉麵，幼兒口味接受度高。距市區約20分鐘車程。</div><span class="fbadge fb-tw">台灣人最愛</span></div></div>
+    <div class="fi"><div class="femoji">🧋</div><div><div class="fname">珍珠奶茶（Gong cha / Chatime）</div><div class="ftype">飲品 · CBD及各區購物中心</div><div class="fdesc">BrisbaneCBD有台灣連鎖奶茶，3歲幼兒的珍奶時刻～也是思鄉解藥。</div><span class="fbadge fb-both">台灣連鎖</span></div></div>
+    <div class="fi" style="border:none; padding-bottom:0;"><div class="femoji">🍱</div><div><div class="fname">Woolworths / Coles 自煮</div><div class="ftype">超市 · 全區皆有</div><div class="fdesc">公寓有廚房時自煮早餐最省錢，燕麥、水果、雞蛋全家吃不到$20 AUD。幼兒輔食也好準備。</div><span class="fbadge fb-both">CP值最高</span></div></div>
+  </div></div>
+</div>
+
+<!-- ═══ 花費記錄 ═══ -->
+<div id="panel-expense" class="panel">
+  <div id="exp-summary" class="exp-summary">
+    <div class="exp-sum-card">
+      <div class="esnum" id="sum-aud">$0</div>
+      <div class="eslbl">已花費（AUD）</div>
+    </div>
+    <div class="exp-sum-card">
+      <div class="esnum" id="sum-twd">NT$0</div>
+      <div class="eslbl">已花費（TWD）</div>
+    </div>
+    <div class="exp-sum-card total-card">
+      <div class="esnum" id="sum-pct">0%</div>
+      <div class="eslbl">已使用預算比例（預算上限可調整）</div>
+    </div>
+  </div>
+
+  <!-- Budget progress -->
+  <div class="bud-track">
+    <div class="bud-label"><span class="bl">旅遊預算追蹤</span><span class="br" id="bud-remain">剩餘 —</span></div>
+    <div class="bud-bar"><div class="bud-fill" id="bud-fill" style="width:0%"></div></div>
+    <div class="bud-note">預算上限：<input type="number" id="bud-limit" value="5000" style="width:80px;border:1px solid #ddd;border-radius:5px;padding:2px 6px;font-size:12px;font-family:'Noto Sans TC',sans-serif;" onchange="updateSummary()"> AUD &nbsp;|&nbsp; 匯率：1 AUD = <input type="number" id="rate-input" value="22" style="width:50px;border:1px solid #ddd;border-radius:5px;padding:2px 6px;font-size:12px;font-family:'Noto Sans TC',sans-serif;" onchange="updateSummary()"> TWD</div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="etabs">
+    <button class="etab active" onclick="showExpTab('add')">➕ 新增</button>
+    <button class="etab" onclick="showExpTab('list')">📋 明細</button>
+    <button class="etab" onclick="showExpTab('breakdown')">📊 分類</button>
+  </div>
+
+  <!-- Add Tab -->
+  <div id="etab-add" class="etab-panel active">
+
+    <div class="exp-form">
+      <div class="exp-form-head">
+        <div class="efh">✏️ 新增花費</div>
+      </div>
+      <div class="exp-form-body">
+        <div class="form-row">
+          <label>花費名稱</label>
+          <input type="text" id="exp-name" placeholder="例：Lone Pine 門票">
+        </div>
+        <div class="form-grid">
+          <div class="form-row">
+            <label>金額（AUD）</label>
+            <input type="number" id="exp-amt" placeholder="0.00" step="0.01" min="0">
+          </div>
+          <div class="form-row">
+            <label>日期</label>
+            <input type="date" id="exp-date" value="2026-07-25">
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-row">
+            <label>分類</label>
+            <select id="exp-cat">
+              <option value="food">🍽 餐飲</option>
+              <option value="hotel">🏨 住宿</option>
+              <option value="transport">🚗 交通/油費</option>
+              <option value="ticket">🎟 門票</option>
+              <option value="shopping">🛒 購物</option>
+              <option value="other">📦 其他</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>備注（可略）</label>
+            <input type="text" id="exp-note" placeholder="例：2大1小">
+          </div>
+        </div>
+        <button class="add-btn" onclick="addExpense()">＋ 新增記錄</button>
+      </div>
+    </div>
+    <div class="al info"><span class="ali">💡</span><div class="alc">所有花費記錄儲存在此裝置，重新開啟頁面後仍會保留。建議定期截圖備份。<br>⚠️ 跨裝置不同步（手機、平板、電腦各自記）；出發前的測試資料可用下方按鈕一鍵清空。</div></div>
+    <button class="add-btn" style="background:#FFF0EC;color:var(--coral);border:1px solid var(--coral);margin-top:8px;" onclick="clearAllTripData()">🗑️ 清空本次旅行所有記錄（花費 + 打包清單）</button>
+  </div>
+
+  <!-- List Tab -->
+  <div id="etab-list" class="etab-panel">
+    <div id="exp-list-container"></div>
+  </div>
+
+  <!-- Breakdown Tab -->
+<div id="etab-breakdown" class="etab-panel">
+    <div class="cat-breakdown" id="cat-breakdown">
+      <div style="text-align:center;padding:20px;color:var(--muted);font-size:13px;">尚無花費記錄</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 租車 ═══ -->
+<div id="panel-carlaw" class="panel">
+  <div class="al info"><span class="ali">🚌</span><div class="alc"><div class="alt">不租車 · 大眾運輸 + Uber 攻略</div>Brisbane 市區大眾運輸發達，加上 Uber 補強，比租車更便宜也更省心。</div></div>
+
+  <div class="al success"><span class="ali">🎉</span><div class="alc"><div class="alt">2024 起 Queensland 全境 $0.50 flat fare（2026 仍有效）</div>公車、火車、CityCat 渡輪、輕軌 <strong>任何車種、任何時段、任何距離一律 AUD $0.50 / 趟</strong>。GoCard、銀行卡感應、Smart Ticketing 都可用。<br><em>⚠️ 2026 年內 GoCard 將被新版 Translink card 取代，出發前再上 translink.com.au 確認最新支付方式。</em></div></div>
+
+  <p class="stitle"><span class="dot"></span>GoCard 大眾運輸</p>
+  <div class="card"><div class="cbody">
+    <div class="ri">
+      <div class="ricon">💳</div>
+      <div>
+        <div class="rtitle">買 GoCard（可選，不強制）</div>
+        <div class="rdesc">機場 / 主要車站可購買，押金 <strong>$10（成人）/ $5（兒童敬老）</strong>，可退。火車、公車、CityCat 渡輪通用。<strong>5 歲以下幼兒完全免費</strong>，3 歲幼兒不用買卡。<br><em>替代方案：也可直接用信用卡 / Apple Pay 感應上車，免買卡。</em></div>
+      </div>
+    </div>
+    <div class="ri">
+      <div class="ricon">💰</div>
+      <div>
+        <div class="rtitle">每趟一律 $0.50（2024 起新制）</div>
+        <div class="rdesc">不分時段、不分區域、不分車種，每趟 <strong>AUD $0.50</strong>。一整天搭 10 趟也只要 $5，超划算。原本的「每日上限 $11」「週日 $0.50」舊規已被這個新制取代。</div>
+      </div>
+    </div>
+    <div class="ri">
+      <div class="ricon">🚆</div>
+      <div>
+        <div class="rtitle">Airtrain 機場接駁（獨立票）</div>
+        <div class="rdesc">機場 → South Brisbane 站約 22 分鐘，<strong>成人 AUD $23.30</strong>（2026/4 起最新票價，線上預訂享 15% 折扣）。<strong>14 歲以下與大人同行免費</strong> ✓ 3 歲幼兒不用買票。<br><em>注意：Airtrain 不屬於 Translink $0.50 flat fare 範圍，是私營獨立票。</em></div>
+      </div>
+    </div>
+    <div class="ri">
+      <div class="ricon">⛴️</div>
+      <div>
+        <div class="rtitle">CityCat 渡輪（一定要體驗）</div>
+        <div class="rdesc">沿 Brisbane River 跑的渡輪，「景點+交通」二合一。每趟 $0.50，3 歲幼兒坐船會超興奮！主要站：South Bank、Howard Smith Wharves、New Farm、Bretts Wharf。</div>
+      </div>
+    </div>
+    <div class="ri" style="border:none;padding-bottom:0;">
+      <div class="ricon">🚌</div>
+      <div>
+        <div class="rtitle">公車 430 → Lone Pine</div>
+        <div class="rdesc">從 Cultural Centre 公車站搭 430 線直達 Lone Pine，約 45 分鐘，每趟 $0.50。是去 Lone Pine 的主要大眾運輸路線（沒有火車到 Lone Pine）。</div>
+      </div>
+    </div>
+  </div></div>
+
+  <p class="stitle"><span class="dot"></span>Uber 補強</p>
+  <div class="card"><div class="cbody">
+    <div class="ri">
+      <div class="ricon">🚕</div>
+      <div>
+        <div class="rtitle">什麼時候用 Uber</div>
+        <div class="rdesc">
+          • D5 去 Sunnybank（轉車不便）<br>
+          • D5 去 Mt Coot-tha（公車班次少）<br>
+          • D6 晚上去 Eat Street 夜市（晚上回程方便）<br>
+          • 任何幼兒太累、雨天不想等公車的時候
+        </div>
+      </div>
+    </div>
+    <div class="ri">
+      <div class="ricon">💵</div>
+      <div>
+        <div class="rtitle">Uber 價格參考</div>
+        <div class="rdesc">
+          • South Bank → Sunnybank：~AUD $25<br>
+          • Sunnybank → Mt Coot-tha：~AUD $35<br>
+          • South Bank → Eat Street：~AUD $30<br>
+          • 整趟旅行 Uber 預算約 AUD $150
+        </div>
+      </div>
+    </div>
+    <div class="ri" style="border:none;padding-bottom:0;">
+      <div class="ricon">👶</div>
+      <div>
+        <div class="rtitle">幼兒安全座椅</div>
+        <div class="rdesc">澳洲法律 3 歲幼兒搭計程車 / Uber 必須使用安全座椅。Uber 可選 <strong>Uber Car Seat</strong> 服務（部分城市有），或自帶可攜式兒童座椅。也可選 Uber XL 較大車輛。</div>
+      </div>
+    </div>
+  </div></div>
+</div>
+<!-- ═══ 打包 ═══ -->
+<div id="panel-packing" class="panel">
+  <div class="al info"><span class="ali">💡</span><div class="alc">點擊項目打勾，記錄已打包完成。</div></div>
+  <div class="card">
+    <div class="card-h"><div class="cicon ocean-bg">👶</div><div><div class="ctitle">幼兒必備</div><div class="csub">3歲幼兒專用清單</div></div></div>
+    <div class="cbody">
+      <div class="ci" onclick="toggleCheck(this)"><div class="cbox"></div><div><div class="cn">兒童安全座椅（AS/NZS 1754認證）</div><div class="cs">自帶最安心，可帶上飛機</div></div></div>
+      <div class="ci" onclick="toggleCheck(this)"><div class="cbox"></div><div><div class="cn">輕便推車（嬰兒車）</div><div class="cs">景點步行必備，可托運</div></div></div>
+      <div class="ci" onclick="toggleCheck(this)"><div class="cbox"></div><div><div class="cn">退燒藥（幼兒版布洛芬/乙醯胺酚）</div><div class="cs">澳洲幼兒版難買，台灣備妥</div></div></div>
+      <div class="ci" onclick="toggleCheck(this)"><div class="cbox"></div><div><div class="cn">防蚊液（兒童DEET 10%以下）</div><div class="cs">動物園/國家公園必備</div></div></div>
+      <div class="ci" onclick="toggleCheck(this)"><div class="cbox"></div><div><div class="cn">幼兒防曬乳 SPF50+</div><div class="cs">澳洲紫外線強，冬天也要擦</div></div></div>
+      <div class="ci" onclick="toggleCheck(this)"><div class="cbox"></div><div><div class="cn">止瀉藥、腸胃藥（幼兒版）</div><div class="cs">飲食改變易腸胃不適</div></div></div>
+      <div class="ci" onclick="toggleCheck(this)"><div class="cbox"></div><div><div class="cn">零食（餅乾、果乾、小魚乾）</div><div class="cs">等餐時的救命法寶</div></div></div>
+      <div class="ci" onclick="toggleCheck(this)"><div class="cbox"></div><div><div class="cn">平板 + 下載好的幼兒影片/遊戲</div><div class="cs">飛機和長途開車神器</div></div></div>
+      <div class="ci" onclick="toggleCheck(this)"><div class="cbox"></div><div><div class="cn">幼兒最愛玩具（1-2個）</div><div class="cs">陌生環境的安撫利器</div></div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-h"><div class="cicon sun-bg">📄</div><div><div class="ctitle">重要文件</div></div></div>
+    <div class="cbody">
+      <div class="ci" onclick="toggleCheck(this)"><div class="cbox"></div><div><div class="cn">護照（全家，效期6個月以上）</div></div></div>
+      <div class="ci" onclick="toggleCheck(this)"><div class="cbox"></div><div><div class="cn">澳洲電子簽證 eVisitor 確認信（列印）</div></div></div>
+      <div class="ci" onclick="toggleCheck(this)"><div class="cbox"></div><div><div class="cn">台灣駕照 + 英文譯本</div><div class="cs">兩份都要帶！</div></div></div>
+      <div class="ci" onclick="toggleCheck(this)"><div class="cbox"></div><div><div class="cn">旅遊保險保單（含幼兒醫療）</div></div></div>
+      <div class="ci" onclick="toggleCheck(this)"><div class="cbox"></div><div><div class="cn">所有訂房確認信（列印+手機備份）</div></div></div>
+      </div>
+  </div>
+</div>
+
+<!-- ═══ 路線圖 ═══ -->
+<div id="panel-map" class="panel">
+  <div class="al info"><span class="ali">🗺️</span><div class="alc"><div class="alt">純市區行程 · 互動地圖</div>住宿 + 所有景點都在 Brisbane 市區。Lone Pine 公車直達，其他景點步行 / Uber 即可。</div></div>
+
+  <p class="stitle"><span class="dot"></span>整體地圖</p>
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div style="background:linear-gradient(135deg,#0D3B6E,#1565A8);padding:12px 16px;">
+      <div style="font-size:13px;font-weight:700;color:white;">Brisbane 純市區 · 7 天</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.7);margin-top:2px;">🟠 住宿 · 🔵 South Bank · 🟢 Lone Pine · 🟣 機場</div>
+    </div>
+    <div id="map-overview" style="width:100%;height:420px;background:#E3EEF8;"></div>
+    <div style="padding:10px 14px;display:flex;flex-wrap:wrap;gap:6px;background:#F8F4EA;">
+      <a href="https://maps.google.com/?q=66+Manning+St+South+Brisbane" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#E9826E;color:white;border-radius:7px;padding:5px 11px;font-size:11px;font-weight:700;text-decoration:none;font-family:'Noto Sans TC',sans-serif;">🏠 住宿位置</a>
+      <a href="https://maps.google.com/maps/dir/Cultural+Centre+Station+South+Brisbane/Lone+Pine+Koala+Sanctuary" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#2E7D52;color:white;border-radius:7px;padding:5px 11px;font-size:11px;font-weight:700;text-decoration:none;font-family:'Noto Sans TC',sans-serif;">🐨 D3 → Lone Pine</a>
+      <a href="https://maps.google.com/maps/dir/South+Brisbane+Station/Brisbane+Airport+QLD" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#7B1FA2;color:white;border-radius:7px;padding:5px 11px;font-size:11px;font-weight:700;text-decoration:none;font-family:'Noto Sans TC',sans-serif;">🚆 Airtrain → BNE</a>
+    </div>
+  </div>
+
+  <p class="stitle"><span class="dot"></span>Brisbane 市區地圖</p>
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div id="map-brisbane" style="width:100%;height:340px;background:#E3EEF8;"></div>
+    <div class="cbody" style="padding-top:10px;">
+
+      <div style="display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--border);align-items:flex-start;">
+        <div style="font-size:22px;flex-shrink:0;width:34px;text-align:center;">🏠</div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:700;color:var(--dark);">你的住宿（Modern 1BR Retreat）</div>
+          <div style="font-size:11px;color:var(--muted);margin:2px 0 5px;">66 Manning St · ⭐ 9.5</div>
+          <a href="https://maps.google.com/?q=66+Manning+St+South+Brisbane" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#E9826E;color:white;border-radius:7px;padding:4px 10px;font-size:10px;font-weight:700;text-decoration:none;font-family:'Noto Sans TC',sans-serif;">🗺 Google Maps</a>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--border);align-items:flex-start;">
+        <div style="font-size:22px;flex-shrink:0;width:34px;text-align:center;">🌳</div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:700;color:var(--dark);">South Bank Parklands</div>
+          <div style="font-size:11px;color:var(--muted);margin:2px 0 5px;">⭐ 4.8 · 步行 8 分</div>
+          <a href="https://maps.google.com/?q=South+Bank+Parklands+Brisbane" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#1A73E8;color:white;border-radius:7px;padding:4px 10px;font-size:10px;font-weight:700;text-decoration:none;font-family:'Noto Sans TC',sans-serif;">🗺 Google Maps</a>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--border);align-items:flex-start;">
+        <div style="font-size:22px;flex-shrink:0;width:34px;text-align:center;">🔬</div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:700;color:var(--dark);">Queensland Museum</div>
+          <div style="font-size:11px;color:var(--muted);margin:2px 0 5px;">⭐ 4.6 · 步行 6 分 · 免費</div>
+          <a href="https://maps.google.com/?q=Queensland+Museum+South+Brisbane" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#1A73E8;color:white;border-radius:7px;padding:4px 10px;font-size:10px;font-weight:700;text-decoration:none;font-family:'Noto Sans TC',sans-serif;">🗺 Google Maps</a>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--border);align-items:flex-start;">
+        <div style="font-size:22px;flex-shrink:0;width:34px;text-align:center;">🎨</div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:700;color:var(--dark);">GOMA 兒童藝術中心</div>
+          <div style="font-size:11px;color:var(--muted);margin:2px 0 5px;">⭐ 4.6 · 步行 8 分 · 免費</div>
+          <a href="https://maps.google.com/?q=GOMA+Brisbane" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#1A73E8;color:white;border-radius:7px;padding:4px 10px;font-size:10px;font-weight:700;text-decoration:none;font-family:'Noto Sans TC',sans-serif;">🗺 Google Maps</a>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--border);align-items:flex-start;">
+        <div style="font-size:22px;flex-shrink:0;width:34px;text-align:center;">🌉</div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:700;color:var(--dark);">Story Bridge + Howard Smith</div>
+          <div style="font-size:11px;color:var(--muted);margin:2px 0 5px;">⭐ 4.7 · CityCat 渡輪 15 分</div>
+          <a href="https://maps.google.com/?q=Story+Bridge+Brisbane" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#1A73E8;color:white;border-radius:7px;padding:4px 10px;font-size:10px;font-weight:700;text-decoration:none;font-family:'Noto Sans TC',sans-serif;">🗺 Google Maps</a>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--border);align-items:flex-start;">
+        <div style="font-size:22px;flex-shrink:0;width:34px;text-align:center;">🌙</div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:700;color:var(--dark);">Kangaroo Point Cliffs</div>
+          <div style="font-size:11px;color:var(--muted);margin:2px 0 5px;">⭐ 4.7 · 夕陽夜景 · 24h 免費</div>
+          <a href="https://maps.google.com/?q=Kangaroo+Point+Cliffs+Brisbane" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#1A73E8;color:white;border-radius:7px;padding:4px 10px;font-size:10px;font-weight:700;text-decoration:none;font-family:'Noto Sans TC',sans-serif;">🗺 Google Maps</a>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--border);align-items:flex-start;">
+        <div style="font-size:22px;flex-shrink:0;width:34px;text-align:center;">🌳</div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:700;color:var(--dark);">New Farm Park（D6 CityCat 日）</div>
+          <div style="font-size:11px;color:var(--muted);margin:2px 0 5px;">⭐ 4.6 · 親子公園 · CityCat 25 分</div>
+          <a href="https://maps.google.com/?q=New+Farm+Park+Brisbane" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#1A73E8;color:white;border-radius:7px;padding:4px 10px;font-size:10px;font-weight:700;text-decoration:none;font-family:'Noto Sans TC',sans-serif;">🗺 Google Maps</a>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--border);align-items:flex-start;">
+        <div style="font-size:22px;flex-shrink:0;width:34px;text-align:center;">🍜</div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:700;color:var(--dark);">Sunnybank Plaza（D5 亞洲美食）</div>
+          <div style="font-size:11px;color:var(--muted);margin:2px 0 5px;">⭐ 4.3 · Uber 20 分</div>
+          <a href="https://maps.google.com/?q=Sunnybank+Plaza+Brisbane" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#1A73E8;color:white;border-radius:7px;padding:4px 10px;font-size:10px;font-weight:700;text-decoration:none;font-family:'Noto Sans TC',sans-serif;">🗺 Google Maps</a>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:11px;padding:11px 0;align-items:flex-start;">
+        <div style="font-size:22px;flex-shrink:0;width:34px;text-align:center;">⛰️</div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:700;color:var(--dark);">Mt Coot-tha 觀景台</div>
+          <div style="font-size:11px;color:var(--muted);margin:2px 0 5px;">⭐ 4.6 · 全景免費 · Uber 25 分</div>
+          <a href="https://maps.google.com/?q=Mt+Coot-tha+Lookout+Brisbane" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#1A73E8;color:white;border-radius:7px;padding:4px 10px;font-size:10px;font-weight:700;text-decoration:none;font-family:'Noto Sans TC',sans-serif;">🗺 Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="stitle"><span class="dot"></span>Lone Pine 區域（D3 抱無尾熊日）</p>
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div id="map-lonepine" style="width:100%;height:280px;background:#E3EEF8;"></div>
+    <div class="cbody" style="padding-top:10px;">
+      <div style="display:flex;gap:11px;padding:11px 0;align-items:flex-start;">
+        <div style="font-size:22px;flex-shrink:0;width:34px;text-align:center;">🐨</div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:700;color:var(--dark);">Lone Pine Koala Sanctuary</div>
+          <div style="font-size:11px;color:var(--muted);margin:2px 0 5px;">708 Jesmond Rd, Fig Tree Pocket · ⭐ 4.7 · 公車 430 直達 45 分</div>
+          <a href="https://maps.google.com/?q=Lone+Pine+Koala+Sanctuary+Brisbane" target="_blank" style="display:inline-flex;align-items:center;gap:4px;background:#1A73E8;color:white;border-radius:7px;padding:4px 10px;font-size:10px;font-weight:700;text-decoration:none;font-family:'Noto Sans TC',sans-serif;">🗺 Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="stitle"><span class="dot"></span>交通時間彙整</p>
+  <div class="card"><div class="cbody">
+    <div class="ri"><div class="ricon">🚆</div><div><div class="rtitle">機場 ↔ 住宿（Airtrain）</div><div class="rdesc">South Brisbane 站 22 分鐘直達，AUD $23.30/成人，14 歲以下與大人同行免費。</div></div></div>
+    <div class="ri"><div class="ricon">🚶</div><div><div class="rtitle">住宿 → 所有 South Bank 景點</div><div class="rdesc">全部步行 5-10 分鐘可達，不用搭車。</div></div></div>
+    <div class="ri"><div class="ricon">🚌</div><div><div class="rtitle">D3 Lone Pine 公車路線</div><div class="rdesc">Cultural Centre 站搭 430 線，45 分直達，每趟 $0.50。</div></div></div>
+    <div class="ri"><div class="ricon">⛴️</div><div><div class="rtitle">D4 + D6 CityCat 渡輪</div><div class="rdesc">沿河看景點，South Bank 上船，每趟 $0.50。3 歲幼兒坐船會超興奮。</div></div></div>
+    <div class="ri" style="border:none;padding-bottom:0;"><div class="ricon">🚕</div><div><div class="rtitle">D5 Uber 行程</div><div class="rdesc">Sunnybank 美食 + Mt Coot-tha 觀景，Uber 約 3 趟，AUD $90。</div></div></div>
+  </div></div>
+</div>
+<!-- ═══ 預算 ═══ -->
+<div id="panel-budget" class="panel">
+  <div class="al info"><span class="ali">💱</span><div class="alc"><div class="alt">匯率：1 AUD ≈ 22 TWD（2026年4月）</div>以下為 2大1小（3歲）8天行程的市場實際費用估算。您是空位搭乘，機票費用另計。</div></div>
+  <div class="al warn"><span class="ali">⚠️</span><div class="alc"><div class="alt">機票為空位搭乘</div>以下機票欄為市場正常票價供參考，實際空位費用依公司規定而異。</div></div>
+
+  <p class="stitle"><span class="dot"></span>各項費用估算</p>
+  <div class="card"><div class="cbody" style="padding-top:4px;">
+
+    <div class="br">
+      <div class="brc">✈️ 機票 2大1小（市場參考）<br><span style="font-size:10px;color:var(--muted);">華航 CI053/054 經濟艙 7月旺季，成人 ~TWD 28,000-35,000 RT，幼兒 ~75%</span></div>
+      <div><div class="bra" style="color:var(--green);">空位搭乘</div><div style="font-size:11px;color:var(--muted);text-align:right;">市場約 TWD 77,000-96,000</div></div>
+    </div>
+
+    <div class="br">
+      <div class="brc">🏨 住宿 6晚（已訂）<br><span style="font-size:10px;color:var(--muted);">Modern 1BR Retreat · 66 Manning St · 9.5 評分</span></div>
+      <div><div class="bra">AUD 1,300–1,740</div><div style="font-size:11px;color:var(--muted);text-align:right;">TWD 28,600–38,300</div></div>
+    </div>
+
+    <div class="br">
+      <div class="brc">🚇 大眾運輸（Airtrain + GoCard）<br><span style="font-size:10px;color:var(--muted);">Airtrain 大人來回 2×$23.30×2=$93 · 公車/渡輪 6 天 $0.50/趟 ≈ $30</span></div>
+      <div><div class="bra">AUD 100–130</div><div style="font-size:11px;color:var(--muted);text-align:right;">TWD 2,200–2,860</div></div>
+    </div>
+
+    <div class="br">
+      <div class="brc">🚕 Uber（D5-D6 補強）<br><span style="font-size:10px;color:var(--muted);">約 6 趟 Uber（Sunnybank + Mt Coot-tha + Eat Street）</span></div>
+      <div><div class="bra">AUD 130–170</div><div style="font-size:11px;color:var(--muted);text-align:right;">TWD 2,860–3,740</div></div>
+    </div>
+
+    <div class="br">
+      <div class="brc">🎟️ 景點門票（2大1小合計）<br><span style="font-size:10px;color:var(--muted);">Lone Pine $133（成人 $49×2 + 兒童 $35）· Queensland Museum 免費 · GOMA 免費 · Sciencentre 選擇性</span></div>
+      <div><div class="bra">AUD 130–180</div><div style="font-size:11px;color:var(--muted);text-align:right;">TWD 2,860–3,960</div></div>
+    </div>
+
+    <div class="br">
+      <div class="brc">🍽️ 餐飲 7天<br><span style="font-size:10px;color:var(--muted);">早餐自煮 + 午晚外食 ~AUD 90-130/天（全家）</span></div>
+      <div><div class="bra">AUD 630–910</div><div style="font-size:11px;color:var(--muted);text-align:right;">TWD 13,900–20,000</div></div>
+    </div>
+
+    <div class="br">
+      <div class="brc">📱 SIM 卡 · 🛡️ 旅遊保險<br><span style="font-size:10px;color:var(--muted);">Optus 15GB AUD 35 + 3人保險（含幼兒醫療）</span></div>
+      <div><div class="bra" style="color:var(--text);">TWD 5,000–9,000</div></div>
+    </div>
+
+    <div class="br">
+      <div class="brc">🛒 購物 / 紀念品<br><span style="font-size:10px;color:var(--muted);">Tim Tam、玩具、伴手禮等</span></div>
+      <div><div class="bra" style="color:var(--text);">TWD 5,000–20,000</div></div>
+    </div>
+
+    <div class="br" style="border-top:2px solid var(--border);margin-top:8px;padding-top:12px;">
+      <div class="brc" style="font-weight:700;font-size:14px;color:var(--dark);">💰 機票外 總費用估算</div>
+      <div><div style="font-size:20px;font-weight:900;color:var(--ocean);">TWD 35,000–60,000</div><div style="font-size:11px;color:var(--muted);text-align:right;">（含住宿 · 不含機票）</div></div>
+    </div>
+
+  </div></div>
+
+    <p class="stitle"><span class="dot"></span>景點門票快查</p>
+  <div class="card"><div class="cbody" style="padding-top:4px;">
+    <div class="br"><div class="brc">🐨 Lone Pine Koala Sanctuary<br><span style="font-size:10px;color:var(--muted);">2 大 1 小（3 歲）= $49×2 + $35 = $133 · 抱無尾熊大人想體驗另加 ~$30+</span></div><div class="bra">AUD 133</div></div>
+    <div class="br"><div class="brc">🔬 Queensland Museum<br><span style="font-size:10px;color:var(--muted);">博物館免費 · Sciencentre 成人 $18 · 兒童 $14</span></div><div class="bra">免費 / AUD 32+</div></div>
+    <div class="br"><div class="brc">🎨 GOMA 兒童藝術中心<br><span style="font-size:10px;color:var(--muted);">免費入場 · 9:30-17:00</span></div><div class="bra" style="color:var(--green);">免費</div></div>
+    <div class="br" style="border:none;padding-bottom:0;"><div class="brc">⛴️ CityCat 渡輪<br><span style="font-size:10px;color:var(--muted);">$0.50/趟 · 沿河看景點，幼兒最愛</span></div><div class="bra">AUD 0.50</div></div>
+  </div></div>
+
+  <p class="stitle"><span class="dot"></span>省錢技巧</p>
+  <div class="card"><div class="cbody">
+    <div class="ri"><div class="ricon">🏠</div><div><div class="rtitle">公寓早餐自煮</div><div class="rdesc">7天省 AUD 210-350（約 TWD 4,600-7,700）。</div></div></div>
+    <div class="ri"><div class="ricon">🎟️</div><div><div class="rtitle">景點提前網路購票</div><div class="rdesc">Lone Pine 網路購票省 5-10%。提早 1-2 天網路訂可避免現場排隊。</div></div></div>
+    <div class="ri" style="border:none;padding-bottom:0;"><div class="ricon">🛒</div><div><div class="rtitle">Woolworths / Coles 超市採購</div><div class="rdesc">飲料、零食在超市比景點便宜 3-5 倍，每天補貨一次是標準動作。</div></div></div>
+  </div></div>
+</div>
+
+<!-- ═══ 雨天備案 ═══ -->
+<div id="panel-rainday" class="panel">
+  <div class="al warn"><span class="ali">🌧️</span><div class="alc"><div class="alt">Brisbane7月降雨率低，但備案很重要</div>7月是昆士蘭乾季，降雨機率約10-15%。偶爾一天下雨，按此備案切換，輕鬆應對！</div></div>
+
+  <p class="stitle"><span class="dot"></span>Brisbane市區雨天備案（D2-D4）</p>
+  <div class="card">
+    <div class="day-h d2" onclick="toggleDay(this)" style="border-radius:var(--r-s);">
+      <div class="dnum">🌧</div>
+      <div class="dinfo"><div class="ddate">D2-D4 Brisbane市區</div><div class="dtitle">室內景點 · 全天不怕雨</div></div>
+      <div class="dtog">▼</div>
+    </div>
+    <div class="day-c">
+      <div class="tl">
+        <div class="tli">
+          <div class="tltime">09:30</div>
+          <div class="tldot">🔬</div>
+          <div class="tlbody">
+            <div class="tlname">Queensland Museum + Sciencentre</div>
+            <div class="tldesc">雨天首選！完全室內，免費入場（Sciencentre另收費約$18 AUD），恐龍化石、幼兒互動科學區，可玩3-4小時不無聊。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Grey St & Melbourne St, South Brisbane QLD 4101</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Queensland+Museum+South+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt kid">幼兒互動</span><span class="tt sight">全室內</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">13:00</div>
+          <div class="tldot">🎨</div>
+          <div class="tlbody">
+            <div class="tlname">GOMA 昆士蘭現代美術館</div>
+            <div class="tldesc">Queensland Museum 旁邊就是GOMA，免費入場，有專為兒童設計的互動藝術區「Children's Art Centre」，3歲幼兒非常適合，可以碰觸和創作。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Gallery of Modern Art (GOMA), Stanley Pl, South Brisbane QLD 4101</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=GOMA+Gallery+of+Modern+Art+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt kid">兒童藝術區</span><span class="tt sight">免費</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">15:00</div>
+          <div class="tldot">🛒</div>
+          <div class="tlbody">
+            <div class="tlname">Myer Centre 購物中心 · 室內逛街</div>
+            <div class="tldesc">Brisbane CBD 最大室內購物中心，有兒童玩具區、Target、各式餐廳。雨天最佳消磨時間之地。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Myer Centre, 91 Queen St, Brisbane City QLD 4000</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Myer+Centre+Brisbane+CBD" target="_blank">🗺 Google Maps</a></div>
+          </div>
+        </div>
+        <div class="tli" style="margin-bottom:0;">
+          <div class="tltime">17:30</div>
+          <div class="tldot">🍣</div>
+          <div class="tlbody">
+            <div class="tlname">晚餐 · South Bank 商場內餐廳</div>
+            <div class="tldesc">South Bank 的 South Bank Piazza 及 Stanley Street Plaza 有室內餐廳區，雨天也可用餐。幼兒友善選項多。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Stanley Street Plaza, South Brisbane QLD 4101</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Stanley+Street+Plaza+South+Bank+Brisbane" target="_blank">🗺 Google Maps</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="stitle"><span class="dot"></span>Lone Pine 雨天備案（D3）</p>
+  <div class="card">
+    <div class="day-h d3" onclick="toggleDay(this)" style="border-radius:var(--r-s);">
+      <div class="dnum">🌧</div>
+      <div class="dinfo"><div class="ddate">D3 抱無尾熊日</div><div class="dtitle">Lone Pine 雨天照常開放</div></div>
+      <div class="dtog">▼</div>
+    </div>
+    <div class="day-c">
+      <div class="tl">
+        <div class="tli">
+          <div class="tltime">全天</div>
+          <div class="tldot">🐨</div>
+          <div class="tlbody">
+            <div class="tlname">Lone Pine — 雨天照常開放！</div>
+            <div class="tldesc">Lone Pine 下雨照常營業，多數動物館舍有遮蓋，抱無尾熊與鸚鵡餵食區有屋頂。帶雨衣或摺疊傘即可，雨天人潮更少、更好拍照！公車 430 直達不淋雨。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">708 Jesmond Rd, Fig Tree Pocket QLD 4069</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Lone+Pine+Koala+Sanctuary+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt kid">雨天照常</span><span class="tt sight">大部分有頂棚</span></div>
+          </div>
+        </div>
+        <div class="tli" style="margin-bottom:0;">
+          <div class="tltime">備選</div>
+          <div class="tldot">🏊</div>
+          <div class="tlbody">
+            <div class="tlname">住宿游泳池 · 室內休息日</div>
+            <div class="tldesc">住宿有游泳池，雨天讓幼兒在飯店游泳玩水，大人可補眠休息。這也是旅行中難得的輕鬆時光！</div>
+            <div class="tltags"><span class="tt rest">幼兒游泳</span><span class="tt kid">飯店活動</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="stitle"><span class="dot"></span>市區雨天替代景點（D5-D6）</p>
+  <div class="card">
+    <div class="day-h d5" onclick="toggleDay(this)" style="border-radius:var(--r-s);">
+      <div class="dnum">🌧</div>
+      <div class="dinfo"><div class="ddate">D5-D6 市區備案</div><div class="dtitle">室內景點 · 購物中心</div></div>
+      <div class="dtog">▼</div>
+    </div>
+    <div class="day-c">
+      <div class="tl">
+        <div class="tli">
+          <div class="tltime">替代1</div>
+          <div class="tldot">🛒</div>
+          <div class="tlbody">
+            <div class="tlname">Queen St Mall + Myer Centre 室內逛街</div>
+            <div class="tldesc">若 D5 Mt Coot-tha 戶外行程遇雨，改去 CBD Queen Street Mall 與 Myer Centre 室內購物中心，有兒童玩具區、Target、美食街，全室內。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Queen St Mall, Brisbane City QLD 4000</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Queen+Street+Mall+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt kid">室內</span></div>
+          </div>
+        </div>
+        <div class="tli">
+          <div class="tltime">替代2</div>
+          <div class="tldot">🍜</div>
+          <div class="tlbody">
+            <div class="tlname">Sunnybank 照常（室內美食廣場）</div>
+            <div class="tldesc">D5 Sunnybank 美食天堂大多在室內 Plaza，雨天照常去吃，亞洲超市購物也不受影響。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Sunnybank Plaza, 358 Mains Rd, Sunnybank QLD 4109</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Sunnybank+Plaza+Brisbane" target="_blank">🗺 Google Maps</a></div>
+            <div class="tltags"><span class="tt food">室內美食</span></div>
+          </div>
+        </div>
+        <div class="tli" style="margin-bottom:0;">
+          <div class="tltime">替代3</div>
+          <div class="tldot">🎬</div>
+          <div class="tlbody">
+            <div class="tlname">Event Cinemas 看電影</div>
+            <div class="tldesc">South Bank 就有 Event Cinemas，下午遇雨可帶小孩看適齡動畫電影，休息放鬆。</div>
+            <div class="addr-row"><span class="addr-icon">📍</span><span class="addr-text">Event Cinemas, South Bank, Brisbane</span></div>
+            <div class="map-row"><a class="nav-btn-g" href="https://maps.google.com/?q=Event+Cinemas+South+Bank+Brisbane" target="_blank">🗺 Google Maps</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="stitle"><span class="dot"></span>雨天隨身必備</p>
+  <div class="card"><div class="cbody">
+    <div class="ri"><div class="ricon">☂️</div><div><div class="rtitle">摺疊傘 × 2 + 幼兒小雨衣</div><div class="rdesc">澳洲雨通常陣雨，下一陣就停，準備摺疊傘應急即可。幼兒雨衣比撐傘推車方便很多。</div></div></div>
+    <div class="ri"><div class="ricon">👟</div><div><div class="rtitle">防水鞋 / 雨天備用拖鞋</div><div class="rdesc">幼兒踩水坑是日常，備一雙防水涼鞋或夾腳拖即可快速清洗。</div></div></div>
+    <div class="ri"><div class="ricon">📱</div><div><div class="rtitle">確認景點是否照常開放</div><div class="rdesc">大雨時建議先撥電或查官網確認。Lone Pine 通常照常。Mt Coot-tha 觀景台大雨時視野不佳，可改去 GOMA 兒童藝術區（免費室內）。</div></div></div>
+    <div class="ri" style="border:none; padding-bottom:0;"><div class="ricon">🍵</div><div><div class="rtitle">咖啡廳避雨是最佳選擇</div><div class="rdesc">澳洲咖啡廳文化濃厚，找一家有室內座位的咖啡廳，幼兒吃點東西，大人喝Flat White，等雨停再出發。</div></div></div>
+  </div></div>
+</div>
+<div id="panel-emergency" class="panel">
+  <div class="al danger"><span class="ali">🆘</span><div class="alc"><div class="alt">出發前截圖存入手機相簿</div></div></div>
+  <div class="card"><div class="cbody" style="padding-top:8px;">
+    <div class="ei"><div class="enum">000</div><div class="edesc"><div class="ename">澳洲緊急救援</div>警察、救護車、消防（免費）</div></div>
+    <div class="ei"><div class="enum">112</div><div class="edesc"><div class="ename">手機緊急撥號</div>無SIM卡也可撥，等同000</div></div>
+    <div class="ei"><div class="enum" style="font-size:11px;width:56px;">1800 010 564</div><div class="edesc"><div class="ename">台灣駐澳緊急熱線</div>24小時求助</div></div>
+    <div class="ei"><div class="enum" style="font-size:11px;">13 11 26</div><div class="edesc"><div class="ename">昆士蘭醫療諮詢 13HEALTH</div>24小時電話醫療建議（免費）</div></div>
+  </div></div>
+  <p class="stitle"><span class="dot"></span>Brisbane兒童醫院</p>
+  <div class="card"><div class="cbody">
+    <div class="ri"><div class="ricon">🏥</div><div><div class="rtitle">Queensland Children's Hospital（24hr急診）</div><div class="rdesc">501 Stanley St, South Brisbane QLD 4101</div></div></div>
+    <div style="margin-top:8px; padding:0 2px;">
+      <a class="nav-btn-g" href="https://maps.google.com/?q=Queensland+Children%27s+Hospital+South+Brisbane" target="_blank">🗺 導航到兒童醫院</a>
+    </div>
+  </div></div>
+</div>
+
+</main>
+
+<script>
+function showPanel(id) {
+  var panels = document.querySelectorAll('.panel');
+  var btns = document.querySelectorAll('.nb');
+  var order = ['overview','itinerary','hotels','map','food','expense','carlaw','packing','budget','rainday','emergency'];
+  for (var i=0; i<panels.length; i++) panels[i].className = 'panel';
+  for (var i=0; i<btns.length; i++) btns[i].className = 'nb';
+  var p = document.getElementById('panel-'+id);
+  if (p) p.className = 'panel active';
+  var idx = order.indexOf(id);
+  if (idx >= 0 && btns[idx]) btns[idx].className = 'nb active';
+  window.scrollTo(0, 0);
+}
+
+function toggleDay(header) {
+  var content = header.nextElementSibling;
+  var tog = header.querySelector('.dtog');
+  var isOpen = content.className.indexOf('open') >= 0;
+  var allContent = document.querySelectorAll('.day-c');
+  var allTog = document.querySelectorAll('.dtog');
+  for (var i=0; i<allContent.length; i++) allContent[i].className = 'day-c';
+  for (var i=0; i<allTog.length; i++) allTog[i].className = 'dtog';
+  if (!isOpen) {
+    content.className = 'day-c open';
+    tog.className = 'dtog open';
+    setTimeout(function(){ header.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 60);
+  }
+}
+
+function toggleCheck(item) {
+  if (item.className.indexOf('checked') >= 0) {
+    item.className = 'ci';
+  } else {
+    item.className = 'ci checked';
+  }
+  var all = document.querySelectorAll('.ci');
+  var states = [];
+  for (var i=0; i<all.length; i++) states.push(all[i].className.indexOf('checked') >= 0);
+  try { localStorage.setItem('checks_brisbane', JSON.stringify(states)); } catch(e) {}
+}
+
+var expenses = [];
+try {
+  var _saved = localStorage.getItem('expenses_brisbane');
+  if (_saved) expenses = JSON.parse(_saved);
+} catch(e) {}
+
+var catInfo = {
+  food:      { icon:'🍽', label:'餐飲',     color:'cat-food' },
+  hotel:     { icon:'🏨', label:'住宿',     color:'cat-hotel' },
+  transport: { icon:'🚗', label:'交通/油費', color:'cat-transport' },
+  ticket:    { icon:'🎟', label:'門票',     color:'cat-ticket' },
+  shopping:  { icon:'🛒', label:'購物',     color:'cat-shopping' },
+  other:     { icon:'📦', label:'其他',     color:'cat-other' }
+};
+
+function saveExpenses() {
+  try { localStorage.setItem('expenses_brisbane', JSON.stringify(expenses)); } catch(e) {}
+}
+
+function clearAllTripData() {
+  if (!confirm('確定要清空所有花費記錄與打包清單勾選狀態嗎？\n\n此動作不可復原，建議先截圖備份。')) return;
+  if (!confirm('再次確認：清空後 ' + expenses.length + ' 筆花費記錄會消失。')) return;
+  expenses = [];
+  try {
+    localStorage.removeItem('expenses_brisbane');
+    localStorage.removeItem('checks_brisbane');
+  } catch(e) {}
+  var all = document.querySelectorAll('.ci.checked');
+  for (var i=0; i<all.length; i++) all[i].className = 'ci';
+  updateSummary();
+  renderExpList();
+  renderBreakdown();
+  alert('已清空！可以開始記錄這次旅行了 🇦🇺');
+}
+
+function addExpense() {
+  var name = document.getElementById('exp-name').value.trim();
+  var amt  = parseFloat(document.getElementById('exp-amt').value);
+  var date = document.getElementById('exp-date').value;
+  var cat  = document.getElementById('exp-cat').value;
+  var note = document.getElementById('exp-note').value.trim();
+  if (!name || isNaN(amt) || amt <= 0) { alert('請填入名稱與金額！'); return; }
+  expenses.push({ id: Date.now(), name: name, amt: amt, date: date, cat: cat, note: note });
+  saveExpenses();
+  document.getElementById('exp-name').value = '';
+  document.getElementById('exp-amt').value = '';
+  document.getElementById('exp-note').value = '';
+  updateSummary();
+  renderExpList();
+  renderBreakdown();
+  showExpTab('list');
+}
+
+function deleteExpense(id) {
+  var newExp = [];
+  for (var i=0; i<expenses.length; i++) { if (expenses[i].id !== id) newExp.push(expenses[i]); }
+  expenses = newExp;
+  saveExpenses();
+  updateSummary();
+  renderExpList();
+  renderBreakdown();
+}
+
+function updateSummary() {
+  var total = 0;
+  for (var i=0; i<expenses.length; i++) total += expenses[i].amt;
+  var rate  = parseFloat(document.getElementById('rate-input').value) || 22;
+  var limit = parseFloat(document.getElementById('bud-limit').value) || 5000;
+  var pct   = Math.min((total / limit) * 100, 100);
+  document.getElementById('sum-aud').textContent = '$' + Math.round(total);
+  document.getElementById('sum-twd').textContent = 'NT$' + Math.round(total * rate).toLocaleString();
+  document.getElementById('sum-pct').textContent = Math.round(pct) + '%';
+  document.getElementById('bud-remain').textContent = '剩餘 $' + Math.max(limit - total, 0).toFixed(0) + ' AUD';
+  var fill = document.getElementById('bud-fill');
+  fill.style.width = pct + '%';
+  fill.className = 'bud-fill' + (pct > 80 ? ' warn' : '');
+}
+
+function renderExpList() {
+  var container = document.getElementById('exp-list-container');
+  if (expenses.length === 0) {
+    container.innerHTML = '<div class="no-expense"><div class="nei">💳</div><div>尚無花費記錄</div></div>';
+    return;
+  }
+  var groups = {};
+  var sorted = expenses.slice().sort(function(a,b){ return b.id - a.id; });
+  for (var i=0; i<sorted.length; i++) {
+    var e = sorted[i];
+    if (!groups[e.date]) groups[e.date] = [];
+    groups[e.date].push(e);
+  }
+  var dateLabels = {
+    '2026-07-25':'Day 1 · 7/25 抵達',
+    '2026-07-26':'Day 2 · 7/26 South Bank',
+    '2026-07-27':'Day 3 · 7/27 動物園',
+    '2026-07-28':'Day 4 · 7/28 GOMA + Story Bridge',
+    '2026-07-29':'Day 5 · 7/29 Sunnybank + Mt Coot-tha',
+    '2026-07-30':'Day 6 · 7/30 CityCat + Eat Street',
+    '2026-07-31':'Day 7 · 7/31 返程'
+  };
+  var html = '<div class="exp-list">';
+  var dates = Object.keys(groups).sort(function(a,b){ return b.localeCompare(a); });
+  for (var d=0; d<dates.length; d++) {
+    var date = dates[d];
+    var dayTotal = 0;
+    for (var j=0; j<groups[date].length; j++) dayTotal += groups[date][j].amt;
+    html += '<div class="exp-day-group"><div class="exp-day-label">' +
+            (dateLabels[date] || date) + ' &nbsp;·&nbsp; $' + Math.round(dayTotal) + ' AUD</div>';
+    for (var k=0; k<groups[date].length; k++) {
+      var e = groups[date][k];
+      var ci = catInfo[e.cat] || catInfo.other;
+      html += '<div class="exp-item">' +
+              '<div class="exp-cat-icon ' + ci.color + '">' + ci.icon + '</div>' +
+              '<div class="exp-info"><div class="exp-name">' + e.name + '</div>' +
+              '<div class="exp-meta">' + ci.label + (e.note ? ' · ' + e.note : '') + '</div></div>' +
+              '<div class="exp-amt">$' + Math.round(e.amt) + '</div>' +
+              '<button class="exp-del" onclick="deleteExpense(' + e.id + ')">✕</button></div>';
+    }
+    html += '</div>';
+  }
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+function renderBreakdown() {
+  var bd = document.getElementById('cat-breakdown');
+  if (expenses.length === 0) {
+    bd.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted);font-size:13px;">尚無花費記錄</div>';
+    return;
+  }
+  var totals = {};
+  var grand = 0;
+  for (var i=0; i<expenses.length; i++) {
+    grand += expenses[i].amt;
+    totals[expenses[i].cat] = (totals[expenses[i].cat] || 0) + expenses[i].amt;
+  }
+  var sorted = Object.keys(totals).sort(function(a,b){ return totals[b] - totals[a]; });
+  var html = '';
+  for (var i=0; i<sorted.length; i++) {
+    var cat = sorted[i];
+    var amt = totals[cat];
+    var ci  = catInfo[cat] || catInfo.other;
+    var pct = grand > 0 ? Math.round((amt/grand)*100) : 0;
+    html += '<div class="cat-row">' +
+            '<div class="cat-row-icon ' + ci.color + '">' + ci.icon + '</div>' +
+            '<div><div class="cat-row-name">' + ci.label + '</div>' +
+            '<div style="height:4px;background:var(--border);border-radius:2px;width:100px;margin-top:4px;overflow:hidden;">' +
+            '<div style="height:100%;width:' + pct + '%;background:var(--ocean);border-radius:2px;"></div></div></div>' +
+            '<div style="text-align:right;"><div class="cat-row-amt">$' + Math.round(amt) + '</div>' +
+            '<div class="cat-row-pct">' + pct + '%</div></div></div>';
+  }
+  bd.innerHTML = html;
+}
+
+function showExpTab(id) {
+  var tabs = document.querySelectorAll('.etab');
+  var panels = document.querySelectorAll('.etab-panel');
+  var order = ['add','list','breakdown'];
+  for (var i=0; i<tabs.length; i++) tabs[i].className = 'etab';
+  for (var i=0; i<panels.length; i++) panels[i].className = 'etab-panel';
+  var p = document.getElementById('etab-'+id);
+  if (p) p.className = 'etab-panel active';
+  var idx = order.indexOf(id);
+  if (idx >= 0 && tabs[idx]) tabs[idx].className = 'etab active';
+  if (id === 'list') renderExpList();
+  if (id === 'breakdown') renderBreakdown();
+}
+// ── LEAFLET MAPS ──
+var leafletMaps = {};
+
+function makeIcon(color, emoji) {
+  return L.divIcon({
+    className: 'custom-pin',
+    html: '<div style="background:' + color + ';width:32px;height:32px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid white;box-shadow:0 2px 5px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;"><div style="transform:rotate(45deg);font-size:14px;">' + emoji + '</div></div>',
+    iconSize: [32, 32], iconAnchor: [16, 32], popupAnchor: [0, -32]
+  });
+}
+
+function buildMaps() {
+  if (typeof L === 'undefined') {
+    console.log('Leaflet not loaded yet, retrying...');
+    setTimeout(buildMaps, 200);
+    return;
+  }
+  var loc = {
+    hotel: [-27.4774, 153.0158],
+    southBank: [-27.4754, 153.0208],
+    qldMuseum: [-27.4731, 153.0182],
+    goma: [-27.4706, 153.0171],
+    storyBridge: [-27.4636, 153.0359],
+    howardSmith: [-27.4625, 153.0354],
+    kangarooPoint: [-27.4781, 153.0341],
+    sunnybank: [-27.5707, 153.0624],
+    bneAirport: [-27.4036, 153.1096],
+    coombabah: [-27.9195, 153.3771],
+    charis: [-27.9413, 153.4087],
+    australiaZoo: [-26.8357, 152.9631],
+    noosaBeach: [-26.3867, 153.0915],
+    noosaPark: [-26.3819, 153.0992]
+  };
+  var tileURL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var attr = '© OpenStreetMap contributors';
+  // Map 1: Overview
+  var el1 = document.getElementById('map-overview');
+  if (el1 && !leafletMaps.overview) {
+    try {
+      var m1 = L.map(el1).setView([-27.48, 153.00], 11);
+      L.tileLayer(tileURL, {attribution: attr, maxZoom: 19, subdomains: 'abc'}).addTo(m1);
+      L.marker(loc.southBank, {icon: makeIcon('#1565A8', '🏨')}).addTo(m1).bindPopup('<b>South Bank</b><br>D1-D4 住宿');
+      var lonePineCoord = [-27.5333, 152.9692];
+      L.marker(loc.southBank, {icon: makeIcon('#1565A8', '🌳')}).addTo(m1).bindPopup('<b>South Bank</b><br>步行 8 分');
+      L.marker(lonePineCoord, {icon: makeIcon('#2E7D52', '🐨')}).addTo(m1).bindPopup('<b>Lone Pine</b><br>D3 抱無尾熊');
+      L.marker(loc.bneAirport, {icon: makeIcon('#7B1FA2', '✈️')}).addTo(m1).bindPopup('<b>Brisbane Airport</b>');
+      L.polyline([loc.hotel, lonePineCoord], {color: '#2E7D52', weight: 2.5, dashArray: '6,4', opacity: 0.6}).addTo(m1);
+      L.polyline([loc.hotel, loc.bneAirport], {color: '#7B1FA2', weight: 2.5, dashArray: '6,4', opacity: 0.5}).addTo(m1);
+      leafletMaps.overview = m1;
+    } catch(e) { console.error('map-overview error:', e); }
+  }
+  // Map 2: Brisbane
+  var el2 = document.getElementById('map-brisbane');
+  if (el2 && !leafletMaps.brisbane) {
+    try {
+      var m2 = L.map(el2).setView([-27.475, 153.025], 13);
+      L.tileLayer(tileURL, {attribution: attr, maxZoom: 19, subdomains: 'abc'}).addTo(m2);
+      L.marker(loc.hotel, {icon: makeIcon('#E9826E', '🏠')}).addTo(m2).bindPopup('<b>你的住宿</b><br>66 Manning St<br>⭐ 9.5');
+      L.marker(loc.southBank, {icon: makeIcon('#1565A8', '🏨')}).addTo(m2).bindPopup('<b>South Bank Parklands</b><br>步行 8 分');
+      L.marker(loc.qldMuseum, {icon: makeIcon('#7B1FA2', '🔬')}).addTo(m2).bindPopup('<b>Queensland Museum</b><br>免費');
+      L.marker(loc.goma, {icon: makeIcon('#7B1FA2', '🎨')}).addTo(m2).bindPopup('<b>GOMA</b><br>兒童藝術');
+      L.marker(loc.storyBridge, {icon: makeIcon('#E8634A', '🌉')}).addTo(m2).bindPopup('<b>Story Bridge</b>');
+      L.marker(loc.howardSmith, {icon: makeIcon('#E8634A', '🍻')}).addTo(m2).bindPopup('<b>Howard Smith Wharves</b>');
+      L.marker(loc.kangarooPoint, {icon: makeIcon('#1A237E', '🌙')}).addTo(m2).bindPopup('<b>Kangaroo Point Cliffs</b>');
+      L.marker(loc.sunnybank, {icon: makeIcon('#E91E63', '🍜')}).addTo(m2).bindPopup('<b>Sunnybank</b>');
+      L.marker(loc.bneAirport, {icon: makeIcon('#7B1FA2', '✈️')}).addTo(m2).bindPopup('<b>BNE Airport</b>');
+      leafletMaps.brisbane = m2;
+    } catch(e) { console.error('map-brisbane error:', e); }
+  }
+  // Map 3: Lone Pine area (D3)
+  var el3 = document.getElementById('map-lonepine');
+  if (el3 && !leafletMaps.lonepine) {
+    try {
+      var lonePine = [-27.5333, 152.9692];
+      var m3 = L.map(el3).setView(lonePine, 13);
+      L.tileLayer(tileURL, {attribution: attr, maxZoom: 19, subdomains: 'abc'}).addTo(m3);
+      L.marker(lonePine, {icon: makeIcon('#2E7D52', '🐨')}).addTo(m3).bindPopup('<b>Lone Pine Koala Sanctuary</b><br>708 Jesmond Rd<br>抱無尾熊 · ⭐ 4.7').openPopup();
+      L.marker(loc.hotel, {icon: makeIcon('#E9826E', '🏠')}).addTo(m3).bindPopup('<b>你的住宿</b><br>搭 430 線可達');
+      L.polyline([loc.hotel, lonePine], {color: '#2E7D52', weight: 3, dashArray: '6,4'}).addTo(m3);
+      leafletMaps.lonepine = m3;
+    } catch(e) { console.error('map-lonepine error:', e); }
+  }
+  // CRITICAL: Force resize after panel becomes visible
+  Object.keys(leafletMaps).forEach(function(k) {
+    try {
+      leafletMaps[k].invalidateSize(true);
+    } catch(e) {}
+  });
+}
+
+// Override showPanel using window assignment - this works because the function declaration
+// "function showPanel" creates window.showPanel automatically in non-strict mode
+(function() {
+  var origFn = window.showPanel;
+  window.showPanel = function(id) {
+    if (origFn) origFn(id);
+    if (id === 'map') {
+      setTimeout(buildMaps, 100);
+      setTimeout(buildMaps, 500);
+      setTimeout(function() {
+        Object.keys(leafletMaps).forEach(function(k) {
+          try { leafletMaps[k].invalidateSize(true); } catch(e) {}
+        });
+      }, 800);
+    }
+  };
+})();
+
+// Also try to init when page loads (in case map panel was set to active by default)
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    var mapPanel = document.getElementById('panel-map');
+    if (mapPanel && mapPanel.className.indexOf('active') >= 0) {
+      buildMaps();
+    }
+  }, 300);
+});
+
+window.onload = function() {
+  try {
+    var saved = localStorage.getItem('checks_brisbane');
+    if (saved) {
+      var states = JSON.parse(saved);
+      var items = document.querySelectorAll('.ci');
+      for (var i=0; i<items.length; i++) {
+        if (states[i]) items[i].className = 'ci checked';
+      }
+    }
+  } catch(e) {}
+  var first = document.querySelector('.day-h');
+  if (first) toggleDay(first);
+  updateSummary();
+  renderExpList();
+};
+
+// ── RECEIPT CAMERA OCR ──
+function previewReceipt(input) {
+  if (!input.files || !input.files[0]) return;
+  var file = input.files[0];
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var preview = document.getElementById('receipt-preview');
+    var placeholder = document.getElementById('camera-placeholder');
+    preview.src = e.target.result;
+    preview.style.display = 'block';
+    placeholder.style.display = 'none';
+    document.getElementById('ocr-loading').style.display = 'block';
+    document.getElementById('ocr-result').style.display = 'none';
+    document.getElementById('ocr-error').style.display = 'none';
+    // Call Claude API for OCR
+    analyzeReceipt(e.target.result);
+  };
+  reader.readAsDataURL(file);
+}
+
+function analyzeReceipt(base64DataUrl) {
+  // Extract base64 data
+  var parts = base64DataUrl.split(',');
+  var mediaType = parts[0].match(/:(.*?);/)[1];
+  var base64Data = parts[1];
+
+  fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 500,
+      messages: [{
+        role: 'user',
+        content: [
+          {
+            type: 'image',
+            source: { type: 'base64', media_type: mediaType, data: base64Data }
+          },
+          {
+            type: 'text',
+            text: 'This is a receipt from Australia. Extract: 1) Store/restaurant name or item description (in Traditional Chinese if possible, else English), 2) Total amount in AUD (number only), 3) Date in YYYY-MM-DD format (if visible, else leave empty), 4) Best category from: food/hotel/transport/ticket/shopping/other. Reply ONLY in this exact JSON format with no other text: {"name":"","amount":0,"date":"","category":"food"}'
+          }
+        ]
+      }]
+    })
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    document.getElementById('ocr-loading').style.display = 'none';
+    var text = '';
+    if (data.content && data.content[0] && data.content[0].text) {
+      text = data.content[0].text.trim();
+    }
+    try {
+      var result = JSON.parse(text);
+      document.getElementById('ocr-name').value = result.name || '';
+      document.getElementById('ocr-amt').value = result.amount || '';
+      document.getElementById('ocr-date').value = result.date || '2026-07-25';
+      var catSel = document.getElementById('ocr-cat');
+      var cat = result.category || 'other';
+      for (var i = 0; i < catSel.options.length; i++) {
+        if (catSel.options[i].value === cat) { catSel.selectedIndex = i; break; }
+      }
+      document.getElementById('ocr-result').style.display = 'block';
+    } catch(e) {
+      document.getElementById('ocr-error-msg').textContent = '無法解析辨識結果，請手動輸入。';
+      document.getElementById('ocr-error').style.display = 'block';
+    }
+  })
+  .catch(function(err) {
+    document.getElementById('ocr-loading').style.display = 'none';
+    document.getElementById('ocr-error-msg').textContent = '網路錯誤，請確認連線後再試。';
+    document.getElementById('ocr-error').style.display = 'block';
+  });
+}
+
+function confirmOcrExpense() {
+  var name = document.getElementById('ocr-name').value.trim();
+  var amt  = parseFloat(document.getElementById('ocr-amt').value);
+  var date = document.getElementById('ocr-date').value;
+  var cat  = document.getElementById('ocr-cat').value;
+  var note = document.getElementById('ocr-note').value.trim();
+  if (!name || isNaN(amt) || amt <= 0) { alert('請確認名稱與金額！'); return; }
+  expenses.push({ id: Date.now(), name: name, amt: amt, date: date, cat: cat, note: note });
+  saveExpenses();
+  updateSummary();
+  renderExpList();
+  renderBreakdown();
+  resetCamera();
+  showExpTab('list');
+}
+
+function resetCamera() {
+  document.getElementById('receipt-preview').style.display = 'none';
+  document.getElementById('receipt-preview').src = '';
+  document.getElementById('camera-placeholder').style.display = 'block';
+  document.getElementById('ocr-loading').style.display = 'none';
+  document.getElementById('ocr-result').style.display = 'none';
+  document.getElementById('ocr-error').style.display = 'none';
+  document.getElementById('receipt-input').value = '';
+  document.getElementById('ocr-name').value = '';
+  document.getElementById('ocr-amt').value = '';
+  document.getElementById('ocr-note').value = '';
+}
+
+</script>
+</body>
+</html>

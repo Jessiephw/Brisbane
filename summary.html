@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+<title>布里斯本探險記 · 行程懶人包</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Caveat:wght@400;700&family=Cormorant+Garamond:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --milk-tea-1: #F5EBDD;
+  --milk-tea-2: #EDDBC4;
+  --milk-tea-3: #E5C9A8;
+  --milk-tea-deep: #B89770;
+  --cream: #FAF4E8;
+  --paper: #FFFCF5;
+  --ink: #4A3A28;
+  --ink-soft: #7A6850;
+  --ink-muted: #A89784;
+  --coral: #E9826E;
+  --sage: #8DA888;
+  --sky: #A8C6D6;
+  --sunset: #E3A857;
+  --rose: #D89A9E;
+  --plum: #9B7AA8;
+  --shadow-card: 0 1px 2px rgba(74,58,40,0.05), 0 4px 12px rgba(74,58,40,0.08);
+  --shadow-sticker: 0 2px 0 rgba(0,0,0,0.04), 0 6px 16px rgba(74,58,40,0.12);
+  --r-sm: 14px;
+  --r-md: 22px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { font-family: 'Zen Maru Gothic', sans-serif; background: var(--milk-tea-1); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; font-feature-settings: "palt"; }
+
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background-image: radial-gradient(circle at 20% 30%, rgba(168,198,214,0.15) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(232,168,87,0.10) 0%, transparent 35%), radial-gradient(circle at 50% 90%, rgba(141,168,136,0.10) 0%, transparent 45%);
+  pointer-events: none; z-index: 0;
+}
+body::after {
+  content: ''; position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%23B89770' stroke-width='0.6' opacity='0.15'%3E%3Cpath d='M0 50 Q30 35 60 50 T120 50 T180 50'/%3E%3Cpath d='M0 95 Q30 80 60 95 T120 95 T180 95'/%3E%3Cpath d='M0 140 Q30 125 60 140 T120 140 T180 140'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.5;
+}
+
+.wrap { position: relative; z-index: 1; max-width: 440px; margin: 0 auto; padding: 24px 18px 60px; }
+
+.hero { text-align: center; padding: 24px 16px 28px; margin-bottom: 28px; position: relative; }
+.hero-tag { display: inline-flex; align-items: center; gap: 6px; background: var(--paper); border: 1px solid var(--milk-tea-2); border-radius: 999px; padding: 6px 16px; font-size: 11px; font-weight: 700; color: var(--ink-soft); letter-spacing: 0.05em; margin-bottom: 14px; box-shadow: var(--shadow-sticker); }
+.hero h1 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 32px; font-weight: 900; letter-spacing: 0.04em; color: var(--ink); line-height: 1.25; margin-bottom: 8px; }
+.hero h1 .accent { font-family: 'Caveat', cursive; color: var(--coral); font-weight: 700; font-size: 1.1em; display: inline-block; transform: rotate(-3deg); margin: 0 2px; }
+.hero-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; color: var(--ink-muted); letter-spacing: 0.08em; margin-bottom: 16px; }
+.hero-stats { display: inline-flex; align-items: center; gap: 0; background: var(--paper); border-radius: 999px; padding: 10px 6px; border: 1px solid var(--milk-tea-2); box-shadow: var(--shadow-card); }
+.hero-stat { padding: 0 14px; border-right: 1px dashed var(--milk-tea-3); text-align: center; }
+.hero-stat:last-child { border-right: none; }
+.hero-stat .n { display: block; font-size: 18px; font-weight: 900; color: var(--ink); line-height: 1; }
+.hero-stat .l { display: block; font-size: 9px; color: var(--ink-muted); margin-top: 3px; letter-spacing: 0.1em; }
+
+.section-label { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-left: 4px; }
+.section-label::before { content: ''; width: 4px; height: 18px; background: var(--coral); border-radius: 2px; }
+.section-label-text { font-size: 14px; font-weight: 700; color: var(--ink); letter-spacing: 0.05em; }
+.section-label-en { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 11px; color: var(--ink-muted); letter-spacing: 0.1em; margin-left: auto; }
+
+.map-card { background: var(--paper); border-radius: var(--r-md); padding: 22px 18px 18px; margin-bottom: 32px; box-shadow: var(--shadow-card); position: relative; overflow: hidden; }
+.map-card::before { content: ''; position: absolute; top: 0; right: 0; width: 80px; height: 80px; background: radial-gradient(circle, rgba(232,168,87,0.12), transparent 70%); border-radius: 50%; transform: translate(30%, -30%); }
+.map-svg-wrap { position: relative; background: linear-gradient(170deg, #F8EFE0 0%, #F0E2CC 100%); border-radius: var(--r-sm); padding: 16px 12px; margin-bottom: 14px; overflow: hidden; }
+.map-svg-wrap::after { content: '☁'; position: absolute; top: 8px; left: 12px; font-size: 22px; opacity: 0.35; color: white; }
+.map-svg { width: 100%; height: auto; display: block; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; padding-top: 4px; }
+.legend-item { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 700; color: var(--ink-soft); background: var(--milk-tea-1); padding: 4px 10px; border-radius: 999px; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+.day-card { position: relative; background: var(--paper); border-radius: var(--r-md); padding: 18px 18px 18px 22px; margin-bottom: 16px; box-shadow: var(--shadow-card); border: 1px solid rgba(184,151,112,0.08); }
+.day-sticker { position: absolute; top: -10px; left: 16px; display: inline-flex; align-items: center; gap: 6px; background: var(--ink); color: var(--cream); padding: 5px 12px 5px 8px; border-radius: 999px; font-size: 11px; font-weight: 900; letter-spacing: 0.08em; box-shadow: var(--shadow-sticker); transform: rotate(-2deg); z-index: 2; }
+.day-card:nth-child(odd) .day-sticker { transform: rotate(-2deg); }
+.day-card:nth-child(even) .day-sticker { transform: rotate(1.5deg); background: var(--coral); }
+.day-sticker .dot { width: 6px; height: 6px; background: var(--coral); border-radius: 50%; }
+.day-card:nth-child(even) .day-sticker .dot { background: var(--cream); }
+
+.day-date { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 12px; color: var(--ink-muted); letter-spacing: 0.1em; margin-top: 6px; margin-bottom: 4px; }
+.day-title { font-size: 17px; font-weight: 900; color: var(--ink); margin-bottom: 14px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 8px; }
+.day-title-icon { font-size: 22px; }
+
+.activities { position: relative; padding-left: 24px; }
+.activities::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 0; border-left: 2px dashed var(--milk-tea-3); }
+.activity { position: relative; padding-bottom: 12px; }
+.activity:last-child { padding-bottom: 0; }
+.activity::before { content: ''; position: absolute; left: -23px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 2.5px solid var(--coral); }
+.activity.sage::before { border-color: var(--sage); }
+.activity.sky::before { border-color: var(--sky); }
+.activity.sunset::before { border-color: var(--sunset); }
+.activity.rose::before { border-color: var(--rose); }
+.activity.plum::before { border-color: var(--plum); }
+
+.activity-time { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 11px; color: var(--ink-muted); letter-spacing: 0.1em; margin-bottom: 2px; }
+.activity-name { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+.activity-desc { font-size: 11px; color: var(--ink-soft); line-height: 1.6; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+.tag { font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 999px; letter-spacing: 0.05em; }
+.tag.free { background: #E8F0E3; color: #5C7A53; }
+.tag.kid  { background: #FCE5DB; color: #B85A48; }
+.tag.must { background: #FFE9B8; color: #8C6510; }
+.tag.transit { background: #E4ECF2; color: #4A6B82; }
+.tag.food { background: #F5DEDA; color: #9F574E; }
+
+.day-card.highlight { background: linear-gradient(155deg, #FFF8EC 0%, #FAEBD0 100%); border: 1px solid rgba(232,168,87,0.25); }
+.day-card.highlight::before { content: '✨'; position: absolute; top: 12px; right: 14px; font-size: 16px; opacity: 0.7; }
+
+.footer { text-align: center; margin-top: 32px; padding: 20px; border-top: 1px dashed var(--milk-tea-3); }
+.footer-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 13px; color: var(--ink-muted); letter-spacing: 0.1em; margin-bottom: 4px; }
+.footer-emoji { font-size: 20px; letter-spacing: 8px; }
+
+@media print {
+  body::before, body::after { display: none; }
+  body { background: white; }
+  .day-card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-tag">🇦🇺 Brisbane · Family Trip</div>
+    <h1>布里斯本<br><span class="accent">探險記</span></h1>
+    <div class="hero-sub">2026.07.25 — 07.31 · 7 days</div>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="n">7</span><span class="l">DAYS</span></div>
+      <div class="hero-stat"><span class="n">1</span><span class="l">STAY</span></div>
+      <div class="hero-stat"><span class="n">10+</span><span class="l">SPOTS</span></div>
+      <div class="hero-stat"><span class="n">🐨</span><span class="l">KOALA</span></div>
+    </div>
+  </div>
+
+  <div class="section-label">
+    <div class="section-label-text">🗺 行程地圖</div>
+    <div class="section-label-en">the route</div>
+  </div>
+
+  <div class="map-card">
+    <div class="map-svg-wrap">
+      <svg viewBox="0 0 400 540" xmlns="http://www.w3.org/2000/svg" class="map-svg">
+        <defs>
+          <pattern id="dots" patternUnits="userSpaceOnUse" width="14" height="14"><circle cx="2" cy="2" r="0.8" fill="#B89770" opacity="0.25"/></pattern>
+          <filter id="softShadow"><feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#4A3A28" flood-opacity="0.18"/></filter>
+          <filter id="labelShadow"><feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#4A3A28" flood-opacity="0.12"/></filter>
+        </defs>
+        <rect width="400" height="540" fill="url(#dots)" opacity="0.5"/>
+        <path d="M40,180 Q90,160 140,200 Q200,260 250,220 Q320,180 360,210" fill="none" stroke="#A8C6D6" stroke-width="14" stroke-linecap="round" opacity="0.4"/>
+        <path d="M40,180 Q90,160 140,200 Q200,260 250,220 Q320,180 360,210" fill="none" stroke="#C5DCE8" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+        <g opacity="0.25" stroke="#A8C6D6" stroke-width="1.2" fill="none">
+          <path d="M0,490 Q40,478 80,490 T160,490 T240,490 T320,490 T400,490"/>
+          <path d="M0,510 Q40,498 80,510 T160,510 T240,510 T320,510 T400,510"/>
+        </g>
+        <text x="40" y="65" font-size="20" opacity="0.6">🌿</text>
+        <text x="350" y="55" font-size="18" opacity="0.5">☁</text>
+        <text x="60" y="450" font-size="16" opacity="0.5">🌴</text>
+        <text x="355" y="450" font-size="16" opacity="0.5">🌴</text>
+        <g transform="translate(45,45)">
+          <circle r="17" fill="white" stroke="#B89770" stroke-width="1.5"/>
+          <text y="4" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="15" font-weight="700" fill="#4A3A28">N</text>
+          <path d="M0,-11 L3,-1 L0,1 L-3,-1 Z" fill="#E9826E"/>
+        </g>
+
+        <!-- Routes -->
+        <path d="M200,290 Q140,310 90,320" fill="none" stroke="#8DA888" stroke-width="3" stroke-dasharray="8,5" stroke-linecap="round"/>
+        <path d="M200,290 Q210,360 200,420" fill="none" stroke="#E3A857" stroke-width="2.5" stroke-dasharray="6,4" stroke-linecap="round" opacity="0.7"/>
+        <path d="M200,290 Q155,255 115,215" fill="none" stroke="#E3A857" stroke-width="2.5" stroke-dasharray="6,4" stroke-linecap="round" opacity="0.7"/>
+        <path d="M200,295 Q265,275 320,260" fill="none" stroke="#A8C6D6" stroke-width="3" stroke-dasharray="2,3" stroke-linecap="round"/>
+        <path d="M200,290 Q280,215 335,145" fill="none" stroke="#9B7AA8" stroke-width="2.5" stroke-dasharray="4,3" stroke-linecap="round" opacity="0.5"/>
+
+        <!-- Pins -->
+        <!-- Lone Pine -->
+        <g filter="url(#softShadow)">
+          <circle cx="90" cy="320" r="26" fill="#FAF4E8" stroke="#8DA888" stroke-width="3"/>
+          <text x="90" y="329" text-anchor="middle" font-size="24">🐨</text>
+        </g>
+        <g transform="translate(36, 358)" filter="url(#labelShadow)">
+          <rect x="0" y="0" width="108" height="36" rx="9" fill="white" stroke="#8DA888" stroke-width="1.5"/>
+          <text x="10" y="15" font-family="Zen Maru Gothic, sans-serif" font-size="12" font-weight="900" fill="#4A3A28">Lone Pine</text>
+          <text x="10" y="28" font-family="Zen Maru Gothic, sans-serif" font-size="9" font-weight="700" fill="#5C7A53">D3 · 抱無尾熊</text>
+        </g>
+
+        <!-- Mt Coot-tha -->
+        <g filter="url(#softShadow)">
+          <circle cx="115" cy="215" r="18" fill="#FAF4E8" stroke="#E3A857" stroke-width="2.5"/>
+          <text x="115" y="223" text-anchor="middle" font-size="17">⛰️</text>
+        </g>
+        <g transform="translate(143, 200)" filter="url(#labelShadow)">
+          <rect x="0" y="0" width="100" height="28" rx="8" fill="white" stroke="#E3A857" stroke-width="1.5"/>
+          <text x="10" y="13" font-family="Zen Maru Gothic, sans-serif" font-size="11" font-weight="900" fill="#4A3A28">Mt Coot-tha</text>
+          <text x="10" y="24" font-family="Zen Maru Gothic, sans-serif" font-size="9" font-weight="700" fill="#8C6510">D5 · 觀景台</text>
+        </g>
+
+        <!-- BNE Airport -->
+        <g filter="url(#softShadow)">
+          <circle cx="335" cy="145" r="22" fill="#FAF4E8" stroke="#9B7AA8" stroke-width="2.5"/>
+          <text x="335" y="153" text-anchor="middle" font-size="20">✈️</text>
+        </g>
+        <g transform="translate(238, 105)" filter="url(#labelShadow)">
+          <rect x="0" y="0" width="92" height="28" rx="8" fill="white" stroke="#9B7AA8" stroke-width="1.5"/>
+          <text x="10" y="13" font-family="Zen Maru Gothic, sans-serif" font-size="11" font-weight="900" fill="#4A3A28">BNE 機場</text>
+          <text x="10" y="24" font-family="Zen Maru Gothic, sans-serif" font-size="9" font-weight="700" fill="#5D3A88">Airtrain 22分</text>
+        </g>
+
+        <!-- Hotel (center, biggest) -->
+        <g filter="url(#softShadow)">
+          <circle cx="200" cy="300" r="34" fill="#FAF4E8" stroke="#E9826E" stroke-width="4"/>
+          <text x="200" y="312" text-anchor="middle" font-size="30">🏠</text>
+        </g>
+        <g transform="translate(232, 278)" filter="url(#labelShadow)">
+          <rect x="0" y="0" width="138" height="46" rx="10" fill="white" stroke="#E9826E" stroke-width="1.5"/>
+          <text x="12" y="20" font-family="Zen Maru Gothic, sans-serif" font-size="13" font-weight="900" fill="#4A3A28">你的住宿</text>
+          <text x="12" y="36" font-family="Zen Maru Gothic, sans-serif" font-size="10" font-weight="700" fill="#B85A48">6 晚 · ⭐ 9.5</text>
+        </g>
+        <text x="200" y="356" text-anchor="middle" font-family="Caveat, cursive" font-size="15" fill="#B85A48" font-weight="700">66 Manning St ★</text>
+
+        <!-- South Bank -->
+        <g filter="url(#softShadow)">
+          <circle cx="248" cy="320" r="14" fill="#FAF4E8" stroke="#1565A8" stroke-width="2"/>
+          <text x="248" y="326" text-anchor="middle" font-size="14">🌳</text>
+        </g>
+        <text x="252" y="346" font-family="Cormorant Garamond, serif" font-style="italic" font-size="10" font-weight="700" fill="#4A6B82">South Bank</text>
+
+        <!-- GOMA/Museum -->
+        <g filter="url(#softShadow)">
+          <circle cx="170" cy="275" r="11" fill="#FAF4E8" stroke="#9B7AA8" stroke-width="2"/>
+          <text x="170" y="281" text-anchor="middle" font-size="10">🎨</text>
+        </g>
+
+        <!-- Story Bridge -->
+        <g filter="url(#softShadow)">
+          <circle cx="265" cy="245" r="13" fill="#FAF4E8" stroke="#E8634A" stroke-width="2"/>
+          <text x="265" y="251" text-anchor="middle" font-size="12">🌉</text>
+        </g>
+        <text x="280" y="239" font-family="Cormorant Garamond, serif" font-style="italic" font-size="10" font-weight="700" fill="#9F574E">Story Br.</text>
+
+        <!-- New Farm Park -->
+        <g filter="url(#softShadow)">
+          <circle cx="320" cy="260" r="16" fill="#FAF4E8" stroke="#1565A8" stroke-width="2"/>
+          <text x="320" y="267" text-anchor="middle" font-size="14">🌷</text>
+        </g>
+        <g transform="translate(282, 280)" filter="url(#labelShadow)">
+          <rect x="0" y="0" width="82" height="24" rx="7" fill="white" stroke="#A8C6D6" stroke-width="1.2"/>
+          <text x="10" y="11" font-family="Zen Maru Gothic, sans-serif" font-size="10" font-weight="900" fill="#4A3A28">New Farm</text>
+          <text x="10" y="21" font-family="Zen Maru Gothic, sans-serif" font-size="8" font-weight="700" fill="#4A6B82">D6 · CityCat</text>
+        </g>
+
+        <!-- Sunnybank -->
+        <g filter="url(#softShadow)">
+          <circle cx="200" cy="420" r="20" fill="#FAF4E8" stroke="#E3A857" stroke-width="2.5"/>
+          <text x="200" y="428" text-anchor="middle" font-size="18">🍜</text>
+        </g>
+        <g transform="translate(232, 408)" filter="url(#labelShadow)">
+          <rect x="0" y="0" width="110" height="28" rx="8" fill="white" stroke="#E3A857" stroke-width="1.5"/>
+          <text x="10" y="13" font-family="Zen Maru Gothic, sans-serif" font-size="11" font-weight="900" fill="#4A3A28">Sunnybank</text>
+          <text x="10" y="24" font-family="Zen Maru Gothic, sans-serif" font-size="9" font-weight="700" fill="#8C6510">D5 · 亞洲美食</text>
+        </g>
+
+        <!-- Eat Street -->
+        <g filter="url(#softShadow)">
+          <circle cx="338" cy="185" r="14" fill="#FAF4E8" stroke="#E9826E" stroke-width="2"/>
+          <text x="338" y="191" text-anchor="middle" font-size="13">🌮</text>
+        </g>
+        <text x="285" y="200" font-family="Cormorant Garamond, serif" font-style="italic" font-size="10" font-weight="700" fill="#B85A48">Eat St · D6</text>
+
+        <text x="200" y="475" text-anchor="middle" font-family="Caveat, cursive" font-size="14" fill="#5C7A53" font-weight="700">all walkable / public transit ★</text>
+      </svg>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><span class="legend-dot" style="background:#E9826E"></span>住宿</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#1565A8"></span>步行 / CityCat</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#8DA888"></span>公車 430</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#E3A857"></span>Uber</div>
+      <div class="legend-item"><span class="legend-dot" style="background:#9B7AA8"></span>Airtrain</div>
+    </div>
+  </div>
+
+  <div class="section-label">
+    <div class="section-label-text">🗓 7天行程</div>
+    <div class="section-label-en">day by day</div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-sticker"><span class="dot"></span>DAY 01</div>
+    <div class="day-date">07.25 SATURDAY</div>
+    <div class="day-title"><span class="day-title-icon">✈️</span>抵達 Brisbane</div>
+    <div class="activities">
+      <div class="activity sky">
+        <div class="activity-time">10:35 morning</div>
+        <div class="activity-name">CI053 落地 BNE</div>
+        <div class="activity-desc">入境 + 領行李 + Airtrain 22 分到 South Brisbane</div>
+        <div class="tags"><span class="tag transit">Airtrain</span></div>
+      </div>
+      <div class="activity">
+        <div class="activity-time">13:30 afternoon</div>
+        <div class="activity-name">入住 Modern 1BR Retreat</div>
+        <div class="activity-desc">66 Manning St · Coles 採購 · 早睡調時差</div>
+        <div class="tags"><span class="tag must">⭐ 9.5</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-sticker"><span class="dot"></span>DAY 02</div>
+    <div class="day-date">07.26 SUNDAY</div>
+    <div class="day-title"><span class="day-title-icon">🌳</span>South Bank 慢遊</div>
+    <div class="activities">
+      <div class="activity sage">
+        <div class="activity-time">09:30</div>
+        <div class="activity-name">Streets Beach 玩水玩沙</div>
+        <div class="activity-desc">城市裡的免費人工沙灘，步行 10 分可達</div>
+        <div class="tags"><span class="tag free">免費</span><span class="tag kid">幼兒最愛</span></div>
+      </div>
+      <div class="activity sage">
+        <div class="activity-time">12:00</div>
+        <div class="activity-name">South Bank 週日市集</div>
+        <div class="activity-desc">週日限定，各種美食攤位</div>
+        <div class="tags"><span class="tag food">週日限定</span></div>
+      </div>
+      <div class="activity sage">
+        <div class="activity-time">14:00</div>
+        <div class="activity-name">Queensland Museum</div>
+        <div class="activity-desc">恐龍化石 + Sciencentre 互動展</div>
+        <div class="tags"><span class="tag free">免費</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card highlight">
+    <div class="day-sticker"><span class="dot"></span>DAY 03</div>
+    <div class="day-date">07.27 MONDAY</div>
+    <div class="day-title"><span class="day-title-icon">🐨</span>抱無尾熊 · Lone Pine</div>
+    <div class="activities">
+      <div class="activity sage">
+        <div class="activity-time">09:30</div>
+        <div class="activity-name">公車 430 → Lone Pine</div>
+        <div class="activity-desc">Cultural Centre 站搭 430 線，45 分鐘直達</div>
+        <div class="tags"><span class="tag transit">公車</span></div>
+      </div>
+      <div class="activity">
+        <div class="activity-time">10:30 — 15:30</div>
+        <div class="activity-name">⭐ Lone Pine Koala Sanctuary</div>
+        <div class="activity-desc">Koala 拍照（全家一起 Meet &amp; Greet）+ 鸚鵡餵食秀 + 餵袋鼠 + 牧羊犬秀 + 鴨嘴獸。<br>大人想抱無尾熊：15+ 限定，需付費另預約 30 秒體驗。</div>
+        <div class="tags"><span class="tag must">⭐ 必去</span><span class="tag kid">Koala 近距離</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-sticker"><span class="dot"></span>DAY 04</div>
+    <div class="day-date">07.28 TUESDAY</div>
+    <div class="day-title"><span class="day-title-icon">🎨</span>GOMA + 河畔夜景</div>
+    <div class="activities">
+      <div class="activity plum">
+        <div class="activity-time">10:00</div>
+        <div class="activity-name">GOMA 兒童藝術中心</div>
+        <div class="activity-desc">3歲幼兒可親手碰觸的互動藝術</div>
+        <div class="tags"><span class="tag free">免費</span></div>
+      </div>
+      <div class="activity sky">
+        <div class="activity-time">12:30</div>
+        <div class="activity-name">CityCat → Howard Smith Wharves</div>
+        <div class="activity-desc">沿河看景，幼兒坐船超興奮！</div>
+        <div class="tags"><span class="tag transit">CityCat</span></div>
+      </div>
+      <div class="activity">
+        <div class="activity-time">15:00</div>
+        <div class="activity-name">Story Bridge + Brisbane Sign</div>
+        <div class="activity-desc">地標橋樑步道散步 + 打卡</div>
+      </div>
+      <div class="activity sunset">
+        <div class="activity-time">17:00</div>
+        <div class="activity-name">Kangaroo Point Cliffs 夕陽</div>
+        <div class="activity-desc">Brisbane 最美夜景觀景台</div>
+        <div class="tags"><span class="tag free">免費</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-sticker"><span class="dot"></span>DAY 05</div>
+    <div class="day-date">07.29 WEDNESDAY</div>
+    <div class="day-title"><span class="day-title-icon">🍜</span>Sunnybank + Mt Coot-tha</div>
+    <div class="activities">
+      <div class="activity sunset">
+        <div class="activity-time">10:30</div>
+        <div class="activity-name">Sunnybank Plaza 亞洲美食</div>
+        <div class="activity-desc">Brisbane 台灣人聚集地，越南河粉 + 台式 + 中式</div>
+        <div class="tags"><span class="tag food">台味</span><span class="tag transit">Uber 20 分</span></div>
+      </div>
+      <div class="activity sunset">
+        <div class="activity-time">14:30</div>
+        <div class="activity-name">Mt Coot-tha Lookout 全景</div>
+        <div class="activity-desc">免費！俯瞰整個 Brisbane 市區</div>
+        <div class="tags"><span class="tag free">免費</span></div>
+      </div>
+      <div class="activity sage">
+        <div class="activity-time">15:30</div>
+        <div class="activity-name">Brisbane Botanic Gardens</div>
+        <div class="activity-desc">免費入園，幼兒推車可進入</div>
+        <div class="tags"><span class="tag free">免費</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card highlight">
+    <div class="day-sticker"><span class="dot"></span>DAY 06</div>
+    <div class="day-date">07.30 THURSDAY</div>
+    <div class="day-title"><span class="day-title-icon">⛴️</span>CityCat + Eat Street 夜市</div>
+    <div class="activities">
+      <div class="activity sky">
+        <div class="activity-time">10:00</div>
+        <div class="activity-name">CityCat → New Farm Park</div>
+        <div class="activity-desc">Brisbane 最受歡迎的家庭公園</div>
+        <div class="tags"><span class="tag transit">CityCat</span><span class="tag free">免費</span></div>
+      </div>
+      <div class="activity rose">
+        <div class="activity-time">18:00</div>
+        <div class="activity-name">⭐ Eat Street Northshore 夜市</div>
+        <div class="activity-desc">貨櫃改造的文青夜市！180+ 攤位，街頭表演、燈光裝飾。週四 16-21h 開放。</div>
+        <div class="tags"><span class="tag must">IG 必拍</span><span class="tag food">夜市</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day-card">
+    <div class="day-sticker"><span class="dot"></span>DAY 07</div>
+    <div class="day-date">07.31 FRIDAY · 回程</div>
+    <div class="day-title"><span class="day-title-icon">🛍️</span>採購 + 22:50 返台</div>
+    <div class="activities">
+      <div class="activity">
+        <div class="activity-time">09:00</div>
+        <div class="activity-name">最後 South Bank 散步</div>
+        <div class="activity-desc">趁早晨人少最後玩一次 Streets Beach</div>
+      </div>
+      <div class="activity">
+        <div class="activity-time">10:00</div>
+        <div class="activity-name">退房 → 寄放行李</div>
+        <div class="activity-desc">退房後繼續玩，下午再領</div>
+      </div>
+      <div class="activity">
+        <div class="activity-time">10:30</div>
+        <div class="activity-name">Queen Street Mall 採購</div>
+        <div class="activity-desc">過橋走 10 分到 CBD，買 Tim Tam、伴手禮</div>
+        <div class="tags"><span class="tag food">伴手禮</span></div>
+      </div>
+      <div class="activity plum">
+        <div class="activity-time">15:00</div>
+        <div class="activity-name">Airtrain → BNE 機場</div>
+        <div class="activity-desc">South Brisbane → BNE 22 分</div>
+        <div class="tags"><span class="tag transit">Airtrain</span></div>
+      </div>
+      <div class="activity sky">
+        <div class="activity-time">22:50</div>
+        <div class="activity-name">CI054 起飛 → 桃園</div>
+        <div class="activity-desc">8/1 (六) 05:40 落地，平安返台</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-text">Have a wonderful trip!</div>
+    <div class="footer-emoji">🐨 🏖️ 🌊</div>
+  </div>
+
+</div>
+
+</body>
+</html>
