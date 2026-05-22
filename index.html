@@ -314,7 +314,6 @@ if (typeof L === 'undefined') {
   <button class="nb" onclick="showPanel('hotels')">🏨 住宿</button>
   <button class="nb" onclick="showPanel('map')">🗺 路線圖</button>
   <button class="nb" onclick="showPanel('food')">🍽 美食</button>
-  <button class="nb" onclick="showPanel('expense')">💳 花費</button>
   <button class="nb" onclick="showPanel('carlaw')">🚌 交通</button>
   <button class="nb" onclick="showPanel('packing')">🎒 打包</button>
   <button class="nb" onclick="showPanel('budget')">💰 預算</button>
@@ -983,111 +982,6 @@ if (typeof L === 'undefined') {
   </div></div>
 </div>
 
-<!-- ═══ 花費記錄 ═══ -->
-<div id="panel-expense" class="panel">
-  <div id="exp-summary" class="exp-summary">
-    <div class="exp-sum-card">
-      <div class="esnum" id="sum-aud">$0</div>
-      <div class="eslbl">已花費（AUD）</div>
-    </div>
-    <div class="exp-sum-card">
-      <div class="esnum" id="sum-twd">NT$0</div>
-      <div class="eslbl">已花費（TWD）</div>
-    </div>
-    <div class="exp-sum-card total-card">
-      <div class="esnum" id="sum-pct">0%</div>
-      <div class="eslbl">已使用預算比例（預算上限可調整）</div>
-    </div>
-  </div>
-
-  <!-- Budget progress -->
-  <div class="bud-track">
-    <div class="bud-label"><span class="bl">旅遊預算追蹤</span><span class="br" id="bud-remain">剩餘 —</span></div>
-    <div class="bud-bar"><div class="bud-fill" id="bud-fill" style="width:0%"></div></div>
-    <div class="bud-note">預算上限：<input type="number" id="bud-limit" value="5000" style="width:80px;border:1px solid #ddd;border-radius:5px;padding:2px 6px;font-size:12px;font-family:'Noto Sans TC',sans-serif;" onchange="updateSummary()"> AUD &nbsp;|&nbsp; 匯率：1 AUD = <input type="number" id="rate-input" value="22" style="width:50px;border:1px solid #ddd;border-radius:5px;padding:2px 6px;font-size:12px;font-family:'Noto Sans TC',sans-serif;" onchange="updateSummary()"> TWD</div>
-  </div>
-
-  <!-- Tabs -->
-  <div class="etabs">
-    <button class="etab active" onclick="showExpTab('add')">➕ 新增</button>
-    <button class="etab" onclick="showExpTab('list')">📋 明細</button>
-    <button class="etab" onclick="showExpTab('breakdown')">📊 分類</button>
-  </div>
-
-  <!-- Add Tab -->
-  <div id="etab-add" class="etab-panel active">
-
-    <!-- Telegram Bot 整合（bot 後端有 user_id 白名單，公開連結安全） -->
-    <div style="background:linear-gradient(135deg,#2AABEE,#229ED9);border-radius:16px;padding:16px 18px;margin-bottom:14px;box-shadow:0 4px 14px rgba(34,158,217,0.25);">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-        <div style="font-size:26px;">📲</div>
-        <div>
-          <div style="font-size:14px;font-weight:800;color:white;">用 Telegram Bot 拍照記帳</div>
-          <div style="font-size:11px;color:rgba(255,255,255,0.85);">@Jessie_Mac_Assistant_Bot · 自動 OCR 寫進 Notion 旅行 DB</div>
-        </div>
-      </div>
-      <a href="https://t.me/Jessie_Mac_Assistant_Bot" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;background:white;color:#229ED9;border-radius:10px;padding:11px;font-size:14px;font-weight:800;text-decoration:none;font-family:'Noto Sans TC',sans-serif;">
-        ✈️ 開啟 Bot 拍收據
-      </a>
-      <div style="font-size:10px;color:rgba(255,255,255,0.8);margin-top:8px;text-align:center;">拍照給 Bot → 自動 OCR 辨識金額 → 寫進 Notion 旅行 DB<br><em>caption 範例：「收據 Jessie 住宿」</em></div>
-    </div>
-
-    <div class="exp-form">
-      <div class="exp-form-head">
-        <div class="efh">✏️ 新增花費（網頁手動版）</div>
-      </div>
-      <div class="exp-form-body">
-        <div class="form-row">
-          <label>花費名稱</label>
-          <input type="text" id="exp-name" placeholder="例：Lone Pine 門票">
-        </div>
-        <div class="form-grid">
-          <div class="form-row">
-            <label>金額（AUD）</label>
-            <input type="number" id="exp-amt" placeholder="0.00" step="0.01" min="0">
-          </div>
-          <div class="form-row">
-            <label>日期</label>
-            <input type="date" id="exp-date" value="2026-07-25">
-          </div>
-        </div>
-        <div class="form-grid">
-          <div class="form-row">
-            <label>分類</label>
-            <select id="exp-cat">
-              <option value="food">🍽 餐飲</option>
-              <option value="hotel">🏨 住宿</option>
-              <option value="transport">🚗 交通/油費</option>
-              <option value="ticket">🎟 門票</option>
-              <option value="shopping">🛒 購物</option>
-              <option value="other">📦 其他</option>
-            </select>
-          </div>
-          <div class="form-row">
-            <label>備注（可略）</label>
-            <input type="text" id="exp-note" placeholder="例：2大1小">
-          </div>
-        </div>
-        <button class="add-btn" onclick="addExpense()">＋ 新增記錄</button>
-      </div>
-    </div>
-    <div class="al info"><span class="ali">💡</span><div class="alc">所有花費記錄儲存在此裝置，重新開啟頁面後仍會保留。建議定期截圖備份。<br>⚠️ 跨裝置不同步（手機、平板、電腦各自記）；出發前的測試資料可用下方按鈕一鍵清空。</div></div>
-    <button class="add-btn" style="background:#FFF0EC;color:var(--coral);border:1px solid var(--coral);margin-top:8px;" onclick="clearAllTripData()">🗑️ 清空本次旅行所有記錄（花費 + 打包清單）</button>
-  </div>
-
-  <!-- List Tab -->
-  <div id="etab-list" class="etab-panel">
-    <div id="exp-list-container"></div>
-  </div>
-
-  <!-- Breakdown Tab -->
-<div id="etab-breakdown" class="etab-panel">
-    <div class="cat-breakdown" id="cat-breakdown">
-      <div style="text-align:center;padding:20px;color:var(--muted);font-size:13px;">尚無花費記錄</div>
-    </div>
-  </div>
-</div>
-
 <!-- ═══ 租車 ═══ -->
 <div id="panel-carlaw" class="panel">
   <div class="al info"><span class="ali">🚌</span><div class="alc"><div class="alt">不租車 · 大眾運輸 + Uber 攻略</div>Brisbane 市區大眾運輸發達，加上 Uber 補強，比租車更便宜也更省心。</div></div>
@@ -1195,6 +1089,8 @@ if (typeof L === 'undefined') {
       <div class="ci" onclick="toggleCheck(this)"><div class="cbox"></div><div><div class="cn">所有訂房確認信（列印+手機備份）</div></div></div>
       </div>
   </div>
+
+  <button class="add-btn" style="background:#FFF0EC;color:var(--coral);border:1px solid var(--coral);margin-top:12px;width:100%;border-radius:10px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans TC',sans-serif;" onclick="clearPackingChecks()">🗑️ 清空打包清單勾選</button>
 </div>
 
 <!-- ═══ 路線圖 ═══ -->
@@ -1566,7 +1462,7 @@ if (typeof L === 'undefined') {
 function showPanel(id) {
   var panels = document.querySelectorAll('.panel');
   var btns = document.querySelectorAll('.nb');
-  var order = ['overview','itinerary','hotels','map','food','expense','carlaw','packing','budget','rainday','emergency'];
+  var order = ['overview','itinerary','hotels','map','food','carlaw','packing','budget','rainday','emergency'];
   for (var i=0; i<panels.length; i++) panels[i].className = 'panel';
   for (var i=0; i<btns.length; i++) btns[i].className = 'nb';
   var p = document.getElementById('panel-'+id);
@@ -1603,172 +1499,12 @@ function toggleCheck(item) {
   try { localStorage.setItem('checks_brisbane', JSON.stringify(states)); } catch(e) {}
 }
 
-var expenses = [];
-try {
-  var _saved = localStorage.getItem('expenses_brisbane');
-  if (_saved) expenses = JSON.parse(_saved);
-} catch(e) {}
-
-var catInfo = {
-  food:      { icon:'🍽', label:'餐飲',     color:'cat-food' },
-  hotel:     { icon:'🏨', label:'住宿',     color:'cat-hotel' },
-  transport: { icon:'🚗', label:'交通/油費', color:'cat-transport' },
-  ticket:    { icon:'🎟', label:'門票',     color:'cat-ticket' },
-  shopping:  { icon:'🛒', label:'購物',     color:'cat-shopping' },
-  other:     { icon:'📦', label:'其他',     color:'cat-other' }
-};
-
-function saveExpenses() {
-  try { localStorage.setItem('expenses_brisbane', JSON.stringify(expenses)); } catch(e) {}
-}
-
-function clearAllTripData() {
-  if (!confirm('確定要清空所有花費記錄與打包清單勾選狀態嗎？\n\n此動作不可復原，建議先截圖備份。')) return;
-  if (!confirm('再次確認：清空後 ' + expenses.length + ' 筆花費記錄會消失。')) return;
-  expenses = [];
-  try {
-    localStorage.removeItem('expenses_brisbane');
-    localStorage.removeItem('checks_brisbane');
-  } catch(e) {}
+function clearPackingChecks() {
+  if (!confirm('確定要清空打包清單所有勾選狀態嗎？\n\n此動作不可復原。')) return;
+  try { localStorage.removeItem('checks_brisbane'); } catch(e) {}
   var all = document.querySelectorAll('.ci.checked');
   for (var i=0; i<all.length; i++) all[i].className = 'ci';
-  updateSummary();
-  renderExpList();
-  renderBreakdown();
-  alert('已清空！可以開始記錄這次旅行了 🇦🇺');
-}
-
-function addExpense() {
-  var name = document.getElementById('exp-name').value.trim();
-  var amt  = parseFloat(document.getElementById('exp-amt').value);
-  var date = document.getElementById('exp-date').value;
-  var cat  = document.getElementById('exp-cat').value;
-  var note = document.getElementById('exp-note').value.trim();
-  if (!name || isNaN(amt) || amt <= 0) { alert('請填入名稱與金額！'); return; }
-  expenses.push({ id: Date.now(), name: name, amt: amt, date: date, cat: cat, note: note });
-  saveExpenses();
-  document.getElementById('exp-name').value = '';
-  document.getElementById('exp-amt').value = '';
-  document.getElementById('exp-note').value = '';
-  updateSummary();
-  renderExpList();
-  renderBreakdown();
-  showExpTab('list');
-}
-
-function deleteExpense(id) {
-  var newExp = [];
-  for (var i=0; i<expenses.length; i++) { if (expenses[i].id !== id) newExp.push(expenses[i]); }
-  expenses = newExp;
-  saveExpenses();
-  updateSummary();
-  renderExpList();
-  renderBreakdown();
-}
-
-function updateSummary() {
-  var total = 0;
-  for (var i=0; i<expenses.length; i++) total += expenses[i].amt;
-  var rate  = parseFloat(document.getElementById('rate-input').value) || 22;
-  var limit = parseFloat(document.getElementById('bud-limit').value) || 5000;
-  var pct   = Math.min((total / limit) * 100, 100);
-  document.getElementById('sum-aud').textContent = '$' + Math.round(total);
-  document.getElementById('sum-twd').textContent = 'NT$' + Math.round(total * rate).toLocaleString();
-  document.getElementById('sum-pct').textContent = Math.round(pct) + '%';
-  document.getElementById('bud-remain').textContent = '剩餘 $' + Math.max(limit - total, 0).toFixed(0) + ' AUD';
-  var fill = document.getElementById('bud-fill');
-  fill.style.width = pct + '%';
-  fill.className = 'bud-fill' + (pct > 80 ? ' warn' : '');
-}
-
-function renderExpList() {
-  var container = document.getElementById('exp-list-container');
-  if (expenses.length === 0) {
-    container.innerHTML = '<div class="no-expense"><div class="nei">💳</div><div>尚無花費記錄</div></div>';
-    return;
-  }
-  var groups = {};
-  var sorted = expenses.slice().sort(function(a,b){ return b.id - a.id; });
-  for (var i=0; i<sorted.length; i++) {
-    var e = sorted[i];
-    if (!groups[e.date]) groups[e.date] = [];
-    groups[e.date].push(e);
-  }
-  var dateLabels = {
-    '2026-07-25':'Day 1 · 7/25 抵達',
-    '2026-07-26':'Day 2 · 7/26 South Bank',
-    '2026-07-27':'Day 3 · 7/27 動物園',
-    '2026-07-28':'Day 4 · 7/28 GOMA + Story Bridge',
-    '2026-07-29':'Day 5 · 7/29 Sunnybank + Mt Coot-tha',
-    '2026-07-30':'Day 6 · 7/30 CityCat + Eat Street',
-    '2026-07-31':'Day 7 · 7/31 返程'
-  };
-  var html = '<div class="exp-list">';
-  var dates = Object.keys(groups).sort(function(a,b){ return b.localeCompare(a); });
-  for (var d=0; d<dates.length; d++) {
-    var date = dates[d];
-    var dayTotal = 0;
-    for (var j=0; j<groups[date].length; j++) dayTotal += groups[date][j].amt;
-    html += '<div class="exp-day-group"><div class="exp-day-label">' +
-            (dateLabels[date] || date) + ' &nbsp;·&nbsp; $' + Math.round(dayTotal) + ' AUD</div>';
-    for (var k=0; k<groups[date].length; k++) {
-      var e = groups[date][k];
-      var ci = catInfo[e.cat] || catInfo.other;
-      html += '<div class="exp-item">' +
-              '<div class="exp-cat-icon ' + ci.color + '">' + ci.icon + '</div>' +
-              '<div class="exp-info"><div class="exp-name">' + e.name + '</div>' +
-              '<div class="exp-meta">' + ci.label + (e.note ? ' · ' + e.note : '') + '</div></div>' +
-              '<div class="exp-amt">$' + Math.round(e.amt) + '</div>' +
-              '<button class="exp-del" onclick="deleteExpense(' + e.id + ')">✕</button></div>';
-    }
-    html += '</div>';
-  }
-  html += '</div>';
-  container.innerHTML = html;
-}
-
-function renderBreakdown() {
-  var bd = document.getElementById('cat-breakdown');
-  if (expenses.length === 0) {
-    bd.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted);font-size:13px;">尚無花費記錄</div>';
-    return;
-  }
-  var totals = {};
-  var grand = 0;
-  for (var i=0; i<expenses.length; i++) {
-    grand += expenses[i].amt;
-    totals[expenses[i].cat] = (totals[expenses[i].cat] || 0) + expenses[i].amt;
-  }
-  var sorted = Object.keys(totals).sort(function(a,b){ return totals[b] - totals[a]; });
-  var html = '';
-  for (var i=0; i<sorted.length; i++) {
-    var cat = sorted[i];
-    var amt = totals[cat];
-    var ci  = catInfo[cat] || catInfo.other;
-    var pct = grand > 0 ? Math.round((amt/grand)*100) : 0;
-    html += '<div class="cat-row">' +
-            '<div class="cat-row-icon ' + ci.color + '">' + ci.icon + '</div>' +
-            '<div><div class="cat-row-name">' + ci.label + '</div>' +
-            '<div style="height:4px;background:var(--border);border-radius:2px;width:100px;margin-top:4px;overflow:hidden;">' +
-            '<div style="height:100%;width:' + pct + '%;background:var(--ocean);border-radius:2px;"></div></div></div>' +
-            '<div style="text-align:right;"><div class="cat-row-amt">$' + Math.round(amt) + '</div>' +
-            '<div class="cat-row-pct">' + pct + '%</div></div></div>';
-  }
-  bd.innerHTML = html;
-}
-
-function showExpTab(id) {
-  var tabs = document.querySelectorAll('.etab');
-  var panels = document.querySelectorAll('.etab-panel');
-  var order = ['add','list','breakdown'];
-  for (var i=0; i<tabs.length; i++) tabs[i].className = 'etab';
-  for (var i=0; i<panels.length; i++) panels[i].className = 'etab-panel';
-  var p = document.getElementById('etab-'+id);
-  if (p) p.className = 'etab-panel active';
-  var idx = order.indexOf(id);
-  if (idx >= 0 && tabs[idx]) tabs[idx].className = 'etab active';
-  if (id === 'list') renderExpList();
-  if (id === 'breakdown') renderBreakdown();
+  alert('打包清單已清空 🎒');
 }
 // ── LEAFLET MAPS ──
 var leafletMaps = {};
@@ -1901,115 +1637,7 @@ window.onload = function() {
   } catch(e) {}
   var first = document.querySelector('.day-h');
   if (first) toggleDay(first);
-  updateSummary();
-  renderExpList();
 };
-
-// ── RECEIPT CAMERA OCR ──
-function previewReceipt(input) {
-  if (!input.files || !input.files[0]) return;
-  var file = input.files[0];
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    var preview = document.getElementById('receipt-preview');
-    var placeholder = document.getElementById('camera-placeholder');
-    preview.src = e.target.result;
-    preview.style.display = 'block';
-    placeholder.style.display = 'none';
-    document.getElementById('ocr-loading').style.display = 'block';
-    document.getElementById('ocr-result').style.display = 'none';
-    document.getElementById('ocr-error').style.display = 'none';
-    // Call Claude API for OCR
-    analyzeReceipt(e.target.result);
-  };
-  reader.readAsDataURL(file);
-}
-
-function analyzeReceipt(base64DataUrl) {
-  // Extract base64 data
-  var parts = base64DataUrl.split(',');
-  var mediaType = parts[0].match(/:(.*?);/)[1];
-  var base64Data = parts[1];
-
-  fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 500,
-      messages: [{
-        role: 'user',
-        content: [
-          {
-            type: 'image',
-            source: { type: 'base64', media_type: mediaType, data: base64Data }
-          },
-          {
-            type: 'text',
-            text: 'This is a receipt from Australia. Extract: 1) Store/restaurant name or item description (in Traditional Chinese if possible, else English), 2) Total amount in AUD (number only), 3) Date in YYYY-MM-DD format (if visible, else leave empty), 4) Best category from: food/hotel/transport/ticket/shopping/other. Reply ONLY in this exact JSON format with no other text: {"name":"","amount":0,"date":"","category":"food"}'
-          }
-        ]
-      }]
-    })
-  })
-  .then(function(res) { return res.json(); })
-  .then(function(data) {
-    document.getElementById('ocr-loading').style.display = 'none';
-    var text = '';
-    if (data.content && data.content[0] && data.content[0].text) {
-      text = data.content[0].text.trim();
-    }
-    try {
-      var result = JSON.parse(text);
-      document.getElementById('ocr-name').value = result.name || '';
-      document.getElementById('ocr-amt').value = result.amount || '';
-      document.getElementById('ocr-date').value = result.date || '2026-07-25';
-      var catSel = document.getElementById('ocr-cat');
-      var cat = result.category || 'other';
-      for (var i = 0; i < catSel.options.length; i++) {
-        if (catSel.options[i].value === cat) { catSel.selectedIndex = i; break; }
-      }
-      document.getElementById('ocr-result').style.display = 'block';
-    } catch(e) {
-      document.getElementById('ocr-error-msg').textContent = '無法解析辨識結果，請手動輸入。';
-      document.getElementById('ocr-error').style.display = 'block';
-    }
-  })
-  .catch(function(err) {
-    document.getElementById('ocr-loading').style.display = 'none';
-    document.getElementById('ocr-error-msg').textContent = '網路錯誤，請確認連線後再試。';
-    document.getElementById('ocr-error').style.display = 'block';
-  });
-}
-
-function confirmOcrExpense() {
-  var name = document.getElementById('ocr-name').value.trim();
-  var amt  = parseFloat(document.getElementById('ocr-amt').value);
-  var date = document.getElementById('ocr-date').value;
-  var cat  = document.getElementById('ocr-cat').value;
-  var note = document.getElementById('ocr-note').value.trim();
-  if (!name || isNaN(amt) || amt <= 0) { alert('請確認名稱與金額！'); return; }
-  expenses.push({ id: Date.now(), name: name, amt: amt, date: date, cat: cat, note: note });
-  saveExpenses();
-  updateSummary();
-  renderExpList();
-  renderBreakdown();
-  resetCamera();
-  showExpTab('list');
-}
-
-function resetCamera() {
-  document.getElementById('receipt-preview').style.display = 'none';
-  document.getElementById('receipt-preview').src = '';
-  document.getElementById('camera-placeholder').style.display = 'block';
-  document.getElementById('ocr-loading').style.display = 'none';
-  document.getElementById('ocr-result').style.display = 'none';
-  document.getElementById('ocr-error').style.display = 'none';
-  document.getElementById('receipt-input').value = '';
-  document.getElementById('ocr-name').value = '';
-  document.getElementById('ocr-amt').value = '';
-  document.getElementById('ocr-note').value = '';
-}
 
 </script>
 </body>
