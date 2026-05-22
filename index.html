@@ -314,6 +314,7 @@ if (typeof L === 'undefined') {
   <button class="nb" onclick="showPanel('hotels')">🏨 住宿</button>
   <button class="nb" onclick="showPanel('map')">🗺 路線圖</button>
   <button class="nb" onclick="showPanel('food')">🍽 美食</button>
+  <button class="nb" onclick="showPanel('expense')">💳 花費</button>
   <button class="nb" onclick="showPanel('carlaw')">🚌 交通</button>
   <button class="nb" onclick="showPanel('packing')">🎒 打包</button>
   <button class="nb" onclick="showPanel('budget')">💰 預算</button>
@@ -982,6 +983,46 @@ if (typeof L === 'undefined') {
   </div></div>
 </div>
 
+<!-- ═══ 花費（Notion 即時讀取） ═══ -->
+<div id="panel-expense" class="panel">
+  <div class="al info"><span class="ali">📲</span><div class="alc"><div class="alt">花費從 Telegram Bot 即時同步</div>用 <a href="https://t.me/Jessie_Mac_Assistant_Bot" target="_blank" style="color:var(--ocean);font-weight:700;">@Jessie_Mac_Assistant_Bot</a> 拍照記帳 → OCR → Notion 旅行 DB → 本頁即時顯示。兩人記同一趟自動加總。</div></div>
+
+  <div id="exp-summary" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+    <div style="background:var(--white);border-radius:14px;padding:14px;box-shadow:var(--sh);text-align:center;">
+      <div id="sum-aud" style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--dark);">$—</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px;">已花費（AUD 換算）</div>
+    </div>
+    <div style="background:var(--white);border-radius:14px;padding:14px;box-shadow:var(--sh);text-align:center;">
+      <div id="sum-twd" style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--dark);">NT$—</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px;">已花費（TWD）</div>
+    </div>
+    <div style="grid-column:1/-1;background:linear-gradient(135deg,var(--ocean),#1A7A5E);color:white;border-radius:14px;padding:14px;text-align:center;">
+      <div id="sum-pct" style="font-family:'Playfair Display',serif;font-size:30px;font-weight:700;">—</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.75);margin-top:3px;">已使用預算比例（預算上限 <input type="number" id="bud-limit" value="5000" style="width:64px;border:1px solid rgba(255,255,255,0.3);border-radius:5px;padding:2px 6px;font-size:12px;font-family:'Noto Sans TC',sans-serif;background:rgba(0,0,0,0.15);color:white;" onchange="renderExpenseSummary()"> AUD）</div>
+    </div>
+  </div>
+
+  <div id="exp-status" style="text-align:center;padding:8px;font-size:11px;color:var(--muted);margin-bottom:8px;">⏳ 連線 Notion 中...</div>
+
+  <div style="display:flex;gap:6px;margin-bottom:14px;">
+    <button class="etab active" onclick="showExpTab('list')" style="flex:1;border:none;background:var(--ocean);border-radius:var(--r-s);padding:10px 6px;font-family:'Noto Sans TC',sans-serif;font-size:12px;font-weight:600;color:white;cursor:pointer;box-shadow:var(--sh);">📋 明細</button>
+    <button class="etab" onclick="showExpTab('breakdown')" style="flex:1;border:none;background:var(--white);border-radius:var(--r-s);padding:10px 6px;font-family:'Noto Sans TC',sans-serif;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;box-shadow:var(--sh);">📊 分類</button>
+    <button class="etab" onclick="showExpTab('payer')" style="flex:1;border:none;background:var(--white);border-radius:var(--r-s);padding:10px 6px;font-family:'Noto Sans TC',sans-serif;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;box-shadow:var(--sh);">👥 誰付的</button>
+  </div>
+
+  <div id="etab-list" class="etab-panel active" style="display:block;">
+    <div id="exp-list-container"><div style="text-align:center;padding:28px 16px;color:var(--muted);font-size:13px;">⏳ 載入中...</div></div>
+  </div>
+  <div id="etab-breakdown" class="etab-panel" style="display:none;">
+    <div id="cat-breakdown" style="background:var(--white);border-radius:14px;padding:14px;box-shadow:var(--sh);"><div style="text-align:center;padding:20px;color:var(--muted);font-size:13px;">⏳ 載入中...</div></div>
+  </div>
+  <div id="etab-payer" class="etab-panel" style="display:none;">
+    <div id="payer-breakdown" style="background:var(--white);border-radius:14px;padding:14px;box-shadow:var(--sh);"><div style="text-align:center;padding:20px;color:var(--muted);font-size:13px;">⏳ 載入中...</div></div>
+  </div>
+
+  <button class="add-btn" style="background:var(--white);color:var(--ocean);border:1px solid var(--ocean);margin-top:12px;width:100%;border-radius:10px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans TC',sans-serif;" onclick="loadExpenses()">🔄 重新整理</button>
+</div>
+
 <!-- ═══ 租車 ═══ -->
 <div id="panel-carlaw" class="panel">
   <div class="al info"><span class="ali">🚌</span><div class="alc"><div class="alt">不租車 · 大眾運輸 + Uber 攻略</div>Brisbane 市區大眾運輸發達，加上 Uber 補強，比租車更便宜也更省心。</div></div>
@@ -1462,7 +1503,7 @@ if (typeof L === 'undefined') {
 function showPanel(id) {
   var panels = document.querySelectorAll('.panel');
   var btns = document.querySelectorAll('.nb');
-  var order = ['overview','itinerary','hotels','map','food','carlaw','packing','budget','rainday','emergency'];
+  var order = ['overview','itinerary','hotels','map','food','expense','carlaw','packing','budget','rainday','emergency'];
   for (var i=0; i<panels.length; i++) panels[i].className = 'panel';
   for (var i=0; i<btns.length; i++) btns[i].className = 'nb';
   var p = document.getElementById('panel-'+id);
@@ -1505,6 +1546,164 @@ function clearPackingChecks() {
   var all = document.querySelectorAll('.ci.checked');
   for (var i=0; i<all.length; i++) all[i].className = 'ci';
   alert('打包清單已清空 🎒');
+}
+
+// ── 花費頁（Notion 即時讀取） ──
+var EXPENSE_API = 'https://jessie-telegram-bot.geminijune15ice.workers.dev/api/expenses?trip=Brisbane';
+var CAT_ICONS = { '住宿':'🏨', '交通':'🚗', '餐食':'🍽', '景點':'🎟', '購物':'🛒', '其他':'📦' };
+var CAT_COLORS = { '住宿':'var(--ocean-l)', '交通':'#F3E5F5', '餐食':'#FFF3E0', '景點':'var(--green-l)', '購物':'var(--sun-l)', '其他':'#F5F5F5' };
+var expenseData = null;
+
+function showExpTab(id) {
+  var ids = ['list','breakdown','payer'];
+  for (var i=0; i<ids.length; i++) {
+    var p = document.getElementById('etab-'+ids[i]);
+    if (p) p.style.display = (ids[i] === id) ? 'block' : 'none';
+  }
+  var tabs = document.querySelectorAll('#panel-expense .etab');
+  for (var j=0; j<tabs.length; j++) {
+    var isActive = (j === ids.indexOf(id));
+    tabs[j].style.background = isActive ? 'var(--ocean)' : 'var(--white)';
+    tabs[j].style.color = isActive ? 'white' : 'var(--muted)';
+  }
+}
+
+function loadExpenses() {
+  var status = document.getElementById('exp-status');
+  if (status) status.textContent = '⏳ 連線 Notion 中...';
+  fetch(EXPENSE_API, { cache: 'no-store' })
+    .then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(function(data) {
+      if (data.error) throw new Error(data.error);
+      expenseData = data;
+      renderExpenseSummary();
+      renderExpenseList();
+      renderCategoryBreakdown();
+      renderPayerBreakdown();
+      if (status) {
+        var t = new Date(data.updated);
+        var hh = String(t.getHours()).padStart(2,'0');
+        var mm = String(t.getMinutes()).padStart(2,'0');
+        status.textContent = '✅ Notion 即時資料 · 共 ' + data.count + ' 筆 · 更新 ' + hh + ':' + mm;
+      }
+    })
+    .catch(function(err) {
+      if (status) status.textContent = '⚠️ 無法連到 Notion（' + err.message + '）— 按重新整理再試';
+      var c = document.getElementById('exp-list-container');
+      if (c) c.innerHTML = '<div style="text-align:center;padding:28px 16px;color:var(--muted);font-size:13px;">'
+        + '<div style="font-size:36px;margin-bottom:8px;">📡</div>'
+        + '無法連線。可能原因：<br>1. 沒網路<br>2. Notion 旅行 DB 尚無 Brisbane 資料<br>3. Bot 還沒 /trip start Brisbane</div>';
+    });
+}
+
+function renderExpenseSummary() {
+  if (!expenseData) return;
+  var limit = parseFloat(document.getElementById('bud-limit').value) || 5000;
+  var audDisplay = expenseData.total_aud_converted !== null ? expenseData.total_aud_converted : expenseData.total_aud_direct;
+  var pct = audDisplay > 0 ? Math.min((audDisplay / limit) * 100, 999) : 0;
+  document.getElementById('sum-aud').textContent = '$' + Math.round(audDisplay).toLocaleString();
+  document.getElementById('sum-twd').textContent = 'NT$' + Math.round(expenseData.total_twd).toLocaleString();
+  document.getElementById('sum-pct').textContent = Math.round(pct) + '%';
+}
+
+function renderExpenseList() {
+  var c = document.getElementById('exp-list-container');
+  if (!c || !expenseData) return;
+  var items = expenseData.items || [];
+  if (items.length === 0) {
+    c.innerHTML = '<div style="text-align:center;padding:28px 16px;color:var(--muted);font-size:13px;"><div style="font-size:36px;margin-bottom:8px;">💳</div>尚無花費記錄<br><em style="font-size:11px;">出發後用 Telegram Bot 拍照即會即時顯示</em></div>';
+    return;
+  }
+  var html = '<div style="margin-bottom:12px;">';
+  var lastDate = '';
+  for (var i=0; i<items.length; i++) {
+    var e = items[i];
+    if (e.date !== lastDate) {
+      if (lastDate !== '') html += '</div>';
+      html += '<div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;padding:8px 0 6px 2px;border-bottom:1px solid var(--border);margin-bottom:4px;">' + (e.date || '無日期') + '</div>';
+      lastDate = e.date;
+    }
+    var icon = CAT_ICONS[e.category] || '📦';
+    var color = CAT_COLORS[e.category] || '#F5F5F5';
+    var amtDisplay = e.currency === 'TWD'
+      ? 'NT$' + Math.round(e.amount_original).toLocaleString()
+      : e.currency + ' ' + Math.round(e.amount_original).toLocaleString();
+    var twdLine = e.currency !== 'TWD' && e.amount_twd > 0
+      ? '<div style="font-size:10px;color:var(--muted);text-align:right;">≈ NT$ ' + Math.round(e.amount_twd).toLocaleString() + '</div>'
+      : '';
+    html += '<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--white);border-radius:11px;margin-bottom:6px;box-shadow:var(--sh);">'
+      + '<div style="background:' + color + ';width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;">' + icon + '</div>'
+      + '<div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:600;color:var(--dark);">' + escapeHtml(e.vendor) + '</div>'
+      + '<div style="font-size:10px;color:var(--muted);margin-top:2px;">' + e.category + ' · 付款 ' + e.paid_by + '</div></div>'
+      + '<div style="text-align:right;flex-shrink:0;"><div style="font-size:14px;font-weight:700;color:var(--dark);">' + amtDisplay + '</div>' + twdLine + '</div>'
+      + '</div>';
+  }
+  html += '</div>';
+  c.innerHTML = html;
+}
+
+function renderCategoryBreakdown() {
+  var bd = document.getElementById('cat-breakdown');
+  if (!bd || !expenseData) return;
+  var totals = expenseData.by_category || {};
+  var keys = Object.keys(totals);
+  if (keys.length === 0) {
+    bd.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted);font-size:13px;">尚無花費記錄</div>';
+    return;
+  }
+  var grand = 0;
+  for (var k=0; k<keys.length; k++) grand += totals[keys[k]];
+  keys.sort(function(a,b){ return totals[b] - totals[a]; });
+  var html = '';
+  for (var i=0; i<keys.length; i++) {
+    var cat = keys[i];
+    var amt = totals[cat];
+    var icon = CAT_ICONS[cat] || '📦';
+    var color = CAT_COLORS[cat] || '#F5F5F5';
+    var pct = grand > 0 ? Math.round((amt/grand)*100) : 0;
+    html += '<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);">'
+      + '<div style="background:' + color + ';width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">' + icon + '</div>'
+      + '<div style="flex:1;"><div style="font-size:12px;font-weight:600;color:var(--dark);">' + cat + '</div>'
+      + '<div style="height:4px;background:var(--border);border-radius:2px;width:100px;margin-top:4px;overflow:hidden;"><div style="height:100%;width:' + pct + '%;background:var(--ocean);border-radius:2px;"></div></div></div>'
+      + '<div style="text-align:right;"><div style="font-size:13px;font-weight:700;color:var(--text);">NT$' + amt.toLocaleString() + '</div>'
+      + '<div style="font-size:10px;color:var(--muted);">' + pct + '%</div></div></div>';
+  }
+  bd.innerHTML = html;
+}
+
+function renderPayerBreakdown() {
+  var bd = document.getElementById('payer-breakdown');
+  if (!bd || !expenseData) return;
+  var totals = expenseData.by_payer || {};
+  var keys = Object.keys(totals);
+  if (keys.length === 0) {
+    bd.innerHTML = '<div style="text-align:center;padding:20px;color:var(--muted);font-size:13px;">尚無花費記錄</div>';
+    return;
+  }
+  var grand = 0;
+  for (var k=0; k<keys.length; k++) grand += totals[keys[k]];
+  keys.sort(function(a,b){ return totals[b] - totals[a]; });
+  var emojiMap = { 'Jessie':'👩', 'Terry':'👨' };
+  var html = '';
+  for (var i=0; i<keys.length; i++) {
+    var p = keys[i];
+    var amt = totals[p];
+    var pct = grand > 0 ? Math.round((amt/grand)*100) : 0;
+    html += '<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);">'
+      + '<div style="background:var(--ocean-l);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;">' + (emojiMap[p] || '👤') + '</div>'
+      + '<div style="flex:1;"><div style="font-size:13px;font-weight:700;color:var(--dark);">' + escapeHtml(p) + '</div>'
+      + '<div style="font-size:10px;color:var(--muted);margin-top:2px;">' + pct + '% 總支出</div></div>'
+      + '<div style="font-size:14px;font-weight:700;color:var(--dark);">NT$' + amt.toLocaleString() + '</div></div>';
+  }
+  bd.innerHTML = html;
+}
+
+function escapeHtml(s) {
+  if (typeof s !== 'string') return '';
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 // ── LEAFLET MAPS ──
 var leafletMaps = {};
@@ -1637,6 +1836,7 @@ window.onload = function() {
   } catch(e) {}
   var first = document.querySelector('.day-h');
   if (first) toggleDay(first);
+  loadExpenses();
 };
 
 </script>
