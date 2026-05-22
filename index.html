@@ -998,7 +998,7 @@ if (typeof L === 'undefined') {
     </div>
     <div style="grid-column:1/-1;background:linear-gradient(135deg,var(--ocean),#1A7A5E);color:white;border-radius:14px;padding:14px;text-align:center;">
       <div id="sum-pct" style="font-family:'Playfair Display',serif;font-size:30px;font-weight:700;">—</div>
-      <div style="font-size:11px;color:rgba(255,255,255,.75);margin-top:3px;">已使用預算比例（預算上限 <input type="number" id="bud-limit" value="5000" style="width:64px;border:1px solid rgba(255,255,255,0.3);border-radius:5px;padding:2px 6px;font-size:12px;font-family:'Noto Sans TC',sans-serif;background:rgba(0,0,0,0.15);color:white;" onchange="renderExpenseSummary()"> AUD）</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.75);margin-top:3px;">已使用預算比例（預算上限 <input type="number" id="bud-limit" value="3000" style="width:64px;border:1px solid rgba(255,255,255,0.3);border-radius:5px;padding:2px 6px;font-size:12px;font-family:'Noto Sans TC',sans-serif;background:rgba(0,0,0,0.15);color:white;" onchange="renderExpenseSummary()"> AUD）</div>
     </div>
   </div>
 
@@ -1601,7 +1601,7 @@ function loadExpenses() {
 
 function renderExpenseSummary() {
   if (!expenseData) return;
-  var limit = parseFloat(document.getElementById('bud-limit').value) || 5000;
+  var limit = parseFloat(document.getElementById('bud-limit').value) || 3000;
   var audDisplay = expenseData.total_aud_converted !== null ? expenseData.total_aud_converted : expenseData.total_aud_direct;
   var pct = audDisplay > 0 ? Math.min((audDisplay / limit) * 100, 999) : 0;
   document.getElementById('sum-aud').textContent = '$' + Math.round(audDisplay).toLocaleString();
