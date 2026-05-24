@@ -316,6 +316,7 @@ if (typeof L === 'undefined') {
   <button class="nb" onclick="showPanel('expense')">💳 花費 / 預算</button>
   <button class="nb" onclick="showPanel('carlaw')">🚌 交通</button>
   <button class="nb" onclick="showPanel('packing')">🎒 打包</button>
+  <button class="nb" onclick="showPanel('aussie')">🗣 澳語</button>
   <button class="nb" onclick="showPanel('rainday')">🌧 雨天備案</button>
   <button class="nb" onclick="showPanel('emergency')">🆘 緊急</button>
 </nav>
@@ -1406,6 +1407,120 @@ if (typeof L === 'undefined') {
     <div class="ri" style="border:none;padding-bottom:0;"><div class="ricon">🚕</div><div><div class="rtitle">D5 Uber 行程</div><div class="rdesc">Sunnybank 美食 + Mt Coot-tha 觀景，Uber 約 3 趟，AUD $90。</div></div></div>
   </div></div>
 </div>
+<!-- ═══ 澳洲英文 ═══ -->
+<div id="panel-aussie" class="panel">
+  <div class="al info"><span class="ali">🗣️</span><div class="alc"><div class="alt">澳洲人講英文跟美式差很多</div>澳式 = 英式拼字 + 大量縮寫 + 自創詞。看不懂的可現場 Google，也別擔心 — 服務業講話多半放慢給遊客聽。</div></div>
+
+  <p class="stitle"><span class="dot"></span>🎤 必學招呼語 / 常用語</p>
+  <div class="card"><div class="cbody">
+    <div class="ri"><div class="ricon">👋</div><div><div class="rtitle">G'day (mate)</div><div class="rdesc">= Hi / Hello（最經典澳式問候）。mate 是「朋友」，連店員都會叫你 mate。</div></div></div>
+    <div class="ri"><div class="ricon">🙆</div><div><div class="rtitle">No worries / No wuckas</div><div class="rdesc">= 沒問題 / 不客氣 / 沒關係。澳洲人一天講 50 次，回應「謝謝」「對不起」「請」都可以用。</div></div></div>
+    <div class="ri"><div class="ricon">🙏</div><div><div class="rtitle">Cheers / Ta</div><div class="rdesc">= 謝謝（不只是乾杯！）。Ta 是短版謝謝，店員找錢時最常聽到。</div></div></div>
+    <div class="ri"><div class="ricon">😊</div><div><div class="rtitle">How ya going?</div><div class="rdesc">= How are you? 的澳式版（不是問你去哪）。回 "Good thanks, you?" 就完美。</div></div></div>
+    <div class="ri"><div class="ricon">💯</div><div><div class="rtitle">Heaps</div><div class="rdesc">= 很多 / 非常。"Heaps of fun" = 超好玩；"Thanks heaps" = 超感謝。</div></div></div>
+    <div class="ri" style="border:none;padding-bottom:0;"><div class="ricon">💭</div><div><div class="rtitle">Reckon</div><div class="rdesc">= 覺得 / 認為。"I reckon it'll rain" = 我覺得會下雨。</div></div></div>
+  </div></div>
+
+  <p class="stitle"><span class="dot"></span>🇦🇺 vs 🇺🇸 比照表</p>
+  <div class="card"><div class="cbody" style="padding:10px 12px;">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px;line-height:1.6;">在澳洲用美式講法多半也聽得懂，但反過來不一定 — 服務業可能聽不懂某些美式詞。</div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <thead>
+        <tr style="background:var(--sand-d);">
+          <th style="padding:7px 8px;text-align:left;font-weight:700;color:var(--dark);border-bottom:1px solid var(--border);">中文</th>
+          <th style="padding:7px 8px;text-align:left;font-weight:700;color:var(--dark);border-bottom:1px solid var(--border);">🇦🇺 澳式</th>
+          <th style="padding:7px 8px;text-align:left;font-weight:700;color:var(--dark);border-bottom:1px solid var(--border);">🇺🇸 美式</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#FFF5E6;"><td colspan="3" style="padding:5px 8px;font-weight:700;color:var(--coral);font-size:11px;">🍽️ 食物</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">餅乾</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">biscuit</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">cookie</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">薯條</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">chips / hot chips</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">fries</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">洋芋片</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">crisps</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">chips</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">青椒 / 甜椒</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">capsicum</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">bell pepper</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">蝦</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">prawn</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">shrimp</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">外帶</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">take-away</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">to-go</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">賬單</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">bill</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">check</td></tr>
+
+        <tr style="background:#FFF5E6;"><td colspan="3" style="padding:5px 8px;font-weight:700;color:var(--coral);font-size:11px;">👕 日常 / 衣物</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);"><strong style="color:var(--coral);">拖鞋 ⚠️</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);"><strong>thongs</strong>（不是丁字褲！）</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">flip-flops</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">毛衣</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">jumper</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">sweater</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">內褲</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">undies</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">underwear</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">嬰兒推車</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);"><strong>pram</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">stroller</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">尿布</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">nappy</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">diaper</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">奶嘴</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">dummy</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">pacifier</td></tr>
+
+        <tr style="background:#FFF5E6;"><td colspan="3" style="padding:5px 8px;font-weight:700;color:var(--coral);font-size:11px;">🚗 交通 / 場所</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">汽油</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">petrol</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">gas</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">加油站</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">servo</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">gas station</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">引擎蓋</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">bonnet</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">hood</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">後車廂</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">boot</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">trunk</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">電梯</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">lift</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">elevator</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">人行道</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">footpath</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">sidewalk</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">排隊</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">queue</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">line</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">廁所</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">toilet / loo</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">bathroom / restroom</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">藥局</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">chemist</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">pharmacy / drugstore</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">推車</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">trolley</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">cart</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);"><strong style="color:var(--coral);">樓層 ⚠️</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">ground floor = 一樓<br>first floor = 二樓</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">first floor = 一樓<br>second floor = 二樓</td></tr>
+
+        <tr style="background:#FFF5E6;"><td colspan="3" style="padding:5px 8px;font-weight:700;color:var(--coral);font-size:11px;">✏️ 拼字差異（澳 = 英）</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">顏色</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">colour, favour</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">color, favor</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">中心 / 劇院</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">centre, theatre</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">center, theater</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);">組織 / 實現</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);">organise, realise</td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">organize, realize</td></tr>
+        <tr><td style="padding:6px 8px;">節目</td><td style="padding:6px 8px;">programme</td><td style="padding:6px 8px;color:var(--muted);">program</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+
+  <p class="stitle"><span class="dot"></span>⚠️ 容易誤會的字（小心講錯）</p>
+  <div class="card"><div class="cbody">
+    <div class="ri"><div class="ricon">🩴</div><div><div class="rtitle">thongs = 拖鞋（不是丁字褲！）</div><div class="rdesc">「I'm wearing thongs」= 我穿夾腳拖。是澳洲最容易讓美國人 / 台灣人臉紅的字。買也用這個字。</div></div></div>
+    <div class="ri"><div class="ricon">🍻</div><div><div class="rtitle">pissed = 喝醉（不是生氣）</div><div class="rdesc">「He's pissed」= 他喝醉了。要說生氣是「pissed off」。常被誤會的高頻字。</div></div></div>
+    <div class="ri"><div class="ricon">✏️</div><div><div class="rtitle">rubber = 橡皮擦（不是保險套）</div><div class="rdesc">學校用的橡皮擦。和小朋友用沒問題。美式才把 rubber 當保險套。</div></div></div>
+    <div class="ri"><div class="ricon">🎒</div><div><div class="rtitle">bum bag = 腰包（不是 fanny pack）</div><div class="rdesc">澳洲叫腰包「bum bag」，「fanny」在澳洲是粗俗字（女性私處），不能講「fanny pack」。</div></div></div>
+    <div class="ri" style="border:none;padding-bottom:0;"><div class="ricon">🌱</div><div><div class="rtitle">「Yeah, nah」 / 「Nah, yeah」</div><div class="rdesc">澳洲人愛說的混合詞。「Yeah, nah」= 表面同意但其實 no；「Nah, yeah」= 表面拒絕但其實 yes。聽語氣 + 後面那個字才是真意。</div></div></div>
+  </div></div>
+
+  <p class="stitle"><span class="dot"></span>👶 帶 3 歲娃用得到的場景對話</p>
+  <div class="card"><div class="cbody">
+    <div class="ri"><div class="ricon">🪑</div><div><div class="rtitle">「Could I get a high chair, please?」</div><div class="rdesc">可以給高腳椅嗎？— 餐廳必用。</div></div></div>
+    <div class="ri"><div class="ricon">📋</div><div><div class="rtitle">「Do you have a kids menu?」</div><div class="rdesc">有兒童菜單嗎？— 餐廳必問。</div></div></div>
+    <div class="ri"><div class="ricon">🥜</div><div><div class="rtitle">「Is this nut-free / dairy-free?」</div><div class="rdesc">沒堅果 / 沒乳製品嗎？— 過敏問句。</div></div></div>
+    <div class="ri"><div class="ricon">💧</div><div><div class="rtitle">「Tap water, please.」</div><div class="rdesc">幫我倒水。— 免費 tap water，不必另點瓶裝。</div></div></div>
+    <div class="ri"><div class="ricon">🥡</div><div><div class="rtitle">「Can I get this take-away?」</div><div class="rdesc">可以外帶嗎？— 別說 "to go"，店員可能會 pause。</div></div></div>
+    <div class="ri"><div class="ricon">🚻</div><div><div class="rtitle">「Where's the loo?」</div><div class="rdesc">廁所在哪？— 比 bathroom 更澳式。</div></div></div>
+    <div class="ri" style="border:none;padding-bottom:0;"><div class="ricon">🚌</div><div><div class="rtitle">「Does this bus go to South Bank?」</div><div class="rdesc">這班公車到 South Bank 嗎？— 司機通常會幫忙確認。</div></div></div>
+  </div></div>
+
+  <p class="stitle"><span class="dot"></span>🎙 澳洲縮寫癖（-o / -ie 結尾）</p>
+  <div class="card"><div class="cbody" style="padding:10px 12px;">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px;line-height:1.6;">澳洲人愛把字尾縮成 -o 或 -ie，這些縮寫是日常用語，聽得懂能跟上對話。</div>
+    <table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <tbody>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);"><strong>Arvo</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">Afternoon · 下午（"this arvo" = 今下午）</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);"><strong>Brekkie</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">Breakfast · 早餐</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);"><strong>Servo</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">Service station · 加油站</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);"><strong>Bottle-o</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">Bottle shop · 酒類專賣店</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);"><strong>Sunnies</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">Sunglasses · 太陽眼鏡</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);"><strong>Mozzie</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">Mosquito · 蚊子（"mozzie spray" = 防蚊液）</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);"><strong>Maccas</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">McDonald's · 麥當勞</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);"><strong>Bickie</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">Biscuit · 餅乾</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);"><strong>Cuppa</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">Cup of tea · 一杯茶</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);"><strong>Postie</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">Postman · 郵差</td></tr>
+        <tr><td style="padding:6px 8px;border-bottom:1px solid var(--border);"><strong>Tradie</strong></td><td style="padding:6px 8px;border-bottom:1px solid var(--border);color:var(--muted);">Tradesman · 水電工 / 工匠</td></tr>
+        <tr><td style="padding:6px 8px;"><strong>Brizzie</strong></td><td style="padding:6px 8px;color:var(--muted);">Brisbane · 本地暱稱（如「Welcome to Brizzie!」）</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+
+  <p class="stitle"><span class="dot"></span>💡 文化小提醒</p>
+  <div class="card"><div class="cbody">
+    <div class="ri"><div class="ricon">😎</div><div><div class="rtitle">叫對方「mate」很正常</div><div class="rdesc">陌生人、店員、計程車司機都會叫你 mate，沒有不尊重，是友善表現。你回對方 mate 也 OK。</div></div></div>
+    <div class="ri"><div class="ricon">🌧️</div><div><div class="rtitle">天氣抱怨是國民運動</div><div class="rdesc">澳洲人聊天 70% 在聊天氣。「Bit chilly today, eh?」（今天有點冷喔？）是萬用 small talk 開場。</div></div></div>
+    <div class="ri" style="border:none;padding-bottom:0;"><div class="ricon">🦘</div><div><div class="rtitle">eh? 或 hey? 結尾</div><div class="rdesc">澳洲人愛在句尾加「eh?」或「hey?」徵求認同。「Good weather, eh?」= 天氣不錯吼？</div></div></div>
+  </div></div>
+</div>
+
 <!-- ═══ 雨天備案 ═══ -->
 <div id="panel-rainday" class="panel">
   <div class="al warn"><span class="ali">🌧️</span><div class="alc"><div class="alt">Brisbane7月降雨率低，但備案很重要</div>7月是昆士蘭乾季，降雨機率約10-15%。偶爾一天下雨，按此備案切換，輕鬆應對！</div></div>
@@ -1574,7 +1689,7 @@ if (typeof L === 'undefined') {
 function showPanel(id) {
   var panels = document.querySelectorAll('.panel');
   var btns = document.querySelectorAll('.nb');
-  var order = ['overview','itinerary','map','food','expense','carlaw','packing','rainday','emergency'];
+  var order = ['overview','itinerary','map','food','expense','carlaw','packing','aussie','rainday','emergency'];
   for (var i=0; i<panels.length; i++) panels[i].className = 'panel';
   for (var i=0; i<btns.length; i++) btns[i].className = 'nb';
   var p = document.getElementById('panel-'+id);
