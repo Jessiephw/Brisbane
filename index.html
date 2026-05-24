@@ -311,13 +311,11 @@ if (typeof L === 'undefined') {
 <nav class="snav">
   <button class="nb active" onclick="showPanel('overview')">📋 總覽</button>
   <button class="nb" onclick="showPanel('itinerary')">🗓 行程</button>
-  <button class="nb" onclick="showPanel('hotels')">🏨 住宿</button>
   <button class="nb" onclick="showPanel('map')">🗺 路線圖</button>
   <button class="nb" onclick="showPanel('food')">🍽 美食</button>
-  <button class="nb" onclick="showPanel('expense')">💳 花費</button>
+  <button class="nb" onclick="showPanel('expense')">💳 花費 / 預算</button>
   <button class="nb" onclick="showPanel('carlaw')">🚌 交通</button>
   <button class="nb" onclick="showPanel('packing')">🎒 打包</button>
-  <button class="nb" onclick="showPanel('budget')">💰 預算</button>
   <button class="nb" onclick="showPanel('rainday')">🌧 雨天備案</button>
   <button class="nb" onclick="showPanel('emergency')">🆘 緊急</button>
 </nav>
@@ -399,6 +397,39 @@ if (typeof L === 'undefined') {
 <!-- ═══ 行程 ═══ -->
 <div id="panel-itinerary" class="panel">
   <div class="al info"><span class="ali">📍</span><div class="alc"><div class="alt">純市區行程 · 不租車</div>主要交通：步行 + GoCard 大眾運輸 + CityCat 渡輪 + Uber。所有景點均附地圖連結。</div></div>
+
+  <div class="al warn" style="cursor:pointer;" onclick="showPanel('rainday')"><span class="ali">☔</span><div class="alc"><div class="alt">下雨了？查雨天備案 →</div>點此跳到雨天備案分頁，含 D2-D6 室內替代行程。</div></div>
+
+  <p class="stitle"><span class="dot"></span>住宿 · 6 晚同一住宿 ✅</p>
+  <div class="hcard">
+    <div class="htop"><div class="hemoji">🏠</div><div><div class="hname">Modern 1BR Retreat</div><div class="harea">66 Manning St, South Brisbane</div><div style="font-size:11px;color:#555;margin-top:3px;">7/25–7/31（6 晚）· ⭐ 9.5/10</div></div><div class="hnights">6晚</div></div>
+    <div class="hbottom">
+      <div class="hpros"><span class="pro">公寓型廚房</span><span class="pro">游泳池</span><span class="pro">健身房</span><span class="pro">免費停車</span><span class="pro">South Bank 步行</span></div>
+      <div class="hnote">
+        <strong>步行距離：</strong><br>
+        🛒 Coles 超市 3 分 · 🚆 South Bank 火車站 5 分<br>
+        🔬 Queensland Museum 6 分 · 🎨 GOMA 8 分<br>
+        🌳 South Bank Parklands 8 分 · 🏖️ Streets Beach 10 分<br>
+        🚌 Cultural Centre 公車站（往 Lone Pine）8 分
+      </div>
+      <div style="margin-top:10px;">
+        <a class="nav-btn-g" href="https://maps.google.com/?q=66+Manning+St+South+Brisbane" target="_blank">🗺 住宿位置 Google Maps</a>
+      </div>
+    </div>
+  </div>
+
+  <p class="stitle"><span class="dot"></span>退房注意</p>
+  <div class="card"><div class="cbody">
+    <div class="ri" style="border:none;padding-bottom:0;">
+      <div class="ricon">⏰</div>
+      <div>
+        <div class="rtitle">標準退房時間 10:00 AM</div>
+        <div class="rdesc">退房後可請住宿免費寄放行李，繼續玩 South Bank 或 CBD，不用拖行李去機場。D7 16:15 領行李 → Airtrain → 機場剛好。</div>
+      </div>
+    </div>
+  </div></div>
+
+  <p class="stitle" style="margin-top:18px;"><span class="dot"></span>每日行程（D1-D8）</p>
 
   <!-- Day 1 -->
   <div class="day-block">
@@ -943,38 +974,6 @@ if (typeof L === 'undefined') {
   </div>
 
 </div>
-<!-- ═══ 住宿 ═══ -->
-<div id="panel-hotels" class="panel">
-  <div class="al info"><span class="ali">🏨</span><div class="alc"><div class="alt">已訂房 · 6 晚同一住宿 ✅</div>9.5 評分的公寓型住宿，有廚房+泳池+健身房+免費停車，位置完美。</div></div>
-
-  <div class="hcard">
-    <div class="htop"><div class="hemoji">🏠</div><div><div class="hname">Modern 1BR Retreat</div><div class="harea">66 Manning St, South Brisbane</div><div style="font-size:11px;color:#555;margin-top:3px;">7/25–7/31（6 晚）· ⭐ 9.5/10</div></div><div class="hnights">6晚</div></div>
-    <div class="hbottom">
-      <div class="hpros"><span class="pro">公寓型廚房</span><span class="pro">游泳池</span><span class="pro">健身房</span><span class="pro">免費停車</span><span class="pro">South Bank 步行</span></div>
-      <div class="hnote">
-        <strong>步行距離：</strong><br>
-        🛒 Coles 超市 3 分 · 🚆 South Bank 火車站 5 分<br>
-        🔬 Queensland Museum 6 分 · 🎨 GOMA 8 分<br>
-        🌳 South Bank Parklands 8 分 · 🏖️ Streets Beach 10 分<br>
-        🚌 Cultural Centre 公車站（往 Lone Pine）8 分
-      </div>
-      <div style="margin-top:10px;">
-        <a class="nav-btn-g" href="https://maps.google.com/?q=66+Manning+St+South+Brisbane" target="_blank">🗺 住宿位置 Google Maps</a>
-      </div>
-    </div>
-  </div>
-
-  <p class="stitle"><span class="dot"></span>退房注意</p>
-  <div class="card"><div class="cbody">
-    <div class="ri" style="border:none;padding-bottom:0;">
-      <div class="ricon">⏰</div>
-      <div>
-        <div class="rtitle">標準退房時間 10:00 AM</div>
-        <div class="rdesc">退房後可請住宿免費寄放行李，繼續玩 South Bank 或 CBD，不用拖行李去機場。下午 14:30 領行李 → Airtrain → 機場剛好。</div>
-      </div>
-    </div>
-  </div></div>
-</div>
 <!-- ═══ 美食 ═══ -->
 <div id="panel-food" class="panel">
   <p class="stitle"><span class="dot"></span>當地人推薦必吃</p>
@@ -1032,6 +1031,77 @@ if (typeof L === 'undefined') {
   </div>
 
   <button class="add-btn" style="background:var(--white);color:var(--ocean);border:1px solid var(--ocean);margin-top:12px;width:100%;border-radius:10px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans TC',sans-serif;" onclick="loadExpenses()">🔄 重新整理</button>
+
+  <div style="border-top:2px solid var(--border);margin:24px 0 14px;"></div>
+  <p class="stitle"><span class="dot"></span>📊 出發前預估</p>
+
+  <div class="al info"><span class="ali">💱</span><div class="alc"><div class="alt">匯率：1 AUD ≈ 22 TWD（2026年4月）</div>以下為 2大1小（3歲）8天行程的市場實際費用估算。您是空位搭乘，機票費用另計。</div></div>
+  <div class="al warn"><span class="ali">⚠️</span><div class="alc"><div class="alt">機票為空位搭乘</div>以下機票欄為市場正常票價供參考，實際空位費用依公司規定而異。</div></div>
+
+  <p class="stitle"><span class="dot"></span>各項費用估算</p>
+  <div class="card"><div class="cbody" style="padding-top:4px;">
+
+    <div class="br">
+      <div class="brc">✈️ 機票 2大1小（市場參考）<br><span style="font-size:10px;color:var(--muted);">華航 CI053/054 經濟艙 7月旺季，成人 ~TWD 28,000-35,000 RT，幼兒 ~75%</span></div>
+      <div><div class="bra" style="color:var(--green);">空位搭乘</div><div style="font-size:11px;color:var(--muted);text-align:right;">市場約 TWD 77,000-96,000</div></div>
+    </div>
+
+    <div class="br">
+      <div class="brc">🏨 住宿 6晚（已訂）<br><span style="font-size:10px;color:var(--muted);">Modern 1BR Retreat · 66 Manning St · 9.5 評分</span></div>
+      <div><div class="bra">AUD 1,300–1,740</div><div style="font-size:11px;color:var(--muted);text-align:right;">TWD 28,600–38,300</div></div>
+    </div>
+
+    <div class="br">
+      <div class="brc">🚇 大眾運輸（Airtrain + GoCard）<br><span style="font-size:10px;color:var(--muted);">Airtrain 大人來回 2×$23.30×2=$93 · 公車/渡輪 6 天 $0.50/趟 ≈ $30</span></div>
+      <div><div class="bra">AUD 100–130</div><div style="font-size:11px;color:var(--muted);text-align:right;">TWD 2,200–2,860</div></div>
+    </div>
+
+    <div class="br">
+      <div class="brc">🚕 Uber（D5 補強）<br><span style="font-size:10px;color:var(--muted);">約 3-4 趟 Uber（Sunnybank + Mt Coot-tha 來回）</span></div>
+      <div><div class="bra">AUD 90–120</div><div style="font-size:11px;color:var(--muted);text-align:right;">TWD 1,980–2,640</div></div>
+    </div>
+
+    <div class="br">
+      <div class="brc">🎟️ 景點門票（2大1小合計）<br><span style="font-size:10px;color:var(--muted);">Lone Pine $133（成人 $49×2 + 兒童 $35）· Queensland Museum 免費 · GOMA 免費 · Sciencentre 選擇性</span></div>
+      <div><div class="bra">AUD 130–180</div><div style="font-size:11px;color:var(--muted);text-align:right;">TWD 2,860–3,960</div></div>
+    </div>
+
+    <div class="br">
+      <div class="brc">🍽️ 餐飲 7天<br><span style="font-size:10px;color:var(--muted);">早餐自煮 + 午晚外食 ~AUD 90-130/天（全家）</span></div>
+      <div><div class="bra">AUD 630–910</div><div style="font-size:11px;color:var(--muted);text-align:right;">TWD 13,900–20,000</div></div>
+    </div>
+
+    <div class="br">
+      <div class="brc">📱 SIM 卡 · 🛡️ 旅遊保險<br><span style="font-size:10px;color:var(--muted);">Optus 15GB AUD 35 + 3人保險(含幼兒醫療)</span></div>
+      <div><div class="bra" style="color:var(--text);">TWD 5,000–9,000</div></div>
+    </div>
+
+    <div class="br">
+      <div class="brc">🛒 購物 / 紀念品<br><span style="font-size:10px;color:var(--muted);">Tim Tam、玩具、伴手禮等</span></div>
+      <div><div class="bra" style="color:var(--text);">TWD 5,000–20,000</div></div>
+    </div>
+
+    <div class="br" style="border-top:2px solid var(--border);margin-top:8px;padding-top:12px;">
+      <div class="brc" style="font-weight:700;font-size:14px;color:var(--dark);">💰 機票外 總費用估算</div>
+      <div><div style="font-size:20px;font-weight:900;color:var(--ocean);">TWD 35,000–60,000</div><div style="font-size:11px;color:var(--muted);text-align:right;">（含住宿 · 不含機票）</div></div>
+    </div>
+
+  </div></div>
+
+  <p class="stitle"><span class="dot"></span>景點門票快查</p>
+  <div class="card"><div class="cbody" style="padding-top:4px;">
+    <div class="br"><div class="brc">🐨 Lone Pine Koala Sanctuary<br><span style="font-size:10px;color:var(--muted);">2 大 1 小（3 歲）= $49×2 + $35 = $133 · Koala Close-Up 體驗另加 ~$30+</span></div><div class="bra">AUD 133</div></div>
+    <div class="br"><div class="brc">🔬 Queensland Museum<br><span style="font-size:10px;color:var(--muted);">博物館免費 · Sciencentre 成人 $18 · 兒童 $14</span></div><div class="bra">免費 / AUD 32+</div></div>
+    <div class="br"><div class="brc">🎨 GOMA 兒童藝術中心<br><span style="font-size:10px;color:var(--muted);">免費入場 · 9:30-17:00</span></div><div class="bra" style="color:var(--green);">免費</div></div>
+    <div class="br" style="border:none;padding-bottom:0;"><div class="brc">⛴️ CityCat 渡輪<br><span style="font-size:10px;color:var(--muted);">$0.50/趟 · 沿河看景點，幼兒最愛</span></div><div class="bra">AUD 0.50</div></div>
+  </div></div>
+
+  <p class="stitle"><span class="dot"></span>省錢技巧</p>
+  <div class="card"><div class="cbody">
+    <div class="ri"><div class="ricon">🏠</div><div><div class="rtitle">公寓早餐自煮</div><div class="rdesc">7天省 AUD 210-350（約 TWD 4,600-7,700）。</div></div></div>
+    <div class="ri"><div class="ricon">🎟️</div><div><div class="rtitle">景點提前網路購票</div><div class="rdesc">Lone Pine 網路購票省 5-10%。提早 1-2 天網路訂可避免現場排隊。</div></div></div>
+    <div class="ri" style="border:none;padding-bottom:0;"><div class="ricon">🛒</div><div><div class="rtitle">Woolworths / Coles 超市採購</div><div class="rdesc">飲料、零食在超市比景點便宜 3-5 倍，每天補貨一次是標準動作。</div></div></div>
+  </div></div>
 </div>
 
 <!-- ═══ 租車 ═══ -->
@@ -1272,77 +1342,6 @@ if (typeof L === 'undefined') {
     <div class="ri" style="border:none;padding-bottom:0;"><div class="ricon">🚕</div><div><div class="rtitle">D5 Uber 行程</div><div class="rdesc">Sunnybank 美食 + Mt Coot-tha 觀景，Uber 約 3 趟，AUD $90。</div></div></div>
   </div></div>
 </div>
-<!-- ═══ 預算 ═══ -->
-<div id="panel-budget" class="panel">
-  <div class="al info"><span class="ali">💱</span><div class="alc"><div class="alt">匯率：1 AUD ≈ 22 TWD（2026年4月）</div>以下為 2大1小（3歲）8天行程的市場實際費用估算。您是空位搭乘，機票費用另計。</div></div>
-  <div class="al warn"><span class="ali">⚠️</span><div class="alc"><div class="alt">機票為空位搭乘</div>以下機票欄為市場正常票價供參考，實際空位費用依公司規定而異。</div></div>
-
-  <p class="stitle"><span class="dot"></span>各項費用估算</p>
-  <div class="card"><div class="cbody" style="padding-top:4px;">
-
-    <div class="br">
-      <div class="brc">✈️ 機票 2大1小（市場參考）<br><span style="font-size:10px;color:var(--muted);">華航 CI053/054 經濟艙 7月旺季，成人 ~TWD 28,000-35,000 RT，幼兒 ~75%</span></div>
-      <div><div class="bra" style="color:var(--green);">空位搭乘</div><div style="font-size:11px;color:var(--muted);text-align:right;">市場約 TWD 77,000-96,000</div></div>
-    </div>
-
-    <div class="br">
-      <div class="brc">🏨 住宿 6晚（已訂）<br><span style="font-size:10px;color:var(--muted);">Modern 1BR Retreat · 66 Manning St · 9.5 評分</span></div>
-      <div><div class="bra">AUD 1,300–1,740</div><div style="font-size:11px;color:var(--muted);text-align:right;">TWD 28,600–38,300</div></div>
-    </div>
-
-    <div class="br">
-      <div class="brc">🚇 大眾運輸（Airtrain + GoCard）<br><span style="font-size:10px;color:var(--muted);">Airtrain 大人來回 2×$23.30×2=$93 · 公車/渡輪 6 天 $0.50/趟 ≈ $30</span></div>
-      <div><div class="bra">AUD 100–130</div><div style="font-size:11px;color:var(--muted);text-align:right;">TWD 2,200–2,860</div></div>
-    </div>
-
-    <div class="br">
-      <div class="brc">🚕 Uber（D5 補強）<br><span style="font-size:10px;color:var(--muted);">約 3-4 趟 Uber（Sunnybank + Mt Coot-tha 來回）</span></div>
-      <div><div class="bra">AUD 90–120</div><div style="font-size:11px;color:var(--muted);text-align:right;">TWD 1,980–2,640</div></div>
-    </div>
-
-    <div class="br">
-      <div class="brc">🎟️ 景點門票（2大1小合計）<br><span style="font-size:10px;color:var(--muted);">Lone Pine $133（成人 $49×2 + 兒童 $35）· Queensland Museum 免費 · GOMA 免費 · Sciencentre 選擇性</span></div>
-      <div><div class="bra">AUD 130–180</div><div style="font-size:11px;color:var(--muted);text-align:right;">TWD 2,860–3,960</div></div>
-    </div>
-
-    <div class="br">
-      <div class="brc">🍽️ 餐飲 7天<br><span style="font-size:10px;color:var(--muted);">早餐自煮 + 午晚外食 ~AUD 90-130/天（全家）</span></div>
-      <div><div class="bra">AUD 630–910</div><div style="font-size:11px;color:var(--muted);text-align:right;">TWD 13,900–20,000</div></div>
-    </div>
-
-    <div class="br">
-      <div class="brc">📱 SIM 卡 · 🛡️ 旅遊保險<br><span style="font-size:10px;color:var(--muted);">Optus 15GB AUD 35 + 3人保險（含幼兒醫療）</span></div>
-      <div><div class="bra" style="color:var(--text);">TWD 5,000–9,000</div></div>
-    </div>
-
-    <div class="br">
-      <div class="brc">🛒 購物 / 紀念品<br><span style="font-size:10px;color:var(--muted);">Tim Tam、玩具、伴手禮等</span></div>
-      <div><div class="bra" style="color:var(--text);">TWD 5,000–20,000</div></div>
-    </div>
-
-    <div class="br" style="border-top:2px solid var(--border);margin-top:8px;padding-top:12px;">
-      <div class="brc" style="font-weight:700;font-size:14px;color:var(--dark);">💰 機票外 總費用估算</div>
-      <div><div style="font-size:20px;font-weight:900;color:var(--ocean);">TWD 35,000–60,000</div><div style="font-size:11px;color:var(--muted);text-align:right;">（含住宿 · 不含機票）</div></div>
-    </div>
-
-  </div></div>
-
-    <p class="stitle"><span class="dot"></span>景點門票快查</p>
-  <div class="card"><div class="cbody" style="padding-top:4px;">
-    <div class="br"><div class="brc">🐨 Lone Pine Koala Sanctuary<br><span style="font-size:10px;color:var(--muted);">2 大 1 小（3 歲）= $49×2 + $35 = $133 · Koala Close-Up 體驗另加 ~$30+</span></div><div class="bra">AUD 133</div></div>
-    <div class="br"><div class="brc">🔬 Queensland Museum<br><span style="font-size:10px;color:var(--muted);">博物館免費 · Sciencentre 成人 $18 · 兒童 $14</span></div><div class="bra">免費 / AUD 32+</div></div>
-    <div class="br"><div class="brc">🎨 GOMA 兒童藝術中心<br><span style="font-size:10px;color:var(--muted);">免費入場 · 9:30-17:00</span></div><div class="bra" style="color:var(--green);">免費</div></div>
-    <div class="br" style="border:none;padding-bottom:0;"><div class="brc">⛴️ CityCat 渡輪<br><span style="font-size:10px;color:var(--muted);">$0.50/趟 · 沿河看景點，幼兒最愛</span></div><div class="bra">AUD 0.50</div></div>
-  </div></div>
-
-  <p class="stitle"><span class="dot"></span>省錢技巧</p>
-  <div class="card"><div class="cbody">
-    <div class="ri"><div class="ricon">🏠</div><div><div class="rtitle">公寓早餐自煮</div><div class="rdesc">7天省 AUD 210-350（約 TWD 4,600-7,700）。</div></div></div>
-    <div class="ri"><div class="ricon">🎟️</div><div><div class="rtitle">景點提前網路購票</div><div class="rdesc">Lone Pine 網路購票省 5-10%。提早 1-2 天網路訂可避免現場排隊。</div></div></div>
-    <div class="ri" style="border:none;padding-bottom:0;"><div class="ricon">🛒</div><div><div class="rtitle">Woolworths / Coles 超市採購</div><div class="rdesc">飲料、零食在超市比景點便宜 3-5 倍，每天補貨一次是標準動作。</div></div></div>
-  </div></div>
-</div>
-
 <!-- ═══ 雨天備案 ═══ -->
 <div id="panel-rainday" class="panel">
   <div class="al warn"><span class="ali">🌧️</span><div class="alc"><div class="alt">Brisbane7月降雨率低，但備案很重要</div>7月是昆士蘭乾季，降雨機率約10-15%。偶爾一天下雨，按此備案切換，輕鬆應對！</div></div>
@@ -1511,7 +1510,7 @@ if (typeof L === 'undefined') {
 function showPanel(id) {
   var panels = document.querySelectorAll('.panel');
   var btns = document.querySelectorAll('.nb');
-  var order = ['overview','itinerary','hotels','map','food','expense','carlaw','packing','budget','rainday','emergency'];
+  var order = ['overview','itinerary','map','food','expense','carlaw','packing','rainday','emergency'];
   for (var i=0; i<panels.length; i++) panels[i].className = 'panel';
   for (var i=0; i<btns.length; i++) btns[i].className = 'nb';
   var p = document.getElementById('panel-'+id);
